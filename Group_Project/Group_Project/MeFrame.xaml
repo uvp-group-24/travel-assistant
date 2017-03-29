@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="Group_Project.MeFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Group_Project"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel
+            Orientation="Vertical">
+            <Image
+                Margin="0,0,0,0"
+                Width="200"
+                Height="200"
+                HorizontalAlignment="Center"
+                Source="Assets/male-02.png"/>
+            <TextBlock
+                Margin="0,20,0,0"
+                FontSize="40"
+                HorizontalAlignment="Center"
+                Text="Usernamr: Site Li"/>
+            <TextBlock
+                Margin="0,20,0,0"
+                FontSize="40"
+                HorizontalAlignment="Center"
+                Text="Wallet: 100000000$" />
+            <Button
+                Margin="0,50,0,0"
+                HorizontalAlignment="Center"
+                Name="DailyDraw"
+                FontSize="50"
+                Content="Daily Draw!!" />
+        </StackPanel>
+    </Grid>
+</Page>

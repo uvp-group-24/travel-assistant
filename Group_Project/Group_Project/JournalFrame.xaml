@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Group_Project.JournalFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Group_Project"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid
+            Background="AliceBlue"
+            Margin="200,0,200,20">
+            <ScrollViewer>
+                <StackPanel
+                    Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="auto" />
+                            <RowDefinition
+                                Height="auto" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+                        <RelativePanel
+                            Grid.Row="0">
+                            <Image
+                                Name="Icon"
+                                Source="Assets/male-01.png"
+                                Margin="20,0,0,0"
+                                Width="100"
+                                Height="100"
+                                RelativePanel.AlignLeftWithPanel="True" />
+                            <TextBlock
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                RelativePanel.AlignVerticalCenterWith="Icon"
+                                Text="SiteLi  2017/3/25"
+                                FontSize="40" />
+                        </RelativePanel>
+                        <Image
+                            Grid.Row="1"
+                            Margin="50"
+                            Source="Assets/scenery5.jpg"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            Grid.Row="2"
+                            TextWrapping="Wrap"
+                            FontSize="30"
+                            Text="June 15th Today I went on a schooltrip
+June 15th Today I went on a schooltrip.We visited the science museum and it was really interesting.we got there so fast by train.We saw some farms and villages along the way.At the museum.I learned a lot about robots.I didn't know they could play chess with us.It was so cool!Then the guide taught us how to make a model robot.I took a lot of great photos.too.after that,I went to the gift shop and bought some lovely gifts shop and bought some lovely gifts for my parents.They weren't expensive.All in all,it was an exciting day." />
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
