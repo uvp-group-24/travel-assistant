@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="travel_assistant.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:travel_assistant"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView Name="splitview"
+                   CompactPaneLength="56"
+                   DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <StackPanel Background="#282828">
+                    <RelativePanel>
+                        <Button Name="Hamberger"
+                                Background="DarkGreen"
+                                Foreground="White"
+                                Content="&#xE700;"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="36"
+                                RelativePanel.AlignLeftWithPanel="True"
+                                Click="menu_Click"/>
+                        <TextBlock Text="Travel Assistant"
+                                   Foreground="White"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Margin="20,0,0,0"
+                                   RelativePanel.RightOf="Hamberger"
+                                   RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                    </RelativePanel>
+                    <ListBox Name="listbox"
+                             Background="#282828"
+                             Foreground="White"
+                             SelectionMode="Single"
+                             SelectionChanged="listbox_SelectionChanged">
+                        <ListBoxItem Name="attractions">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                           FontSize="36"
+                                           Text="&#xEB9F;" />
+                                <TextBlock Text="Attractions"
+                                           FontSize="24"
+                                           Margin="20,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="maps">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                           FontSize="36"
+                                           Text="&#xE774;" />
+                                <TextBlock Text="Maps"
+                                           FontSize="24"
+                                           Margin="20,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="moments">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                           FontSize="36"
+                                           Text="&#xE722;" />
+                                <TextBlock Text="Moments"
+                                           FontSize="24"
+                                           Margin="20,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="me">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                           FontSize="36"
+                                           Text="&#xE13D;" />
+                                <TextBlock Text="Me"
+                                           FontSize="24"
+                                           Margin="20,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="settings">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                           FontSize="36"
+                                           Text="&#xE713;" />
+                                <TextBlock Text="Settings"
+                                           FontSize="24"
+                                           Margin="20,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="mainframe" />
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
