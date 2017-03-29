@@ -25,21 +25,23 @@ namespace travel_assistant
         public MainPage()
         {
             this.InitializeComponent();
-            mainframe.Navigate(typeof(AttractionsPage));
+            mainframe.Navigate(typeof(RecommendPage));
         }
 
         private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (attractions.IsSelected) Frame.Navigate(typeof(AttractionsPage));
-            else if(moments.IsSelected) mainframe.Navigate(typeof(MomentsPage));
-            else if (me.IsSelected) mainframe.Navigate(typeof(MePage));
-            else if (settings.IsSelected) mainframe.Navigate(typeof(SettingsPage));
+            if (recommend_item.IsSelected) mainframe.Navigate(typeof(RecommendPage));
+            else if (traffic_item.IsSelected) mainframe.Navigate(typeof(TrafficPage));
+            else if (weather_item.IsSelected) mainframe.Navigate(typeof(WeatherPage));
+            else if (discover_item.IsSelected) mainframe.Navigate(typeof(DiscoverPage));
+            else if (me_item.IsSelected) mainframe.Navigate(typeof(MePage));
+            else if (settings_item.IsSelected) mainframe.Navigate(typeof(SettingsPage));
             splitview.IsPaneOpen = false;
         }
 
         private void Goback_Click(object sender, RoutedEventArgs e)
         {
-
+            if (mainframe.CanGoBack) mainframe.GoBack();
         }
 
         private void Hamberger_Click(object sender, RoutedEventArgs e)

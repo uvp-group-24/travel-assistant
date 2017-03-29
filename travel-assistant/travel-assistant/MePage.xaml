@@ -8,6 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Background="Gray">
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Me"
+                           FontSize="36" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

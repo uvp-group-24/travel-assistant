@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="travel_assistant.SettingsPage"
+    x:Class="travel_assistant.RecommendPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:travel_assistant"
@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <StackPanel Background="Gray">
                 <TextBlock HorizontalAlignment="Center"
-                           Text="Settings"
+                           Text="Recommend"
                            FontSize="36" />
             </StackPanel>
         </Grid>
