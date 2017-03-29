@@ -30,7 +30,7 @@ namespace travel_assistant
 
         private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (attractions.IsSelected) mainframe.Navigate(typeof(AttractionsPage));
+            if (attractions.IsSelected) Frame.Navigate(typeof(AttractionsPage));
             else if(moments.IsSelected) mainframe.Navigate(typeof(MomentsPage));
             else if (me.IsSelected) mainframe.Navigate(typeof(MePage));
             else if (settings.IsSelected) mainframe.Navigate(typeof(SettingsPage));
