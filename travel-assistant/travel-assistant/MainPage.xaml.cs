@@ -30,17 +30,21 @@ namespace travel_assistant
 
         private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (attractions.IsSelected) mainframe.Navigate(typeof(AttractionsPage));
+            if (attractions.IsSelected) Frame.Navigate(typeof(AttractionsPage));
             else if(moments.IsSelected) mainframe.Navigate(typeof(MomentsPage));
             else if (me.IsSelected) mainframe.Navigate(typeof(MePage));
             else if (settings.IsSelected) mainframe.Navigate(typeof(SettingsPage));
             splitview.IsPaneOpen = false;
         }
 
-        private void menu_Click(object sender, RoutedEventArgs e)
+        private void Goback_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Hamberger_Click(object sender, RoutedEventArgs e)
         {
             splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
-
     }
 }
