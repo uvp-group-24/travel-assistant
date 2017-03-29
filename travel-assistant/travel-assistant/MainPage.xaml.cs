@@ -37,10 +37,14 @@ namespace travel_assistant
             splitview.IsPaneOpen = false;
         }
 
-        private void menu_Click(object sender, RoutedEventArgs e)
+        private void Goback_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Hamberger_Click(object sender, RoutedEventArgs e)
         {
             splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
-
     }
 }

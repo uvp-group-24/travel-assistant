@@ -12,8 +12,8 @@
                    CompactPaneLength="56"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
-                <StackPanel Background="#282828">
-                    <RelativePanel>
+                <RelativePanel Background="#282828">
+                    <RelativePanel Name="menu">
                         <Button Name="Hamberger"
                                 Background="DarkGreen"
                                 Foreground="White"
@@ -21,7 +21,7 @@
                                 FontFamily="Segoe MDL2 Assets"
                                 FontSize="36"
                                 RelativePanel.AlignLeftWithPanel="True"
-                                Click="menu_Click"/>
+                                Click="Hamberger_Click" />
                         <TextBlock Text="Travel Assistant"
                                    Foreground="White"
                                    FontSize="24"
@@ -33,6 +33,8 @@
                     <ListBox Name="listbox"
                              Background="#282828"
                              Foreground="White"
+                             RelativePanel.Below="menu"
+                             Margin="-2,0,0,0"
                              SelectionMode="Single"
                              SelectionChanged="listbox_SelectionChanged">
                         <ListBoxItem Name="attractions">
@@ -86,7 +88,22 @@
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>
-                </StackPanel>
+                    <Button Name="Goback"
+                            Background="MediumBlue"
+                            Foreground="White"
+                            Content="&#xE72B;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="36"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignBottomWithPanel="True"
+                            Click="Goback_Click" />
+                    <TextBlock Text="Go Back"
+                               Foreground="White"
+                               FontSize="24"
+                               Margin="20,0,0,0"
+                               RelativePanel.RightOf="Goback"
+                               RelativePanel.AlignVerticalCenterWith="Goback" />
+                </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>
                 <Frame Name="mainframe" />
