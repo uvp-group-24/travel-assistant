@@ -31,8 +31,7 @@ namespace travel_assistant
         private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (recommend_item.IsSelected) mainframe.Navigate(typeof(RecommendPage));
-            else if (traffic_item.IsSelected) mainframe.Navigate(typeof(TrafficPage));
-            else if (weather_item.IsSelected) mainframe.Navigate(typeof(WeatherPage));
+            else if (friends_item.IsSelected) mainframe.Navigate(typeof(FriendsPage));
             else if (discover_item.IsSelected) mainframe.Navigate(typeof(DiscoverPage));
             else if (me_item.IsSelected) mainframe.Navigate(typeof(MePage));
             else if (settings_item.IsSelected) mainframe.Navigate(typeof(SettingsPage));

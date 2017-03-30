@@ -20,9 +20,9 @@ namespace travel_assistant
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class WeatherPage : Page
+    public sealed partial class FriendsPage : Page
     {
-        public WeatherPage()
+        public FriendsPage()
         {
             this.InitializeComponent();
         }

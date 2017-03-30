@@ -47,22 +47,12 @@
                                            Margin="20,0,0,0" />
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem Name="weather_item">
+                        <ListBoxItem Name="friends_item">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe MDL2 Assets"
                                            FontSize="36"
-                                           Text="&#xE753;" />
-                                <TextBlock Text="Weather"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="traffic_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE774;" />
-                                <TextBlock Text="Traffic"
+                                           Text="&#xE716;" />
+                                <TextBlock Text="Friends"
                                            FontSize="24"
                                            Margin="20,0,0,0" />
                             </StackPanel>
