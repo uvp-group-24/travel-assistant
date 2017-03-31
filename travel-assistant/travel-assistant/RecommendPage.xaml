@@ -5,19 +5,34 @@
     xmlns:local="using:travel_assistant"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:travel_assistant.Model"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel Background="Gray">
-                <TextBlock HorizontalAlignment="Center"
+            <RelativePanel Background="Gray"
+                           Grid.Row="0">
+                <Button Name="Goback"
+                        Background="MediumBlue"
+                        Foreground="White"
+                        Content="&#xE72B;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="36"
+                        BorderThickness="3"
+                        BorderBrush="Black"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        Click="Goback_Click" />
+                <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                            Text="Recommend"
                            FontSize="36" />
-            </StackPanel>
+            </RelativePanel>
+            <Frame Name="recommend_frame"
+                   Grid.Row="1" />
         </Grid>
     </Grid>
 </Page>

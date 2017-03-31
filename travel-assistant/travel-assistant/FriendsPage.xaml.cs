@@ -26,5 +26,10 @@ namespace travel_assistant
         {
             this.InitializeComponent();
         }
+
+        private void Goback_Click(object sender, RoutedEventArgs e)
+        {
+            if (friends_frame.CanGoBack) friends_frame.GoBack();
+        }
     }
 }

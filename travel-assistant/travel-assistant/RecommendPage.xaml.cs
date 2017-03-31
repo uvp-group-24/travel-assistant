@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using travel_assistant.Model;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -25,6 +26,11 @@ namespace travel_assistant
         public RecommendPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Goback_Click(object sender, RoutedEventArgs e)
+        {
+            if (recommend_frame.CanGoBack) recommend_frame.GoBack();
         }
     }
 }

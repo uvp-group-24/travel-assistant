@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using travel_assistant.Model;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -22,30 +23,31 @@ namespace travel_assistant
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private List<MenuItem> MenuItems;
+
         public MainPage()
         {
             this.InitializeComponent();
+            MenuItems = MenuItemManager.GetMenuItems();
             mainframe.Navigate(typeof(RecommendPage));
+
+        }
+        private void Hamberger_Click(object sender, RoutedEventArgs e)
+        {
+            splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
 
         private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (recommend_item.IsSelected) mainframe.Navigate(typeof(RecommendPage));
-            else if (friends_item.IsSelected) mainframe.Navigate(typeof(FriendsPage));
-            else if (discover_item.IsSelected) mainframe.Navigate(typeof(DiscoverPage));
-            else if (me_item.IsSelected) mainframe.Navigate(typeof(MePage));
-            else if (settings_item.IsSelected) mainframe.Navigate(typeof(SettingsPage));
+            var menuitem = (MenuItem)listbox.SelectedItem;
+
+            if (menuitem.Name == "recommend_item") mainframe.Navigate(typeof(RecommendPage));
+            else if (menuitem.Name == "friends_item") mainframe.Navigate(typeof(FriendsPage));
+            else if (menuitem.Name == "moments_item") mainframe.Navigate(typeof(MomentsPage));
+            else if (menuitem.Name == "me_item") mainframe.Navigate(typeof(MePage));
+            else if (menuitem.Name == "settings_item") mainframe.Navigate(typeof(SettingsPage));
+
             splitview.IsPaneOpen = false;
-        }
-
-        private void Goback_Click(object sender, RoutedEventArgs e)
-        {
-            if (mainframe.CanGoBack) mainframe.GoBack();
-        }
-
-        private void Hamberger_Click(object sender, RoutedEventArgs e)
-        {
-            splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
     }
 }

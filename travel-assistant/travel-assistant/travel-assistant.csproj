@@ -96,18 +96,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DiscoverPage.xaml.cs">
-      <DependentUpon>DiscoverPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hamburger\Hamburger.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MePage.xaml.cs">
       <DependentUpon>MePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="MomentsPage.xaml.cs">
+      <DependentUpon>MomentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecommendPage.xaml.cs">
@@ -138,10 +138,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DiscoverPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FriendsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +147,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MomentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

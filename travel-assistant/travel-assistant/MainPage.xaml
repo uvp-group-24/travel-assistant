@@ -5,6 +5,7 @@
     xmlns:local="using:travel_assistant"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:travel_assistant.Model"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -13,96 +14,44 @@
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <RelativePanel Background="#282828">
-                    <RelativePanel Name="menu_item">
+                    <StackPanel Name="menu_item"
+                                Orientation="Horizontal">
                         <Button Name="hamberger_button"
                                 Background="DarkGreen"
                                 Foreground="White"
                                 Content="&#xE700;"
                                 FontFamily="Segoe MDL2 Assets"
                                 FontSize="36"
-                                RelativePanel.AlignLeftWithPanel="True"
                                 Click="Hamberger_Click" />
                         <TextBlock Text="Travel Assistant"
+                                   VerticalAlignment="Center"
                                    Foreground="White"
                                    FontSize="24"
                                    FontWeight="Bold"
-                                   Margin="20,0,0,0"
-                                   RelativePanel.RightOf="hamberger_button"
-                                   RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                    </RelativePanel>
+                                   Margin="20,0,0,0" />
+                    </StackPanel>
                     <ListBox Name="listbox"
                              Background="#282828"
                              Foreground="White"
                              RelativePanel.Below="menu_item"
-                             Margin="-2,0,0,0"
+                             ItemsSource="{x:Bind MenuItems}"
                              SelectionMode="Single"
                              SelectionChanged="listbox_SelectionChanged">
-                        <ListBoxItem Name="recommend_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE734;" />
-                                <TextBlock Text="Recommend"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="friends_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE716;" />
-                                <TextBlock Text="Friends"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="discover_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE722;" />
-                                <TextBlock Text="Discover"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="me_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE13D;" />
-                                <TextBlock Text="Me"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem Name="settings_item">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                           FontSize="36"
-                                           Text="&#xE713;" />
-                                <TextBlock Text="Settings"
-                                           FontSize="24"
-                                           Margin="20,0,0,0" />
-                            </StackPanel>
-                        </ListBoxItem>
+                        <ListBoxItem Name="recommend_item" />
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="data:MenuItem">
+                                <StackPanel Orientation="Horizontal"
+                                            Padding="-2,0,0,0">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets"
+                                               FontSize="36"
+                                               Text="{x:Bind Icon}" />
+                                    <TextBlock Text="{x:Bind Category}"
+                                               FontSize="24"
+                                               Margin="20,0,0,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Name="Goback"
-                            Background="MediumBlue"
-                            Foreground="White"
-                            Content="&#xE72B;"
-                            FontFamily="Segoe MDL2 Assets"
-                            FontSize="36"
-                            RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.AlignBottomWithPanel="True"
-                            Click="Goback_Click" />
-                    <TextBlock Text="Go Back"
-                               Foreground="White"
-                               FontSize="24"
-                               Margin="20,0,0,0"
-                               RelativePanel.RightOf="Goback"
-                               RelativePanel.AlignVerticalCenterWith="Goback" />
                 </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>

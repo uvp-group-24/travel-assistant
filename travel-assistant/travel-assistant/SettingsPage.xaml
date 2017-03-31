@@ -13,11 +13,24 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel Background="Gray">
-                <TextBlock HorizontalAlignment="Center"
+            <RelativePanel Background="Gray"
+                           Grid.Row="0">
+                <Button Name="Goback"
+                        Background="MediumBlue"
+                        Foreground="White"
+                        Content="&#xE72B;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="36"
+                        BorderThickness="3"
+                        BorderBrush="Black"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        Click="Goback_Click" />
+                <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                            Text="Settings"
                            FontSize="36" />
-            </StackPanel>
+            </RelativePanel>
+            <Frame Name="settings_frame"
+                   Grid.Row="1" />
         </Grid>
     </Grid>
 </Page>
