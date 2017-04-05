@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using travel_assistant.Model;
+using Windows.Devices.Geolocation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -31,6 +32,35 @@ namespace travel_assistant
         private void Goback_Click(object sender, RoutedEventArgs e)
         {
             if (recommend_frame.CanGoBack) recommend_frame.GoBack();
+        }
+
+        private async void click_Click(object sender, RoutedEventArgs e)
+        {
+            // Set your current location.
+            var accessStatus = await Geolocator.RequestAccessAsync();
+            switch (accessStatus)
+            {
+                case GeolocationAccessStatus.Allowed:
+
+                    // Get the current location.
+                    Geolocator geolocator = new Geolocator();
+                    Geoposition pos = await geolocator.GetGeopositionAsync();
+                    Geopoint myLocation = pos.Coordinate.Point;
+
+                    // Set the map location.
+                    map.Center = myLocation;
+                    map.ZoomLevel = 12;
+                    map.LandmarksVisible = true;
+                    break;
+
+                case GeolocationAccessStatus.Denied:
+                    // Handle the case  if access to location is denied.
+                    break;
+
+                case GeolocationAccessStatus.Unspecified:
+                    // Handle the case if  an unspecified error occurs.
+                    break;
+            }
         }
     }
 }
