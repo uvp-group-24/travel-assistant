@@ -40,8 +40,6 @@
                                FontSize="36" />
                 </RelativePanel>
             </AppBar>
-            <Frame Name="settings_frame"
-                   Grid.Row="1" />
         </Grid>
     </Grid>
 </Page>

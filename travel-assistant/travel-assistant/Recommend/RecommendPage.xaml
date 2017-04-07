@@ -41,15 +41,8 @@
                                FontSize="36" />
                 </RelativePanel>
             </AppBar>
-            <!--<RelativePanel Background="Gray"
-                           Grid.Row="0">
-                <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
-                           Text="Recommend"
-                           FontSize="36" />
-            </RelativePanel>-->
-            <Frame Name="recommend_frame"
-                   Grid.Row="1">
-            </Frame>
+            <ScrollViewer Grid.Row="1">
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>
