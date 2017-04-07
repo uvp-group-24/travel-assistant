@@ -23,13 +23,14 @@
                 </VisualState>
                 <VisualState x:Name="Tablet">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowWidth="640" />
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <SplitView Name="splitview"
-                   CompactPaneLength="56"
+                   CompactPaneLength="48"
+                   OpenPaneLength="280"
                    DisplayMode="CompactOverlay" >
             <SplitView.Pane>
                 <RelativePanel x:Name="relativePanel"
@@ -41,7 +42,9 @@
                                 Foreground="White"
                                 Content="&#xE700;"
                                 FontFamily="Segoe MDL2 Assets"
-                                FontSize="36"
+                                FontSize="32"
+                                Height="48"
+                                Width="48"
                                 Click="Hamberger_Click" />
                         <TextBlock Text="Travel Assistant"
                                    VerticalAlignment="Center"
@@ -60,12 +63,12 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="data:MenuItem">
                                 <StackPanel Orientation="Horizontal"
-                                            Padding="-2,0,0,0">
+                                            Padding="-4,0,0,0">
                                     <TextBlock FontFamily="Segoe MDL2 Assets"
-                                               FontSize="36"
+                                               FontSize="32"
                                                Text="{x:Bind Icon}" />
                                     <TextBlock Text="{x:Bind Category}"
-                                               FontSize="24"
+                                               FontSize="20"
                                                Margin="20,0,0,0" />
                                 </StackPanel>
                             </DataTemplate>

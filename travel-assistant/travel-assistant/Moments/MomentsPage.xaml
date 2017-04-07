@@ -8,17 +8,38 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Phone">
+                    <VisualState.Setters>
+                        <Setter Target="appBar.(AppBar.ClosedDisplayMode)"
+                                Value="Minimal" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Tablet">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="480" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <RelativePanel Background="Gray"
-                           Grid.Row="0">
-                <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
-                           Text="Moments"
-                           FontSize="36"/>
-            </RelativePanel>
+            <AppBar x:Name="appBar"
+                    Grid.Row="0"
+                    ClosedDisplayMode="Compact">
+                <RelativePanel>
+                    <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               Text="Moments"
+                               FontSize="36" />
+                </RelativePanel>
+            </AppBar>
             <Frame Name="moments_frame"
                    Grid.Row="1" />
         </Grid>

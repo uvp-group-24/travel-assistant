@@ -111,6 +111,7 @@
       <DependentUpon>MomentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recommend\CodeFile1.cs" />
     <Compile Include="Recommend\RecommendPage.xaml.cs">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
     </Compile>
