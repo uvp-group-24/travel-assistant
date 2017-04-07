@@ -12,12 +12,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using travel_assistant.Model;
 using Windows.Devices.Geolocation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace travel_assistant
+namespace travel_assistant.Recommend
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
@@ -28,12 +27,6 @@ namespace travel_assistant
         {
             this.InitializeComponent();
         }
-
-        private void Goback_Click(object sender, RoutedEventArgs e)
-        {
-            if (recommend_frame.CanGoBack) recommend_frame.GoBack();
-        }
-
         private async void click_Click(object sender, RoutedEventArgs e)
         {
             // Set your current location.

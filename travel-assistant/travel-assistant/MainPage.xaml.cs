@@ -12,7 +12,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using travel_assistant.Friends;
+using travel_assistant.Me;
 using travel_assistant.Model;
+using travel_assistant.Moments;
+using travel_assistant.Recommend;
+using travel_assistant.Settings;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 

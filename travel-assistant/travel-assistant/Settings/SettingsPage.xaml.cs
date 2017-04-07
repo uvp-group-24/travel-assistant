@@ -15,21 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace travel_assistant
+namespace travel_assistant.Settings
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class FriendsPage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public FriendsPage()
+        public SettingsPage()
         {
             this.InitializeComponent();
-        }
-
-        private void Goback_Click(object sender, RoutedEventArgs e)
-        {
-            if (friends_frame.CanGoBack) friends_frame.GoBack();
         }
     }
 }

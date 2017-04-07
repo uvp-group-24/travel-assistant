@@ -1,10 +1,11 @@
 ﻿<Page
-    x:Class="travel_assistant.FriendsPage"
+    x:Class="travel_assistant.Recommend.RecommendPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:travel_assistant"
+    xmlns:local="using:travel_assistant.Recommend"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Map="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -15,22 +16,20 @@
             </Grid.RowDefinitions>
             <RelativePanel Background="Gray"
                            Grid.Row="0">
-                <Button Name="Goback"
-                        Background="MediumBlue"
-                        Foreground="White"
-                        Content="&#xE72B;"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="36"
-                        BorderThickness="3"
-                        BorderBrush="Black"
-                        RelativePanel.AlignLeftWithPanel="True"
-                        Click="Goback_Click" />
                 <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
-                           Text="Friends"
+                           Text="Recommend"
                            FontSize="36" />
+                <Button RelativePanel.AlignRightWithPanel="True"
+                        Background="Beige"
+                        Content="click"
+                        Name="click"
+                        Click="click_Click" />
             </RelativePanel>
-            <Frame Name="friends_frame"
-                   Grid.Row="1" />
+            <Frame Name="recommend_frame"
+                   Grid.Row="1">
+                <Map:MapControl Name="map"
+                                MapServiceToken="cXGdl8cifNITj1Mr19x6~duXenVSSPmR3wdc9dTzJ3w~AnzNY0HVZBSQ46JyDGq1WOHty5XUceOul4NeTDS_SQ5IhhdujACEG9Ay27Odu5pV" />
+            </Frame>
         </Grid>
     </Grid>
 </Page>
