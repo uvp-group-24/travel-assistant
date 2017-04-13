@@ -38,8 +38,20 @@
                     <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                Text="Me"
                                FontSize="36" />
+                    <AppBarButton
+                        Icon="Back"
+                        x:Name="BackButton"
+                        Click="BackButton_Click"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        RelativePanel.AlignHorizontalCenterWithPanel="True"/>
                 </RelativePanel>
             </AppBar>
+
+            <Frame
+                x:Name="OriginalFrame"
+                Grid.Row="1">
+                
+            </Frame>
         </Grid>
     </Grid>
 </Page>

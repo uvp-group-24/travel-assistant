@@ -102,11 +102,19 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Me\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Me\MePage.xaml.cs">
       <DependentUpon>MePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Me\PrizePage.xaml.cs">
+      <DependentUpon>PrizePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\StarBehavior.cs" />
+    <Compile Include="Model\StarEntity.cs" />
     <Compile Include="Moments\MomentsPage.xaml.cs">
       <DependentUpon>MomentsPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +134,9 @@
     <None Include="travel-assistant_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Me\Dial.png" />
+    <Content Include="Assets\Me\LittleStar.jpg" />
+    <Content Include="Assets\Me\Pointer.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -148,7 +159,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Me\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Me\MePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Me\PrizePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Friends\" />
-    <Folder Include="Assets\Me\" />
     <Folder Include="Assets\Moments\" />
     <Folder Include="Assets\Recommend\" />
     <Folder Include="Assets\Settings\" />
