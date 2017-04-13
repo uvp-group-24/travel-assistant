@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Devices.Geolocation;
 using travel_assistant.Model;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -22,14 +21,13 @@ namespace travel_assistant.Recommend
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class RecommendPage : Page
+    public sealed partial class ContentPage : Page
     {
-        private List<RecommendItem> Hot_Delicacy_Items;
-        public RecommendPage()
+        private List<RecommendItem> RecommendItems;
+        public ContentPage()
         {
             this.InitializeComponent();
-            Hot_Delicacy_Items = RecommendItemManager.GetItems();
-            ContentFrame.Navigate(typeof(ContentPage));
+            RecommendItems = RecommendItemManager.GetItems().FindAll(delegate (RecommendItem p) { return p.Name == "wawawa"; });
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)

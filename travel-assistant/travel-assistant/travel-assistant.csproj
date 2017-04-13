@@ -107,11 +107,15 @@
     </Compile>
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\RecommendItem.cs" />
     <Compile Include="Moments\MomentsPage.xaml.cs">
       <DependentUpon>MomentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recommend\CodeFile1.cs" />
+    <Compile Include="Recommend\ContentPage.xaml.cs">
+      <DependentUpon>ContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Recommend\RecommendPage.xaml.cs">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +130,14 @@
     <None Include="travel-assistant_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Recommend\Hot\1.jpg" />
+    <Content Include="Assets\Recommend\Hot\2.jpg" />
+    <Content Include="Assets\Recommend\Hot\3.jpg" />
+    <Content Include="Assets\Recommend\Hot\4.jpg" />
+    <Content Include="Assets\Recommend\Hot\5.jpg" />
+    <Content Include="Assets\Recommend\Hot\6.jpg" />
+    <Content Include="Assets\Recommend\Hot\7.jpg" />
+    <Content Include="Assets\Recommend\Hot\8.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -156,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Recommend\ContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Recommend\RecommendPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,7 +185,6 @@
     <Folder Include="Assets\Friends\" />
     <Folder Include="Assets\Me\" />
     <Folder Include="Assets\Moments\" />
-    <Folder Include="Assets\Recommend\" />
     <Folder Include="Assets\Settings\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
