@@ -68,6 +68,7 @@
                                 <StackPanel Orientation="Horizontal"
                                             Grid.Column="0"
                                             Grid.Row="0"
+                                            Grid.ColumnSpan="4"
                                             Margin="0,0,0,8">
                                     <TextBlock Text="&#x2668;"
                                                FontFamily="Segoe UI Emoji"
@@ -106,7 +107,7 @@
                                            Stretch="Fill" />
                                 </Button>
                             </Grid>
-                            <GridView ItemsSource="{x:Bind Hot_Delicacy_Items}"
+                            <GridView ItemsSource="{x:Bind RecommendItems}"
                                       SelectionMode="Single">
                                 <GridView.HeaderTemplate>
                                     <DataTemplate>

@@ -24,11 +24,11 @@ namespace travel_assistant.Recommend
     /// </summary>
     public sealed partial class RecommendPage : Page
     {
-        private List<RecommendItem> Hot_Delicacy_Items;
+        private List<RecommendItem> RecommendItems;
         public RecommendPage()
         {
             this.InitializeComponent();
-            Hot_Delicacy_Items = RecommendItemManager.GetItems();
+            RecommendItems = RecommendItemManager.GetItems();
             ContentFrame.Navigate(typeof(ContentPage));
         }
 
