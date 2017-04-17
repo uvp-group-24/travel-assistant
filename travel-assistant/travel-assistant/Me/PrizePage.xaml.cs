@@ -36,7 +36,7 @@ namespace travel_assistant.Me
                 myCanvas.SetValue(StarBehavior.AttachStarFlakeProperty, false);
             if ((bool)myCanvas.GetValue(StarBehavior.AttachStarFlakeProperty) == false)
             {
-                if (myCanvas.Children.Count > 2)
+                if (myCanvas.Children.Count > 3)
                 {
                     await new MessageDialog("动画未完全结束").ShowAsync();
                     return;

@@ -30,6 +30,13 @@
                                 EasingMode="EaseOut" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+                    <DoubleAnimation
+                        Storyboard.TargetName="MyText"
+                        Storyboard.TargetProperty="Opacity"
+                        From="0"
+                        To="1"
+                        BeginTime="0:0:5"
+                        Duration="0:0:2" />
                 </Storyboard>
             </Canvas.Resources>
             <!--Two Image-->
@@ -53,6 +60,13 @@
                 Height="100"
                 Source="/Assets/Me/Pointer.png">
             </Image>
+            <TextBlock
+                x:Name="MyText"
+                Canvas.Top="325"
+                Canvas.Left="75"
+                Opacity="0"
+                Text="hahaha"
+                FontSize="56" />
         </Canvas>
         <MediaElement
             x:Name="MyMedia"

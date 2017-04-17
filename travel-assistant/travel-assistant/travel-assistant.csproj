@@ -111,8 +111,11 @@
     <Compile Include="Me\PrizePage.xaml.cs">
       <DependentUpon>PrizePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AlphaKeyGroup.cs" />
+    <Compile Include="Model\FriendsViewModel.cs" />
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\Picture.cs" />
     <Compile Include="Model\StarBehavior.cs" />
     <Compile Include="Model\StarEntity.cs" />
     <Compile Include="Moments\MomentsPage.xaml.cs">
@@ -134,6 +137,49 @@
     <None Include="travel-assistant_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Friends\1.jpg" />
+    <Content Include="Assets\Friends\10.jpg" />
+    <Content Include="Assets\Friends\11.jpeg" />
+    <Content Include="Assets\Friends\12.jpeg" />
+    <Content Include="Assets\Friends\13.jpeg" />
+    <Content Include="Assets\Friends\14.jpeg" />
+    <Content Include="Assets\Friends\15.jpg" />
+    <Content Include="Assets\Friends\16.jpg" />
+    <Content Include="Assets\Friends\17.jpeg" />
+    <Content Include="Assets\Friends\18.jpg" />
+    <Content Include="Assets\Friends\19.jpg" />
+    <Content Include="Assets\Friends\2.jpg" />
+    <Content Include="Assets\Friends\20.jpg" />
+    <Content Include="Assets\Friends\21.jpg" />
+    <Content Include="Assets\Friends\22.jpg" />
+    <Content Include="Assets\Friends\23.jpg" />
+    <Content Include="Assets\Friends\24.jpg" />
+    <Content Include="Assets\Friends\25.gif" />
+    <Content Include="Assets\Friends\3.jpeg" />
+    <Content Include="Assets\Friends\31.jpg" />
+    <Content Include="Assets\Friends\32.jpg" />
+    <Content Include="Assets\Friends\33.jpg" />
+    <Content Include="Assets\Friends\35.gif" />
+    <Content Include="Assets\Friends\35.jpg" />
+    <Content Include="Assets\Friends\36.jpg" />
+    <Content Include="Assets\Friends\37.jpg" />
+    <Content Include="Assets\Friends\38.jpg" />
+    <Content Include="Assets\Friends\39.jpg" />
+    <Content Include="Assets\Friends\4.jpg" />
+    <Content Include="Assets\Friends\40.jpg" />
+    <Content Include="Assets\Friends\41.jpg" />
+    <Content Include="Assets\Friends\42.jpg" />
+    <Content Include="Assets\Friends\43.jpg" />
+    <Content Include="Assets\Friends\44.jpg" />
+    <Content Include="Assets\Friends\45.jpg" />
+    <Content Include="Assets\Friends\46.jpg" />
+    <Content Include="Assets\Friends\5.jpg" />
+    <Content Include="Assets\Friends\6.jpeg" />
+    <Content Include="Assets\Friends\7.jpg" />
+    <Content Include="Assets\Friends\8.jpeg" />
+    <Content Include="Assets\Friends\8f9428ecef62ec340c5dde19c9c26c97.jpeg" />
+    <Content Include="Assets\Friends\9.jpeg" />
+    <Content Include="Assets\Friends\Umaru.jpg" />
     <Content Include="Assets\Me\Dial.png" />
     <Content Include="Assets\Me\LittleStar.jpg" />
     <Content Include="Assets\Me\male-01.png" />
@@ -187,7 +233,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Friends\" />
     <Folder Include="Assets\Moments\" />
     <Folder Include="Assets\Recommend\" />
     <Folder Include="Assets\Settings\" />
