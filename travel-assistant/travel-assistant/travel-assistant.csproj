@@ -114,6 +114,7 @@
     <Compile Include="Model\AlphaKeyGroup.cs" />
     <Compile Include="Model\FriendsViewModel.cs" />
     <Compile Include="Model\GoBackButton.cs" />
+    <Compile Include="Model\Invitation.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Picture.cs" />
     <Compile Include="Model\StarBehavior.cs" />

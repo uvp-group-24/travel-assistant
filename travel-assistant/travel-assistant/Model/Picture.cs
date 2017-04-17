@@ -10,7 +10,6 @@ namespace travel_assistant.Model
     {
         public string ImageUri { get; set; }
         public string Title { get; set; }
-        public string label { get; set; }
         public string label1 { get; set; }
         public string label2 { get; set; }
         public string label3 { get; set; }
