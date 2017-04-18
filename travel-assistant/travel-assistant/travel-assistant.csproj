@@ -107,7 +107,9 @@
     </Compile>
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="Model\RecommendItem.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Moments\MomentsPage.xaml.cs">
       <DependentUpon>MomentsPage.xaml</DependentUpon>
     </Compile>
