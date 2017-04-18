@@ -77,7 +77,7 @@
                 </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame Name="mainframe" />
+                <Frame Name="MainFrame" />
             </SplitView.Content>
         </SplitView>
     </Grid>

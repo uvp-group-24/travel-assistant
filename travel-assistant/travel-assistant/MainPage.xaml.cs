@@ -34,7 +34,7 @@ namespace travel_assistant
         {
             this.InitializeComponent();
             MenuItems = MenuItemManager.GetMenuItems();
-            mainframe.Navigate(typeof(RecommendPage));
+            MainFrame.Navigate(typeof(RecommendPage));
 
         }
         private void Hamberger_Click(object sender, RoutedEventArgs e)
@@ -46,11 +46,11 @@ namespace travel_assistant
         {
             var menuitem = (MenuItem)listbox.SelectedItem;
 
-            if (menuitem.Name == "recommend_item") mainframe.Navigate(typeof(RecommendPage));
-            else if (menuitem.Name == "friends_item") mainframe.Navigate(typeof(FriendsPage));
-            else if (menuitem.Name == "moments_item") mainframe.Navigate(typeof(MomentsPage));
-            else if (menuitem.Name == "me_item") mainframe.Navigate(typeof(MePage));
-            else if (menuitem.Name == "settings_item") mainframe.Navigate(typeof(SettingsPage));
+            if (menuitem.Name == "recommend_item") MainFrame.Navigate(typeof(RecommendPage));
+            else if (menuitem.Name == "friends_item") MainFrame.Navigate(typeof(FriendsPage));
+            else if (menuitem.Name == "moments_item") MainFrame.Navigate(typeof(MomentsPage));
+            else if (menuitem.Name == "me_item") MainFrame.Navigate(typeof(MePage));
+            else if (menuitem.Name == "settings_item") MainFrame.Navigate(typeof(SettingsPage));
 
             splitview.IsPaneOpen = false;
         }

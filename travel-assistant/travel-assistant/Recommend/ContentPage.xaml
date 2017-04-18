@@ -11,19 +11,18 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Border Name="width" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <GridView ItemsSource="{x:Bind RecommendItems}"
-                      SelectionMode="Single">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="data:RecommendItem">
-                        <StackPanel Width="{Binding ElementName=width,Path=Width}">
-                            <Image Source="{x:Bind Image}" />
-                            <TextBlock Text="{x:Bind Name}"
-                                       FontSize="16" />
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-        </ScrollViewer>
+        <GridView ItemsSource="{x:Bind RecommendItems}"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:RecommendItem">
+                    <StackPanel Width="{Binding ElementName=width,Path=Width}">
+                        <Image Source="{x:Bind Images.image_1}" />
+                        <TextBlock Text="{x:Bind Name}"
+                                   FontSize="16" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

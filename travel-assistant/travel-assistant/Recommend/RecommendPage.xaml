@@ -8,6 +8,22 @@
       xmlns:Map="using:Windows.UI.Xaml.Controls.Maps"
       mc:Ignorable="d"
       SizeChanged="Page_SizeChanged">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Padding"
+                    Value="-1" />
+        </Style>
+        <Style x:Key="ComboBoxStyle"
+               TargetType="ComboBox">
+            <Setter Property="Width"
+                    Value="200" />
+            <Setter Property="Margin"
+                    Value="8,4,20,0" />
+        </Style>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -16,14 +32,18 @@
                     <VisualState.Setters>
                         <Setter Target="appBar.(AppBar.ClosedDisplayMode)"
                                 Value="Minimal" />
+                        <Setter Target="Delicacy_StackPanel.(StackPanel.Orientation)"
+                                Value="Vertical" />
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowHeight="0" />
+                        <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="Tablet">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowHeight="480" />
+                        <AdaptiveTrigger MinWindowWidth="1008" />
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
@@ -41,14 +61,22 @@
                     <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                Text="Recommend"
                                FontSize="36" />
-                    <AutoSuggestBox RelativePanel.AlignRightWithPanel="True"
-                                    Margin="0,8,0,0"
-                                    Width="200"
+                    <AutoSuggestBox Name="SearchASB"
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    Width="240"
                                     Height="36"
-                                    QueryIcon="Find" />
+                                    ItemsSource="{x:Bind Suggestions}"
+                                    PlaceholderText="Please Enter."
+                                    TextChanged="SearchASB_TextChanged"
+                                    QuerySubmitted="SearchASB_QuerySubmitted"
+                                    QueryIcon="Find"
+                                    Margin="0,8,0,0">
+                    </AutoSuggestBox>
                 </RelativePanel>
             </AppBar>
-            <Pivot Grid.Row="1">
+            <Pivot Name="Recommend_Pivot"
+                   Grid.Row="1"
+                   SelectionChanged="Recommend_Pivot_SelectionChanged">
                 <PivotItem Header="Hot">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
@@ -74,36 +102,32 @@
                                                FontFamily="Segoe UI Emoji"
                                                FontSize="36" />
                                     <TextBlock Text="Weekly"
-                                               FontSize="36"/>
+                                               FontSize="36" />
                                 </StackPanel>
-                                <Button BorderThickness="0"
-                                        Padding="-1"
-                                        Grid.Column="0"
+                                <Button Grid.Column="0"
                                         Grid.Row="1"
                                         Grid.ColumnSpan="3"
-                                        Grid.RowSpan="2">
-                                    <Image Source="/Assets/Recommend/Hot/1.jpg"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource ButtonStyle}">
+                                    <Image Source="/Assets/Recommend/Delicacy/douniujia/1.jpg"
                                            Stretch="Fill" />
                                 </Button>
-                                <Button BorderThickness="0"
-                                        Padding="-1"
-                                        Grid.Column="3"
-                                        Grid.Row="3">
-                                    <Image Source="/Assets/Recommend/Hot/2.jpg"
+                                <Button Grid.Column="3"
+                                        Grid.Row="3"
+                                        Style="{StaticResource ButtonStyle}">
+                                    <Image Source="/Assets/Recommend/Delicacy/douniujia/2.jpg"
                                            Stretch="Fill" />
                                 </Button>
-                                <Button BorderThickness="0"
-                                        Padding="-1"
-                                        Grid.Column="3"
-                                        Grid.Row="1">
-                                    <Image Source="/Assets/Recommend/Hot/2.jpg"
+                                <Button Grid.Column="3"
+                                        Grid.Row="1"
+                                        Style="{StaticResource ButtonStyle}">
+                                    <Image Source="/Assets/Recommend/Delicacy/2.jpg"
                                            Stretch="Fill" />
                                 </Button>
-                                <Button BorderThickness="0"
-                                        Padding="-1"
-                                        Grid.Column="3"
-                                        Grid.Row="2">
-                                    <Image Source="/Assets/Recommend/Hot/2.jpg"
+                                <Button Grid.Column="3"
+                                        Grid.Row="2"
+                                        Style="{StaticResource ButtonStyle}">
+                                    <Image Source="/Assets/Recommend/Delicacy/2.jpg"
                                            Stretch="Fill" />
                                 </Button>
                             </Grid>
@@ -126,7 +150,8 @@
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="data:RecommendItem">
                                         <StackPanel Width="{Binding ElementName=width,Path=Width}">
-                                            <Image Source="{x:Bind Image}"/>
+                                            <Image Source="{x:Bind Images.image_1}"
+                                                   Stretch="Fill" />
                                             <TextBlock Text="{x:Bind Name}"
                                                        FontSize="16" />
                                         </StackPanel>
@@ -137,23 +162,63 @@
                     </ScrollViewer>
                 </PivotItem>
                 <PivotItem Header="Delicacy">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0,0,0,20">
-                            <ComboBox Width="120"
-                                      Margin="0,0,20,0">
-                                <ComboBoxItem Content="hahaha" />
-                            </ComboBox>
-                            <ComboBox Width="120"
-                                      Margin="0,0,20,0">
-                                <ComboBoxItem Content="hahaha" />
-                            </ComboBox>
-                            <ComboBox Width="120">
-                                <ComboBoxItem Content="hahaha" />
-                            </ComboBox>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="957*" />
+                            <ColumnDefinition Width="299*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Name="Delicacy_StackPanel"
+                                    Orientation="Horizontal"
+                                    Grid.Row="0"
+                                    Margin="0,0,0,20"
+                                    Grid.ColumnSpan="2">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Category :"
+                                           VerticalAlignment="Center" />
+                                <ComboBox Name="Delicacy_ComboBox_1"
+                                          Style="{StaticResource ComboBoxStyle}"
+                                          SelectionChanged="Delicacy_ComboBox_1_SelectionChanged">
+                                    <ComboBoxItem Content="All" />
+                                    <ComboBoxItem Content="Barbecue" />
+                                    <ComboBoxItem Content="Bread &amp; Desserts" />
+                                    <ComboBoxItem Content="Buffet" />
+                                    <ComboBoxItem Content="Hot pot" />
+                                    <ComboBoxItem Content="Seafood" />
+                                    <ComboBoxItem Content="Snacks &amp; Fastfood" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Sequencing :"
+                                           VerticalAlignment="Center" />
+                                <ComboBox Name="Delicacy_ComboBox_2"
+                                          ItemsSource="{x:Bind ComboBoxItems}"
+                                          Style="{StaticResource ComboBoxStyle}"
+                                          SelectionChanged="Delicacy_ComboBox_2_SelectionChanged">
+                                    <ComboBoxItem Content="{x:Bind ComboBoxItems[0]}" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Filter :"
+                                           VerticalAlignment="Center" />
+                                <CheckBox Name="Delicacy_CheckBox_1"
+                                          Content="Recommended"
+                                          Margin="8,0,20,0"
+                                          Checked="Delicacy_CheckBox_1_Checked"
+                                          Unchecked="Delicacy_CheckBox_1_Unchecked" />
+                                <CheckBox Name="Delicacy_CheckBox_2"
+                                          Content="Coupon Served"
+                                          Checked="Delicacy_CheckBox_2_Checked"
+                                          Unchecked="Delicacy_CheckBox_2_Unchecked" />
+                            </StackPanel>
                         </StackPanel>
-                        <Frame Name="ContentFrame" />
-                    </StackPanel>
+                        <Frame Name="ContentFrame"
+                               Grid.Row="1"
+                               Grid.ColumnSpan="2" />
+                    </Grid>
                 </PivotItem>
                 <PivotItem Header="Hostel">
                     <TextBlock Text="flagged emails go here." />

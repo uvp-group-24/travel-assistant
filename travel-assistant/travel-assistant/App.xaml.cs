@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
+using travel_assistant.Model;
 
 namespace travel_assistant
 {
@@ -43,7 +44,7 @@ namespace travel_assistant
             Frame rootFrame = Window.Current.Content as Frame;
 
             //返回键
-            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;
 
             // 不要在窗口已包含内容时重复应用程序初始化，
             // 只需确保窗口处于活动状态
