@@ -94,40 +94,7 @@
             <Grid
                 Grid.Row="1"
                 Background="AliceBlue">
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="Auto"></RowDefinition>
-                    <RowDefinition
-                        Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <RelativePanel
-                    Grid.Row="0">
-                    <Button
-                        Name="SearchButton"
-                        RelativePanel.RightOf="SearchTextBox"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="20"
-                        Content="&#xE1A3;"
-                        Background="AliceBlue" />
-                    <TextBox
-                        Name="SearchTextBox"
-                        RelativePanel.AlignLeftWithPanel="True"
-                        Height="30"
-                        Width="150"
-                        FontSize="15"
-                        PlaceholderText="Search" />
-                    <Button
-                        Name="instertbutton"
-                        RelativePanel.AlignRightWithPanel="True"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="20"
-                        Content="&#xE109;"
-                        Background="AliceBlue" />
-                </RelativePanel>
-
-                <SemanticZoom
-                    Grid.Row="1">
+                <SemanticZoom>
                     <SemanticZoom.Style>
                         <Style
                             TargetType="SemanticZoom">
@@ -137,10 +104,6 @@
                         </Style>
                     </SemanticZoom.Style>
                     <!--数据列表-->
-                    <!--
-                        IsItemClickEnabled="True"
-                        ItemClick="ListView_ItemClick"
-                    -->
                     <SemanticZoom.ZoomedInView>
                         <ListView
                             IsItemClickEnabled="True"
@@ -315,14 +278,6 @@
                     Content="OK!"
                     Click="Generate_Click"
                     FontSize="40">
-                    <Button.Flyout>
-                        <Flyout>
-                            <TextBlock
-                                Text="Success~"
-                                FontSize="36" />
-                        </Flyout>
-                        
-                    </Button.Flyout>
                 </Button>
                 <TextBlock
                     Text=""

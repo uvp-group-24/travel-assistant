@@ -11,6 +11,9 @@
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid
             Margin="30,20,20,30">
+            <ScrollViewer>
+                
+     
             <StackPanel
                 Orientation="Vertical">
                 <StackPanel
@@ -31,21 +34,21 @@
                             Text="Happy to make friends with everyone~"
                             FontSize="36" />
                     </StackPanel>
-                    <StackPanel
-                        Margin="50,0,0,0"
-                        Orientation="Vertical">
-                        <TextBlock
-                            Text="Wallet:1000>"
-                            FontSize="36"
-                            Margin="0,20,0,0"
-                            HorizontalAlignment="Center" />
-                        <Button
-                            Click="Button_Click"
-                            Content="Daily Draw!"
-                            FontSize="36"
-                            Margin="0,50,0,0"
-                            HorizontalAlignment="Center" />
-                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Text="Wallet:1000$"
+                        FontSize="36"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" />
+                    <Button
+                        Click="Button_Click"
+                        Content="Daily Draw!"
+                        FontSize="36"
+                        Margin="100,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"/>
                 </StackPanel>
                 <TextBlock
                     Margin="0,10,0,0"
@@ -57,12 +60,28 @@
                     Text="Orders:"
                     FontSize="40"
                     FontWeight="SemiBold" />
+                <Grid
+                    x:Name="OrderContent">
+                    <ListView
+                        x:Name="OrderList"
+                        IsItemClickEnabled="True"
+                        ItemClick="OrderList_ItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding OrderName}"
+                                    FontSize="36" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
                 <TextBlock
                     Margin="0,10,0,0"
-                    Text="Orders:"
+                    Text="Invitations:"
                     FontSize="40"
                     FontWeight="SemiBold" />
             </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

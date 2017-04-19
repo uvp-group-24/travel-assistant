@@ -21,23 +21,18 @@ namespace travel_assistant.Me
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class InfoPage : Page
+    public sealed partial class ShowInvitation : Page
     {
-        public InfoPage()
+        public ShowInvitation()
         {
             this.InitializeComponent();
-            OrderList.ItemsSource = OrderModel.OrderModels;
+            InitInformation();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void InitInformation()
         {
-            Frame.Navigate(typeof(PrizePage));
-        }
-
-        private void OrderList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OrderModel.CurSelected = (OrderModel)e.ClickedItem;
-            Frame.Navigate(typeof(ShowInvitation));
+            OrderModel OrderItem = OrderModel.CurSelected;
+            NameText.Text = OrderItem.OrderName;
         }
     }
 }

@@ -47,24 +47,31 @@ namespace travel_assistant.Friends
             }
             else
                 FriendsText.Text = "";
-            //FriendsText.Text = MyFriends.Count().ToString();
-            //var book = (Book)e.ClickedItem;
-            //ResultTextBlock.Text = "You selected " + book.Title;
         }
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
+            Flyout pop = new Flyout();
+            TextBlock ShowMsg = new TextBlock { FontSize = 36 };
+            pop.Content = ShowMsg;
+            Generate.Flyout = pop;
+
             if(MyFriends.Count() == 0)
             {
                 FriendsText.Text = "Not a valid invitation";
-                return;
+                ShowMsg.Text = "Ooops~";
             }
             else
             {
+                string PickedNames = "";
+                foreach (var names in MyFriends)
+                    PickedNames = PickedNames + " " + names;
+                OrderModel.OrderModels.Add(new OrderModel { OrderName = PickedNames });
+                ShowMsg.Text = "Successfully Added~";
 
+                MyFriends.Clear();
+                FriendsText.Text = "";
             }
-            MyFriends.Clear();
-            FriendsText.Text = "";
         }
     }
 }

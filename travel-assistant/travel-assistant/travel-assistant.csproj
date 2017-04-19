@@ -111,11 +111,15 @@
     <Compile Include="Me\PrizePage.xaml.cs">
       <DependentUpon>PrizePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Me\ShowInvitation.xaml.cs">
+      <DependentUpon>ShowInvitation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\AlphaKeyGroup.cs" />
     <Compile Include="Model\FriendsViewModel.cs" />
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\Invitation.cs" />
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\Picture.cs" />
     <Compile Include="Model\StarBehavior.cs" />
     <Compile Include="Model\StarEntity.cs" />
@@ -217,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Me\PrizePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Me\ShowInvitation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
