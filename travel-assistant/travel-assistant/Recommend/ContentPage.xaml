@@ -11,8 +11,11 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Border Name="width" />
-        <GridView ItemsSource="{x:Bind RecommendItems}"
+        <GridView Name="ContentGridView"
+                  ItemsSource="{x:Bind RecommendItems}"
                   SelectionMode="Single"
+                  IsItemClickEnabled="True"
+                  ItemClick="ContentGridView_ItemClick"
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="data:RecommendItem">

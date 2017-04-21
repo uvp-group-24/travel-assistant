@@ -1,7 +1,7 @@
 ﻿//<Button Name = "Goback"
 //        Background="MediumBlue"
 //        Foreground="White"
-//        Content="&#xE72B;"
+//        Content=";"
 //        FontFamily="Segoe MDL2 Assets"
 //        FontSize="36"
 //        BorderThickness="3"

@@ -35,6 +35,14 @@ namespace travel_assistant.Recommend
         {
             width.Width = WidthFit.GetWidth(ActualWidth, 600, 300);
         }
+
+        private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = (RecommendItem)e.ClickedItem;
+            MainPage.Current.MainFrame.Navigate(typeof(ItemDetailPage),item);
+            //RecommendPage.Current.DetailsFrame.Navigate(typeof(ItemDetailPage), item);
+            //RecommendPage.Current.splitview.IsPaneOpen = true;
+        }
         //private List<RecommendItem> ChangeContent()
         //{
         //    var RecommendItems = new List<RecommendItem>();

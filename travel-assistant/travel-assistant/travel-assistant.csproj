@@ -118,6 +118,9 @@
     <Compile Include="Recommend\ContentPage.xaml.cs">
       <DependentUpon>ContentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Recommend\ItemDetailPage.xaml.cs">
+      <DependentUpon>ItemDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Recommend\RecommendPage.xaml.cs">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,9 @@
     <Content Include="Assets\Recommend\Delicacy\xinmingtangdong\1.jpg" />
     <Content Include="Assets\Recommend\Delicacy\xinmingtangdong\2.jpg" />
     <Content Include="Assets\Recommend\Delicacy\xinmingtangdong\3.jpg" />
+    <Content Include="Assets\Recommend\emptystar.png" />
+    <Content Include="Assets\Recommend\fullstar.png" />
+    <Content Include="Assets\Recommend\halfstar.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -217,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Recommend\ContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recommend\ItemDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

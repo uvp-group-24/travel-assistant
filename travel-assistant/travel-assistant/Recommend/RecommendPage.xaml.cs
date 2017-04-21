@@ -25,16 +25,36 @@ namespace travel_assistant.Recommend
     /// </summary>
     public sealed partial class RecommendPage : Page
     {
+        public static RecommendPage Current;
+        public RecommendItem SelectedItem;
         private List<RecommendItem> RecommendItems;
-        private List<string> Suggestions;
+        //private List<string> Suggestions;
+        private ObservableCollection<RecommendItem> Suggestions = new ObservableCollection<RecommendItem>();
         private List<string> ComboBoxItems;
         public RecommendPage()
         {
             this.InitializeComponent();
             RecommendItems = RecommendItemManager.GetItems().FindAll(r => r.IsRecommended == true);
+            this.DataContext = RecommendItems;
             ComboBoxItems = GetComboBoxItems();
+            NavigationCacheMode = NavigationCacheMode.Enabled;
             ContentFrame.Navigate(typeof(ContentPage));
+            
         }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> sections = new List<string>();
+            foreach (HubSection section in HotHub.Sections)
+            {
+                if (section.Header != null)
+                    sections.Add(section.Header.ToString());
+            }
+            ZoomedOutList.ItemsSource = sections;
+            Delicacy_ComboBox_1.SelectedIndex = 0;
+            Delicacy_ComboBox_2.SelectedIndex = 0;
+            Current = this;
+        }
+
         private List<string> GetComboBoxItems()
         {
             var ComboBoxItems = new List<string>();
@@ -48,7 +68,8 @@ namespace travel_assistant.Recommend
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            width.Width = WidthFit.GetWidth(ActualWidth, 600, 300);
+            ItemWidth.Width = WidthFit.GetWidth(ActualWidth, 600, 300);
+            PageWidth.Width = ActualWidth;
         }
 
         private void Recommend_Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,14 +123,43 @@ namespace travel_assistant.Recommend
 
         private void SearchASB_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-
+            splitview.IsPaneOpen = true;
+            GoBackButton.Visibility = Visibility.Visible;
         }
 
         private void SearchASB_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
+            //Suggestions = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).Select(p => p.Name).ToList();
+            //sender.ItemsSource = Suggestions;
+            var filteredItems = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).ToList();
+            var filterednames = filteredItems.Select(p => p.Name).ToList();
+            Suggestions.Clear();
+            filteredItems.ForEach(p => Suggestions.Add(p));
+            sender.ItemsSource = filterednames;
+        }
 
-            Suggestions = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).Select(p => p.Name).ToList();
-            sender.ItemsSource = Suggestions;
+        private void Delicacy_GridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = (RecommendItem)e.ClickedItem;
+            Frame.Navigate(typeof(ItemDetailPage), item);
+        }
+
+        private void HotHub_SectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)
+        {
+            var section = (HubSection)e.Section;
+            switch (section.Name)
+            {
+                case "Delicacy": Recommend_Pivot.SelectedIndex = 1; break;
+                case "Hostel": Recommend_Pivot.SelectedIndex = 2; break;
+                case "Entertainment": Recommend_Pivot.SelectedIndex = 3; break;
+                case "Attraction": Recommend_Pivot.SelectedIndex = 4; break;
+                case "Shopping": Recommend_Pivot.SelectedIndex = 5; break;
+            }
+        }
+
+        private void splitview_PaneClosed(SplitView sender, object args)
+        {
+            GoBackButton.Visibility = Visibility.Collapsed;
         }
     }
 }

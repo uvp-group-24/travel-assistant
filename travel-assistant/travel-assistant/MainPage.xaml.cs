@@ -29,13 +29,14 @@ namespace travel_assistant
     public sealed partial class MainPage : Page
     {
         private List<MenuItem> MenuItems;
+        public static MainPage Current;
 
         public MainPage()
         {
             this.InitializeComponent();
             MenuItems = MenuItemManager.GetMenuItems();
             MainFrame.Navigate(typeof(RecommendPage));
-
+            Current = this;
         }
         private void Hamberger_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +54,11 @@ namespace travel_assistant
             else if (menuitem.Name == "settings_item") MainFrame.Navigate(typeof(SettingsPage));
 
             splitview.IsPaneOpen = false;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            listbox.SelectedIndex = 0;
         }
     }
 }

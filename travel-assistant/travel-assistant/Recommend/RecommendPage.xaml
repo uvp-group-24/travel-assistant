@@ -7,6 +7,7 @@
       xmlns:data="using:travel_assistant.Model"
       xmlns:Map="using:Windows.UI.Xaml.Controls.Maps"
       mc:Ignorable="d"
+      Loaded="Page_Loaded"
       SizeChanged="Page_SizeChanged">
     <Page.Resources>
         <Style x:Key="ButtonStyle"
@@ -48,7 +49,8 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Border x:Name="width" />
+        <Border x:Name="ItemWidth" />
+        <Border Name="PageWidth" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -58,6 +60,14 @@
                     Grid.Row="0"
                     ClosedDisplayMode="Compact">
                 <RelativePanel>
+                    <AppBarButton Name="GoBackButton"
+                                  RelativePanel.AlignLeftWithPanel="True"
+                                  Visibility="Collapsed">
+                        <TextBlock Text="&#xE112;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center" />
+                    </AppBarButton>
                     <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                Text="Recommend"
                                FontSize="36" />
@@ -74,165 +84,309 @@
                     </AutoSuggestBox>
                 </RelativePanel>
             </AppBar>
-            <Pivot Name="Recommend_Pivot"
-                   Grid.Row="1"
-                   SelectionChanged="Recommend_Pivot_SelectionChanged">
-                <PivotItem Header="Hot">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel>
+            <SplitView Name="splitview"
+                       x:FieldModifier="Public"
+                       Grid.Row="1"
+                       PanePlacement="Right"
+                       DisplayMode="Overlay"
+                       IsPaneOpen="False"
+                       PaneClosed="splitview_PaneClosed"
+                       OpenPaneLength="{Binding ElementName=PageWidth, Path=Width}">
+                <SplitView.Content>
+                    <Pivot Name="Recommend_Pivot"
+                           Grid.Row="1"
+                           SelectionChanged="Recommend_Pivot_SelectionChanged">
+                        <PivotItem Header="Hot">
+                            <SemanticZoom>
+                                <SemanticZoom.ZoomedInView>
+                                    <Hub Name="HotHub"
+                                         Orientation="Vertical"
+                                         SectionHeaderClick="HotHub_SectionHeaderClick"
+                                         Margin="0,-36,0,0">
+                                        <HubSection Name="Weekly"
+                                                    Header="Weekly">
+                                            <!--<HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Grid.Column="0"
+                                                                Grid.Row="0"
+                                                                Grid.ColumnSpan="4"
+                                                                Margin="0,0,0,8">
+                                                        <TextBlock Text="&#x2668;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="36" />
+                                                        <TextBlock Text="Weekly"
+                                                                   FontSize="36" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>-->
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Grid.Column="0"
+                                                            Grid.Row="1"
+                                                            Grid.ColumnSpan="3"
+                                                            Grid.RowSpan="2"
+                                                            Style="{StaticResource ButtonStyle}">
+                                                        <Image Source="/Assets/Recommend/Delicacy/douniujia/1.jpg"
+                                                               Stretch="Fill" />
+                                                    </Button>
+                                                    <Button Grid.Column="3"
+                                                            Grid.Row="3"
+                                                            Style="{StaticResource ButtonStyle}">
+                                                        <Image Source="/Assets/Recommend/Delicacy/douniujia/2.jpg"
+                                                               Stretch="Fill" />
+                                                    </Button>
+                                                    <Button Grid.Column="3"
+                                                            Grid.Row="1"
+                                                            Style="{StaticResource ButtonStyle}">
+                                                        <Image Source="/Assets/Recommend/Delicacy/2.jpg"
+                                                               Stretch="Fill" />
+                                                    </Button>
+                                                    <Button Grid.Column="3"
+                                                            Grid.Row="2"
+                                                            Style="{StaticResource ButtonStyle}">
+                                                        <Image Source="/Assets/Recommend/Delicacy/2.jpg"
+                                                               Stretch="Fill" />
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </HubSection>
+                                        <HubSection Name="Delicacy"
+                                                    Header="Delicacy"
+                                                    IsHeaderInteractive="True">
+                                            <!--<HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Grid.Column="0"
+                                                                Grid.Row="0"
+                                                                Margin="0,0,0,8">
+                                                        <TextBlock Text="&#x2615;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="36" />
+                                                        <TextBlock Text="Delicacy"
+                                                                   FontSize="36" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>-->
+                                            <DataTemplate>
+                                                <GridView ItemsSource="{Binding}"
+                                                          SelectionMode="Single"
+                                                          IsItemClickEnabled="True"
+                                                          ItemClick="Delicacy_GridView_ItemClick">
+                                                    <GridView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                                                <Image Source="{Binding Images.image_1}"
+                                                                       Stretch="Fill" />
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="16" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ItemTemplate>
+                                                </GridView>
+                                            </DataTemplate>
+                                        </HubSection>
+                                        <HubSection Name="Hostel"
+                                                    Header="Hostel"
+                                                    IsHeaderInteractive="True">
+                                            <DataTemplate>
+                                                <GridView ItemsSource="{Binding}"
+                                                          SelectionMode="Single"
+                                                          IsItemClickEnabled="True"
+                                                          ItemClick="Delicacy_GridView_ItemClick">
+                                                    <GridView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                                                <Image Source="{Binding Images.image_1}"
+                                                                       Stretch="Fill" />
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="16" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ItemTemplate>
+                                                </GridView>
+                                            </DataTemplate>
+                                        </HubSection>
+                                        <HubSection Name="Entertainment"
+                                                    Header="Entertainment"
+                                                    IsHeaderInteractive="True">
+                                            <DataTemplate>
+                                                <GridView ItemsSource="{Binding}"
+                                                          SelectionMode="Single"
+                                                          IsItemClickEnabled="True"
+                                                          ItemClick="Delicacy_GridView_ItemClick">
+                                                    <GridView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                                                <Image Source="{Binding Images.image_1}"
+                                                                       Stretch="Fill" />
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="16" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ItemTemplate>
+                                                </GridView>
+                                            </DataTemplate>
+                                        </HubSection>
+                                        <HubSection Name="Attraction"
+                                                    Header="Attraction"
+                                                    IsHeaderInteractive="True">
+                                            <DataTemplate>
+                                                <GridView ItemsSource="{Binding}"
+                                                          SelectionMode="Single"
+                                                          IsItemClickEnabled="True"
+                                                          ItemClick="Delicacy_GridView_ItemClick">
+                                                    <GridView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                                                <Image Source="{Binding Images.image_1}"
+                                                                       Stretch="Fill" />
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="16" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ItemTemplate>
+                                                </GridView>
+                                            </DataTemplate>
+                                        </HubSection>
+                                        <HubSection Name="Shopping"
+                                                    Header="Shopping"
+                                                    IsHeaderInteractive="True">
+                                            <DataTemplate>
+                                                <GridView ItemsSource="{Binding}"
+                                                          SelectionMode="Single"
+                                                          IsItemClickEnabled="True"
+                                                          ItemClick="Delicacy_GridView_ItemClick">
+                                                    <GridView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                                                <Image Source="{Binding Images.image_1}"
+                                                                       Stretch="Fill" />
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="16" />
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ItemTemplate>
+                                                </GridView>
+                                            </DataTemplate>
+                                        </HubSection>
+                                    </Hub>
+                                </SemanticZoom.ZoomedInView>
+                                <SemanticZoom.ZoomedOutView>
+                                    <ListView Name="ZoomedOutList"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                </SemanticZoom.ZoomedOutView>
+                            </SemanticZoom>
+                        </PivotItem>
+                        <PivotItem Header="Delicacy">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Horizontal"
-                                            Grid.Column="0"
+                                <StackPanel Name="Delicacy_StackPanel"
+                                            Orientation="Horizontal"
                                             Grid.Row="0"
-                                            Grid.ColumnSpan="4"
-                                            Margin="0,0,0,8">
-                                    <TextBlock Text="&#x2668;"
-                                               FontFamily="Segoe UI Emoji"
-                                               FontSize="36" />
-                                    <TextBlock Text="Weekly"
-                                               FontSize="36" />
+                                            Margin="0,0,0,20"
+                                            Grid.ColumnSpan="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Category :"
+                                                   VerticalAlignment="Center" />
+                                        <ComboBox Name="Delicacy_ComboBox_1"
+                                                  Style="{StaticResource ComboBoxStyle}"
+                                                  SelectionChanged="Delicacy_ComboBox_1_SelectionChanged">
+                                            <ComboBoxItem Content="All" />
+                                            <ComboBoxItem Content="Barbecue" />
+                                            <ComboBoxItem Content="Bread &amp; Desserts" />
+                                            <ComboBoxItem Content="Buffet" />
+                                            <ComboBoxItem Content="Hot pot" />
+                                            <ComboBoxItem Content="Seafood" />
+                                            <ComboBoxItem Content="Snacks &amp; Fastfood" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Sequencing :"
+                                                   VerticalAlignment="Center" />
+                                        <ComboBox Name="Delicacy_ComboBox_2"
+                                                  ItemsSource="{x:Bind ComboBoxItems}"
+                                                  Style="{StaticResource ComboBoxStyle}"
+                                                  SelectionChanged="Delicacy_ComboBox_2_SelectionChanged">
+                                            <ComboBoxItem Content="{x:Bind ComboBoxItems[0]}" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Filter :"
+                                                   VerticalAlignment="Center" />
+                                        <CheckBox Name="Delicacy_CheckBox_1"
+                                                  Content="Recommended"
+                                                  Margin="8,0,20,0"
+                                                  Checked="Delicacy_CheckBox_1_Checked"
+                                                  Unchecked="Delicacy_CheckBox_1_Unchecked" />
+                                        <CheckBox Name="Delicacy_CheckBox_2"
+                                                  Content="Coupon Served"
+                                                  Checked="Delicacy_CheckBox_2_Checked"
+                                                  Unchecked="Delicacy_CheckBox_2_Unchecked" />
+                                    </StackPanel>
                                 </StackPanel>
-                                <Button Grid.Column="0"
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="3"
-                                        Grid.RowSpan="2"
-                                        Style="{StaticResource ButtonStyle}">
-                                    <Image Source="/Assets/Recommend/Delicacy/douniujia/1.jpg"
-                                           Stretch="Fill" />
-                                </Button>
-                                <Button Grid.Column="3"
-                                        Grid.Row="3"
-                                        Style="{StaticResource ButtonStyle}">
-                                    <Image Source="/Assets/Recommend/Delicacy/douniujia/2.jpg"
-                                           Stretch="Fill" />
-                                </Button>
-                                <Button Grid.Column="3"
-                                        Grid.Row="1"
-                                        Style="{StaticResource ButtonStyle}">
-                                    <Image Source="/Assets/Recommend/Delicacy/2.jpg"
-                                           Stretch="Fill" />
-                                </Button>
-                                <Button Grid.Column="3"
-                                        Grid.Row="2"
-                                        Style="{StaticResource ButtonStyle}">
-                                    <Image Source="/Assets/Recommend/Delicacy/2.jpg"
-                                           Stretch="Fill" />
-                                </Button>
+                                <Frame Name="ContentFrame"
+                                       Grid.Row="1" />
                             </Grid>
-                            <GridView ItemsSource="{x:Bind RecommendItems}"
-                                      SelectionMode="Single">
-                                <GridView.HeaderTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal"
-                                                    Grid.Column="0"
-                                                    Grid.Row="0"
-                                                    Margin="0,0,0,8">
-                                            <TextBlock Text="&#x2615;"
-                                                       FontFamily="Segoe UI Emoji"
-                                                       FontSize="36" />
-                                            <TextBlock Text="Delicacy"
-                                                       FontSize="36" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </GridView.HeaderTemplate>
+                        </PivotItem>
+                        <PivotItem Header="Hostel">
+                            <TextBlock Text="flagged emails go here." />
+                        </PivotItem>
+                        <PivotItem Header="Entertainment">
+                            <TextBlock Text="urgent emails go here." />
+                        </PivotItem>
+                        <PivotItem Header="Attraction">
+                            <TextBlock Text="urgent emails go here." />
+                        </PivotItem>
+                        <PivotItem Header="Shopping">
+                            <TextBlock Text="urgent emails go here." />
+                        </PivotItem>
+                    </Pivot>
+                </SplitView.Content>
+                <SplitView.Pane>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Seach Results:"
+                                   FontSize="36"
+                                   Grid.Row="0"/>
+                            <GridView ItemsSource="{x:Bind Suggestions}"
+                                      SelectionMode="Single"
+                                      IsItemClickEnabled="True"
+                                      ItemClick="Delicacy_GridView_ItemClick"
+                                      Grid.Row="1"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="data:RecommendItem">
-                                        <StackPanel Width="{Binding ElementName=width,Path=Width}">
-                                            <Image Source="{x:Bind Images.image_1}"
-                                                   Stretch="Fill" />
+                                        <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
+                                            <Image Source="{x:Bind Images.image_1}" />
                                             <TextBlock Text="{x:Bind Name}"
                                                        FontSize="16" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridView.ItemTemplate>
                             </GridView>
-                        </StackPanel>
-                    </ScrollViewer>
-                </PivotItem>
-                <PivotItem Header="Delicacy">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="957*" />
-                            <ColumnDefinition Width="299*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <StackPanel Name="Delicacy_StackPanel"
-                                    Orientation="Horizontal"
-                                    Grid.Row="0"
-                                    Margin="0,0,0,20"
-                                    Grid.ColumnSpan="2">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Category :"
-                                           VerticalAlignment="Center" />
-                                <ComboBox Name="Delicacy_ComboBox_1"
-                                          Style="{StaticResource ComboBoxStyle}"
-                                          SelectionChanged="Delicacy_ComboBox_1_SelectionChanged">
-                                    <ComboBoxItem Content="All" />
-                                    <ComboBoxItem Content="Barbecue" />
-                                    <ComboBoxItem Content="Bread &amp; Desserts" />
-                                    <ComboBoxItem Content="Buffet" />
-                                    <ComboBoxItem Content="Hot pot" />
-                                    <ComboBoxItem Content="Seafood" />
-                                    <ComboBoxItem Content="Snacks &amp; Fastfood" />
-                                </ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Sequencing :"
-                                           VerticalAlignment="Center" />
-                                <ComboBox Name="Delicacy_ComboBox_2"
-                                          ItemsSource="{x:Bind ComboBoxItems}"
-                                          Style="{StaticResource ComboBoxStyle}"
-                                          SelectionChanged="Delicacy_ComboBox_2_SelectionChanged">
-                                    <ComboBoxItem Content="{x:Bind ComboBoxItems[0]}" />
-                                </ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Filter :"
-                                           VerticalAlignment="Center" />
-                                <CheckBox Name="Delicacy_CheckBox_1"
-                                          Content="Recommended"
-                                          Margin="8,0,20,0"
-                                          Checked="Delicacy_CheckBox_1_Checked"
-                                          Unchecked="Delicacy_CheckBox_1_Unchecked" />
-                                <CheckBox Name="Delicacy_CheckBox_2"
-                                          Content="Coupon Served"
-                                          Checked="Delicacy_CheckBox_2_Checked"
-                                          Unchecked="Delicacy_CheckBox_2_Unchecked" />
-                            </StackPanel>
-                        </StackPanel>
-                        <Frame Name="ContentFrame"
-                               Grid.Row="1"
-                               Grid.ColumnSpan="2" />
                     </Grid>
-                </PivotItem>
-                <PivotItem Header="Hostel">
-                    <TextBlock Text="flagged emails go here." />
-                </PivotItem>
-                <PivotItem Header="Entertainment">
-                    <TextBlock Text="urgent emails go here." />
-                </PivotItem>
-                <PivotItem Header="Attraction">
-                    <TextBlock Text="urgent emails go here." />
-                </PivotItem>
-                <PivotItem Header="Shopping">
-                    <TextBlock Text="urgent emails go here." />
-                </PivotItem>
-            </Pivot>
+                </SplitView.Pane>
+            </SplitView>
         </Grid>
     </Grid>
 </Page>
