@@ -24,11 +24,9 @@ namespace travel_assistant.Recommend
     public sealed partial class ItemDetailPage : Page
     {
         public RecommendItem SelectedItem { get; set; }
-        public string haha { get; set; }
         public ItemDetailPage()
         {
             this.InitializeComponent();
-            haha = "haha";
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -46,6 +44,7 @@ namespace travel_assistant.Recommend
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SelectedItem = (RecommendItem)e.Parameter;
+            DataContext = SelectedItem;
         }
         private void SetRankingStar()
         {

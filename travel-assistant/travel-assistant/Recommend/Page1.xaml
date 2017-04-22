@@ -8,6 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="{Binding haha}" />
+        <Button Content="{Binding}">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
     </Grid>
 </Page>

@@ -212,7 +212,7 @@
                              Orientation="Vertical">
                             <HubSection Header="门票预订">
                                 <DataTemplate>
-                                    <Button Content="{Binding haha}">
+                                    <Button Content="{Binding Name}">
                                     </Button>
                                 </DataTemplate>
                             </HubSection>

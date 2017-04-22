@@ -14,26 +14,25 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using travel_assistant.Model;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
-namespace travel_assistant.Recommend
+namespace travel_assistant.Me
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class Page1 : Page
+    public sealed partial class ShowInvitation : Page
     {
-        public RecommendItem SelectedItem { get; set; }
-        public Page1()
+        public ShowInvitation()
         {
             this.InitializeComponent();
-            DataContext = SelectedItem;
+            InitInformation();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        public void InitInformation()
         {
-            SelectedItem = (RecommendItem)e.Parameter;
-            DataContext = SelectedItem;
+            InvitationModel InvitationItem = InvitationModel.CurSelected;
+            NameText.Text = InvitationItem.MeetTime;
         }
     }
 }

@@ -140,7 +140,7 @@ namespace travel_assistant.Recommend
         private void Delicacy_GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var item = (RecommendItem)e.ClickedItem;
-            Frame.Navigate(typeof(Page1), item);
+            Frame.Navigate(typeof(ItemDetailPage), item);
         }
 
         private void HotHub_SectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)

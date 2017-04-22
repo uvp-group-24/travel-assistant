@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="travel_assistant.Me.InfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:travel_assistant.Me"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid
+            Margin="30,20,20,30">
+            <ScrollViewer>
+                
+     
+            <StackPanel
+                Orientation="Vertical">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <Image
+                        Width="200"
+                        Height="200"
+                        Source="/Assets/Me/male-01.png" />
+                    <StackPanel
+                        Margin="50,0,0,0"
+                        Orientation="Vertical">
+                        <TextBlock
+                            Text="Site Li"
+                            FontSize="72"
+                            FontWeight="Bold" />
+                        <TextBlock
+                            Margin="0,20,0,0"
+                            Text="Happy to make friends with everyone~"
+                            FontSize="36" />
+                    </StackPanel>
+                </StackPanel>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Text="Wallet:1000$"
+                            FontSize="36"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                        <Button
+                            Click="Button_Click"
+                            Content="Daily Draw!"
+                            FontSize="36"
+                            Margin="100,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                <TextBlock
+                    Margin="0,10,0,0"
+                    Text="Orders:"
+                    FontSize="40"
+                    FontWeight="SemiBold" />
+                <Grid
+                    x:Name="OrderContent">
+                    <ListView
+                        x:Name="OrderList"
+                        IsItemClickEnabled="True"
+                        ItemClick="OrderList_ItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding OrderName}"
+                                    FontSize="36" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <TextBlock
+                    Margin="0,10,0,0"
+                    Text="Invitations:"
+                    FontSize="40"
+                    FontWeight="SemiBold" />
+                    <Grid
+                        x:Name="InvitationContent">
+                        <ListView
+                            x:Name="InvitationList"
+                            IsItemClickEnabled="True"
+                            ItemClick="InvitationList_ItemClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Text="{Binding MeetTime}"
+                                        FontSize="36" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
