@@ -29,7 +29,6 @@ namespace travel_assistant.Model
             Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
             Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
             Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
 
             return Photos;
         }

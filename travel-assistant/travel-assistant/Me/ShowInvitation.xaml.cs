@@ -31,8 +31,8 @@ namespace travel_assistant.Me
 
         public void InitInformation()
         {
-            OrderModel OrderItem = OrderModel.CurSelected;
-            NameText.Text = OrderItem.OrderName;
+            InvitationModel InvitationItem = InvitationModel.CurSelected;
+            NameText.Text = InvitationItem.MeetTime;
         }
     }
 }

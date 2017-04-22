@@ -23,7 +23,7 @@
                                         <Storyboard>
                                             <DoubleAnimation
                                                 Duration="0:0:0.5"
-                                                From="0.8"
+                                                From="0.9"
                                                 To="1"
                                                 Storyboard.TargetProperty="Opacity"
                                                 Storyboard.TargetName="contentPhoto"></DoubleAnimation>
@@ -55,7 +55,7 @@
                                     x:Name="contentPhoto"
                                     Width="200"
                                     Height="200"
-                                    Opacity="0.5">
+                                    Opacity="0.9">
                                     <ContentPresenter.RenderTransform>
                                         <ScaleTransform
                                             x:Name="scaleGrid"

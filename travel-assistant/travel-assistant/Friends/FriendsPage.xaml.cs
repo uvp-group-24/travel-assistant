@@ -50,19 +50,19 @@ namespace travel_assistant.Friends
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
-                if (MyFriends.Count() == 0)
-                {
-                    FriendsText.Text = "Not a valid invitation";
-                }
-                else
-                {
-                    InvitationView.IsPaneOpen = true;
-                    string PickedNames = "Invited : ";
-                    foreach (var names in MyFriends)
-                        PickedNames = PickedNames + " " + names;
-                    InvitedNames.Text = PickedNames;
-                    FriendsText.Text = "";
-                }
+            if (MyFriends.Count() == 0)
+            {
+                FriendsText.Text = "Not a valid invitation";
+            }
+            else
+            {
+                InvitationView.IsPaneOpen = true;
+                string PickedNames = "Invited : ";
+                foreach (var names in MyFriends)
+                    PickedNames = PickedNames + " " + names;
+                InvitedNames.Text = PickedNames;
+                FriendsText.Text = "";
+            }
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
@@ -72,8 +72,14 @@ namespace travel_assistant.Friends
             pop.Content = ShowMsg;
             SendButton.Flyout = pop;
 
-            OrderModel.OrderModels.Add(new OrderModel { OrderName = InvitedNames.Text });
-            
+            InvitationModel.Invitations.Add(new InvitationModel
+            {
+                MeetTime = DayTime.DataContext.ToString() + HourTime.DataContext.ToString(),
+                ToWhere = Location.ToString(),
+                Names = InvitedNames.Text,
+                Message = Msg.Text
+            });
+            Msg.Text = DayTime.Date.ToString() + HourTime.Time.ToString() + Location.ToString() + InvitedNames.Text + Msg.Text;
             MyFriends.Clear();
         }
     }

@@ -9,8 +9,6 @@ namespace travel_assistant.Model
     public class Invitation
     {
         public HashSet<string> invitees { get; set; }
-        //public DateTime 
-        //public string msg { get; set; }
     }
 
     public class InvitationManager

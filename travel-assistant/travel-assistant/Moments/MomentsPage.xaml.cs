@@ -33,6 +33,7 @@ namespace travel_assistant.Moments
             this.InitializeComponent();
             Photos = PhotoViewModel.GetPhotos();
             this.DataContext = this;
+            CommentList.ItemsSource = CommentModel.Comments;
             popup.RenderTransform = new TranslateTransform();
         }
 
@@ -45,12 +46,11 @@ namespace travel_assistant.Moments
 
             var tappedImage = e.OriginalSource as Image;
             tappedImage.Opacity = 1;
-            tappedImage.Height = 100;
-            tappedImage.Width = 100;
+            tappedImage.Stretch = Stretch.UniformToFill;
 
             var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
             var image = new Image { Source = tappedImage.Source };
-            var closeButton = new Button { Content = "CLick Me To Close", FontSize = 36 };
+            var closeButton = new Button { Content = "X", FontSize = 12 };
             closeButton.Click += CloseButton_Click;
 
             stackPanel.Children.Add(image);
@@ -90,6 +90,16 @@ namespace travel_assistant.Moments
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             popup.IsOpen = false;
+        }
+
+        private void CommentButton_Click(object sender, RoutedEventArgs e)
+        {
+            CommentModel.Comments.Add(new CommentModel { Comment = "Site Li : " + Comment.Text });
+        }
+
+        private void LikeButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

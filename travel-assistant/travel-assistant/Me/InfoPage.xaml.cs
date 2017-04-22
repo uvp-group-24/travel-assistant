@@ -27,6 +27,7 @@ namespace travel_assistant.Me
         {
             this.InitializeComponent();
             OrderList.ItemsSource = OrderModel.OrderModels;
+            InvitationList.ItemsSource = InvitationModel.Invitations;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,12 @@ namespace travel_assistant.Me
         private void OrderList_ItemClick(object sender, ItemClickEventArgs e)
         {
             OrderModel.CurSelected = (OrderModel)e.ClickedItem;
+            Frame.Navigate(typeof(ShowInvitation));
+        }
+
+        private void InvitationList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            InvitationModel.CurSelected = (InvitationModel)e.ClickedItem;
             Frame.Navigate(typeof(ShowInvitation));
         }
     }

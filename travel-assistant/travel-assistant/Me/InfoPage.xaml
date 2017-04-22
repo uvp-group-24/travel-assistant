@@ -35,26 +35,21 @@
                             FontSize="36" />
                     </StackPanel>
                 </StackPanel>
-                <StackPanel
-                    Orientation="Horizontal">
-                    <TextBlock
-                        Text="Wallet:1000$"
-                        FontSize="36"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" />
-                    <Button
-                        Click="Button_Click"
-                        Content="Daily Draw!"
-                        FontSize="36"
-                        Margin="100,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"/>
-                </StackPanel>
-                <TextBlock
-                    Margin="0,10,0,0"
-                    Text="Recent Moments:"
-                    FontSize="40"
-                    FontWeight="SemiBold" />
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Text="Wallet:1000$"
+                            FontSize="36"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                        <Button
+                            Click="Button_Click"
+                            Content="Daily Draw!"
+                            FontSize="36"
+                            Margin="100,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
                 <TextBlock
                     Margin="0,10,0,0"
                     Text="Orders:"
@@ -80,7 +75,22 @@
                     Text="Invitations:"
                     FontSize="40"
                     FontWeight="SemiBold" />
-            </StackPanel>
+                    <Grid
+                        x:Name="InvitationContent">
+                        <ListView
+                            x:Name="InvitationList"
+                            IsItemClickEnabled="True"
+                            ItemClick="InvitationList_ItemClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Text="{Binding MeetTime}"
+                                        FontSize="36" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>

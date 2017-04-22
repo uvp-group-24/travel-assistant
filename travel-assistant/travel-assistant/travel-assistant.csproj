@@ -115,9 +115,11 @@
       <DependentUpon>ShowInvitation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AlphaKeyGroup.cs" />
+    <Compile Include="Model\CommentModel.cs" />
     <Compile Include="Model\FriendsViewModel.cs" />
     <Compile Include="Model\GoBackButton.cs" />
     <Compile Include="Model\Invitation.cs" />
+    <Compile Include="Model\InvitationModel.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\PhotoViewModel.cs" />

@@ -36,7 +36,6 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <AppBar
@@ -50,35 +49,128 @@
                         FontSize="36" />
                 </RelativePanel>
             </AppBar>
-            <TextBlock
-                Grid.Row="1"
-                Text="Scene1"
-                FontSize="36" />
-            <GridView
-                Grid.Row="2"
-                ItemsSource="{x:Bind Photos}"
-                ItemContainerStyle="{StaticResource photoItemContainerStyle}">
-                <GridView.ItemTemplate>
-                    <DataTemplate
-                        x:DataType="data:Photo">
-                        <StackPanel
-                            HorizontalAlignment="Center"
-                            Orientation="Vertical">
+            <Grid
+                Background="Azure"
+                Margin="100,0,100,0"
+                Grid.Row="1">
+                <ScrollViewer>
+                    <StackPanel
+                        Orientation="Vertical">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="auto" />
+                                <RowDefinition
+                                    Height="auto" />
+                                <RowDefinition
+                                    Height="auto" />
+                                <RowDefinition
+                                    Height="auto" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                        </Grid>
+                        <RelativePanel
+                            Grid.Row="0">
                             <Image
-                                Margin="20,20,0,0"
-                                Height="100"
+                                Name="Icon"
+                                Source="/Assets/Friends/35.jpg"
+                                Margin="20,0,0,0"
                                 Width="100"
-                                Source="{x:Bind ImageUri2}"
-                                IsTapEnabled="True"
-                                Tapped="Image_Tapped" />
+                                Height="100"
+                                RelativePanel.AlignLeftWithPanel="True" />
                             <TextBlock
-                                FontSize="36"
-                                Text="{x:Bind Description}"
-                                HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                RelativePanel.AlignVerticalCenterWith="Icon"
+                                Text="Yinhao Yang  2017/3/25"
+                                FontSize="40" />
+                            <Button
+                                FontFamily="Segoe MDL2 Assets"
+                                Content="&#xE011; "
+                                RelativePanel.AlignRightWithPanel="True"
+                                Margin="0,5,80,5">
+                                <Button.Flyout>
+                                    <MenuFlyout
+                                        Placement="Bottom">
+                                        <MenuFlyoutItem
+                                            Text="Hide his Moment" />
+                                        <MenuFlyoutItem
+                                            Text="Block" />
+                                        <MenuFlyoutItem
+                                            Text="Add to favorites" />
+                                        <MenuFlyoutItem
+                                            Text="Report" />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </RelativePanel>
+                        <GridView
+                            Grid.Row="1"
+                            ItemsSource="{x:Bind Photos}"
+                            ItemContainerStyle="{StaticResource photoItemContainerStyle}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate
+                                    x:DataType="data:Photo">
+                                    <StackPanel
+                                        HorizontalAlignment="Center"
+                                        Orientation="Vertical">
+                                        <Image
+                                            Stretch="UniformToFill"
+                                            Source="{x:Bind ImageUri2}"
+                                            IsTapEnabled="True"
+                                            Tapped="Image_Tapped" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                        <TextBlock
+                            Grid.Row="2"
+                            TextWrapping="Wrap"
+                            FontSize="30"
+                            Text="Check this scene right here in Shenyang!! It's awsome~~" />
+                        <RelativePanel
+                            Grid.Row="3">
+                            <TextBox
+                                x:Name="Comment"
+                                Width="500"
+                                TextWrapping="Wrap"
+                                FontSize="20"
+                                PlaceholderText="Add a comment"
+                                RelativePanel.AlignLeftWithPanel="True" />
+                            <Button
+                                x:Name="CommentButton"
+                                Content="Comment"
+                                Click="CommentButton_Click"
+                                RelativePanel.AlignVerticalCenterWith="Comment"
+                                RelativePanel.AlignRightWith="Comment" />
+                            <Button
+                                Margin="0,0,20,0"
+                                x:Name="LikeButton"
+                                Click="LikeButton_Click"
+                                RelativePanel.AlignRightWithPanel="True">
+                                <TextBlock
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Text="&#xE006;"
+                                    FontSize="20"
+                                    TextAlignment="Center" />
+                            </Button>
+                        </RelativePanel>
+                        <ListView
+                            Grid.Row="4"
+                            x:Name="CommentList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Text="{Binding Comment}"
+                                        FontSize="36" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            
         </Grid>
     </Grid>
 </Page>
