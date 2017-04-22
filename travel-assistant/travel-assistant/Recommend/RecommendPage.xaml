@@ -54,10 +54,12 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <AppBar x:Name="appBar"
                     Grid.Row="0"
+                    Background="#F5F5F5"
                     ClosedDisplayMode="Compact">
                 <RelativePanel>
                     <AppBarButton Name="GoBackButton"
@@ -84,9 +86,12 @@
                     </AutoSuggestBox>
                 </RelativePanel>
             </AppBar>
-            <SplitView Name="splitview"
+            <Border Grid.Row="1"
+                    BorderBrush="#DEDEDE"
+                    BorderThickness="1" />
+                <SplitView Name="splitview"
                        x:FieldModifier="Public"
-                       Grid.Row="1"
+                       Grid.Row="2"
                        PanePlacement="Right"
                        DisplayMode="Overlay"
                        IsPaneOpen="False"
@@ -188,9 +193,9 @@
                                                     <GridView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:RecommendItem">
                                                             <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{Binding Images.image_1}"
+                                                                <Image Source="{x:Bind Images.image_1}"
                                                                        Stretch="Fill" />
-                                                                <TextBlock Text="{Binding Name}"
+                                                                <TextBlock Text="{x:Bind Name}"
                                                                            FontSize="16" />
                                                             </StackPanel>
                                                         </DataTemplate>

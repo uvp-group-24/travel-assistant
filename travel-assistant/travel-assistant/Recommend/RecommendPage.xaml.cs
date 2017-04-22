@@ -26,7 +26,6 @@ namespace travel_assistant.Recommend
     public sealed partial class RecommendPage : Page
     {
         public static RecommendPage Current;
-        public RecommendItem SelectedItem;
         private List<RecommendItem> RecommendItems;
         //private List<string> Suggestions;
         private ObservableCollection<RecommendItem> Suggestions = new ObservableCollection<RecommendItem>();
@@ -141,7 +140,7 @@ namespace travel_assistant.Recommend
         private void Delicacy_GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var item = (RecommendItem)e.ClickedItem;
-            Frame.Navigate(typeof(ItemDetailPage), item);
+            Frame.Navigate(typeof(Page1), item);
         }
 
         private void HotHub_SectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)

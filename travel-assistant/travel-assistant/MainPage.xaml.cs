@@ -35,7 +35,6 @@ namespace travel_assistant
         {
             this.InitializeComponent();
             MenuItems = MenuItemManager.GetMenuItems();
-            MainFrame.Navigate(typeof(RecommendPage));
             Current = this;
         }
         private void Hamberger_Click(object sender, RoutedEventArgs e)

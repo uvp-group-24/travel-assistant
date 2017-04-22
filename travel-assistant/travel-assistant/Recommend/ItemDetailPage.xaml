@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
+      xmlns:data="using:travel_assistant.Model"
       Loaded="Page_Loaded">
     <Page.Resources>
         <Style x:Key="StarStyle_1"
@@ -128,6 +129,8 @@
                     <Image Source="{x:Bind SelectedItem.Images.image_1}"
                            Height="300"
                            Width="400" />
+                    <Button Content="{Binding haha}">
+                    </Button>
                     <TextBlock Text="{x:Bind SelectedItem.Name}"
                                FontSize="28"
                                FontWeight="Medium" />
@@ -208,7 +211,10 @@
                         <Hub Name="DetailsHub"
                              Orientation="Vertical">
                             <HubSection Header="门票预订">
-
+                                <DataTemplate>
+                                    <Button Content="{Binding haha}">
+                                    </Button>
+                                </DataTemplate>
                             </HubSection>
                             <HubSection Header="门票预订">
 

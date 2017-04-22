@@ -23,10 +23,12 @@ namespace travel_assistant.Recommend
     /// </summary>
     public sealed partial class ItemDetailPage : Page
     {
-        private RecommendItem SelectedItem;
+        public RecommendItem SelectedItem { get; set; }
+        public string haha { get; set; }
         public ItemDetailPage()
         {
             this.InitializeComponent();
+            haha = "haha";
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -43,8 +45,7 @@ namespace travel_assistant.Recommend
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = (RecommendItem)e.Parameter;
-            SelectedItem = item;
+            SelectedItem = (RecommendItem)e.Parameter;
         }
         private void SetRankingStar()
         {
