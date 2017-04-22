@@ -34,29 +34,14 @@ namespace travel_assistant.Moments
             Photos = PhotoViewModel.GetPhotos();
             this.DataContext = this;
             popup.RenderTransform = new TranslateTransform();
-
-            SetUpPageAnimation();
         }
 
-        public void SetUpPageAnimation()
-        {
-            TransitionCollection collection = new TransitionCollection();
-            NavigationThemeTransition theme = new NavigationThemeTransition();
-
-            var info = new ContinuumNavigationTransitionInfo();
-
-            theme.DefaultNavigationTransitionInfo = info;
-            collection.Add(theme);
-            this.Transitions = collection;
-        }
+        //var info1 = new CommonNavigationTransitionInfo(); // page flip
+        //var info2 = new EntranceNavigationTransitionInfo(); // normal up.
 
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
             popup.IsOpen = false;
-            //ref Image CurrentImage = e.OriginalSource as Image;
-            //CurrentImage.Opacity = 1;
-            //CurrentImage.Height = 100;
-            //CurrentImage.Width = 100;
 
             var tappedImage = e.OriginalSource as Image;
             tappedImage.Opacity = 1;

@@ -40,7 +40,7 @@ namespace travel_assistant.Friends
             else MyFriends.Add(contact.Title);
             if (MyFriends.Count() > 0)
             {
-                FriendsText.Text = "You selected ";
+                FriendsText.Text = "Invited: ";
                 foreach (var names in MyFriends)
                     FriendsText.Text = FriendsText.Text + names + " ";
             }
@@ -50,27 +50,31 @@ namespace travel_assistant.Friends
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
+                if (MyFriends.Count() == 0)
+                {
+                    FriendsText.Text = "Not a valid invitation";
+                }
+                else
+                {
+                    InvitationView.IsPaneOpen = true;
+                    string PickedNames = "Invited : ";
+                    foreach (var names in MyFriends)
+                        PickedNames = PickedNames + " " + names;
+                    InvitedNames.Text = PickedNames;
+                    FriendsText.Text = "";
+                }
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
             Flyout pop = new Flyout();
-            TextBlock ShowMsg = new TextBlock { FontSize = 36 };
+            TextBlock ShowMsg = new TextBlock { FontSize = 36, Text = "Invitation Sended~" };
             pop.Content = ShowMsg;
-            Generate.Flyout = pop;
+            SendButton.Flyout = pop;
 
-            if(MyFriends.Count() == 0)
-            {
-                FriendsText.Text = "Not a valid invitation";
-                ShowMsg.Text = "Ooops~";
-            }
-            else
-            {
-                string PickedNames = "";
-                foreach (var names in MyFriends)
-                    PickedNames = PickedNames + " " + names;
-                OrderModel.OrderModels.Add(new OrderModel { OrderName = PickedNames });
-                ShowMsg.Text = "Successfully Added~";
-
-                MyFriends.Clear();
-                FriendsText.Text = "";
-            }
+            OrderModel.OrderModels.Add(new OrderModel { OrderName = InvitedNames.Text });
+            
+            MyFriends.Clear();
         }
     }
 }
