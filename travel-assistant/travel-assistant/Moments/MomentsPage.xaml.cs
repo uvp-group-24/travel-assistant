@@ -48,15 +48,14 @@ namespace travel_assistant.Moments
             tappedImage.Opacity = 1;
             tappedImage.Stretch = Stretch.UniformToFill;
 
-            var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
+            var Panel = new RelativePanel();
             var image = new Image { Source = tappedImage.Source };
             var closeButton = new Button { Content = "X", FontSize = 12 };
             closeButton.Click += CloseButton_Click;
 
-            stackPanel.Children.Add(image);
-            stackPanel.Children.Add(closeButton);
-            closeButton.HorizontalAlignment = HorizontalAlignment.Center;
-            popup.Child = stackPanel;
+            Panel.Children.Add(image);
+            Panel.Children.Add(closeButton);
+            popup.Child = Panel;
             popup.IsOpen = true;
 
             //获取被点击图片相对MainPage的坐标

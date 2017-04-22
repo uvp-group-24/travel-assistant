@@ -9,6 +9,13 @@
       mc:Ignorable="d"
       Loaded="Page_Loaded"
       SizeChanged="Page_SizeChanged">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <CommonNavigationTransitionInfo />
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
     <Page.Resources>
         <Style x:Key="ButtonStyle"
                TargetType="Button">
