@@ -45,7 +45,7 @@ namespace travel_assistant.Model
                 if ((bool)args.NewValue)
                 {
 
-                    if (canvas.Children.Count > 2)
+                    if (canvas.Children.Count > 3)
                     {
                         return;
                     }

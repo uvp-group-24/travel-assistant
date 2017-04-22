@@ -28,7 +28,6 @@ namespace travel_assistant.Friends
 
         public FriendsPage()
         {
-
             this.InitializeComponent();
             MyFriends = new HashSet<string>();
         }

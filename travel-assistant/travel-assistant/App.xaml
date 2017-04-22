@@ -4,5 +4,72 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:travel_assistant"
     RequestedTheme="Light">
+    <Application.Resources>
+        <Style
+            x:Key="photoItemContainerStyle"
+            TargetType="GridViewItem">
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup
+                                    x:Name="CommonStates">
+                                    <VisualState
+                                        x:Name="Normal" />
+                                    <VisualState
+                                        x:Name="PointerOver">
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Duration="0:0:0.5"
+                                                From="0.8"
+                                                To="1"
+                                                Storyboard.TargetProperty="Opacity"
+                                                Storyboard.TargetName="contentPhoto"></DoubleAnimation>
+                                            <DoubleAnimation
+                                                Duration="0:0:0.5"
+                                                From="1"
+                                                To="1.2"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                Storyboard.TargetName="scaleGrid"></DoubleAnimation>
+                                            <DoubleAnimation
+                                                Duration="0:0:0.5"
+                                                From="1"
+                                                To="1.2"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                Storyboard.TargetName="scaleGrid"></DoubleAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
 
+                            <Grid.Clip>
+                                <RectangleGeometry
+                                    Rect="0 0 200 200" />
+                            </Grid.Clip>
+
+                            <Grid
+                                Background="Azure">
+                                <ContentPresenter
+                                    x:Name="contentPhoto"
+                                    Width="200"
+                                    Height="200"
+                                    Opacity="0.5">
+                                    <ContentPresenter.RenderTransform>
+                                        <ScaleTransform
+                                            x:Name="scaleGrid"
+                                            ScaleX="1.0"
+                                            ScaleY="1.0"
+                                            CenterX="100"
+                                            CenterY="100"></ScaleTransform>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+         </Style>
+    </Application.Resources>
 </Application>

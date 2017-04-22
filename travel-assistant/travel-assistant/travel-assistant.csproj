@@ -120,7 +120,7 @@
     <Compile Include="Model\Invitation.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\OrderModel.cs" />
-    <Compile Include="Model\Picture.cs" />
+    <Compile Include="Model\PhotoViewModel.cs" />
     <Compile Include="Model\StarBehavior.cs" />
     <Compile Include="Model\StarEntity.cs" />
     <Compile Include="Moments\MomentsPage.xaml.cs">
