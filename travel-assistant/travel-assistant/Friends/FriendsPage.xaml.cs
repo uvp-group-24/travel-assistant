@@ -75,11 +75,10 @@ namespace travel_assistant.Friends
             InvitationModel.Invitations.Add(new InvitationModel
             {
                 MeetTime = DayTime.DataContext.ToString() + HourTime.DataContext.ToString(),
-                ToWhere = Location.ToString(),
+                ToWhere = Location.Text,
                 Names = InvitedNames.Text,
                 Message = Msg.Text
             });
-            Msg.Text = DayTime.Date.ToString() + HourTime.Time.ToString() + Location.ToString() + InvitedNames.Text + Msg.Text;
             MyFriends.Clear();
         }
     }

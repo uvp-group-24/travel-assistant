@@ -14,29 +14,38 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Phone">
+            <VisualStateGroup
+                x:Name="VisualStateGroup">
+                <VisualState
+                    x:Name="Phone">
                     <VisualState.Setters>
-                        <Setter Target="appBar.(AppBar.ClosedDisplayMode)"
-                                Value="Minimal" />
+                        <Setter
+                            Target="appBar.(AppBar.ClosedDisplayMode)"
+                            Value="Minimal" />
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="0" />
+                        <AdaptiveTrigger
+                            MinWindowHeight="0" />
                     </VisualState.StateTriggers>
                 </VisualState>
-                <VisualState x:Name="Tablet">
+                <VisualState
+                    x:Name="Tablet">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="480" />
+                        <AdaptiveTrigger
+                            MinWindowHeight="480" />
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition
+                    Height="auto" />
+                <RowDefinition
+                    Height="*" />
             </Grid.RowDefinitions>
             <AppBar
                 x:Name="appBar"
@@ -170,7 +179,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
-            
+
         </Grid>
     </Grid>
 </Page>
