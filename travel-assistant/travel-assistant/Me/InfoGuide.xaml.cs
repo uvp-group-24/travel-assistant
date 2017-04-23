@@ -40,7 +40,7 @@ namespace travel_assistant.Me
 
         private void Orders_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            
+            GuideFrame.Navigate(typeof(OrderPage));
         }
 
         private void Invitations_Tapped(object sender, TappedRoutedEventArgs e)
