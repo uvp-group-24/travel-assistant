@@ -61,44 +61,42 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <AppBar x:Name="appBar"
-                    Grid.Row="0"
-                    Background="#F5F5F5"
-                    ClosedDisplayMode="Compact">
-                <RelativePanel>
-                    <AppBarButton Name="GoBackButton"
-                                  RelativePanel.AlignLeftWithPanel="True"
-                                  Visibility="Collapsed">
-                        <TextBlock Text="&#xE112;"
-                                   FontFamily="Segoe MDL2 Assets"
-                                   FontSize="20"
-                                   HorizontalAlignment="Center" />
-                    </AppBarButton>
-                    <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
-                               Text="Recommend"
-                               FontSize="36" />
-                    <AutoSuggestBox Name="SearchASB"
-                                    RelativePanel.AlignRightWithPanel="True"
-                                    Width="240"
-                                    Height="36"
-                                    ItemsSource="{x:Bind Suggestions}"
-                                    PlaceholderText="Please Enter."
-                                    TextChanged="SearchASB_TextChanged"
-                                    QuerySubmitted="SearchASB_QuerySubmitted"
-                                    QueryIcon="Find"
-                                    Margin="0,8,0,0">
-                    </AutoSuggestBox>
-                </RelativePanel>
-            </AppBar>
-            <Border Grid.Row="1"
-                    BorderBrush="#DEDEDE"
-                    BorderThickness="1" />
-                <SplitView Name="splitview"
+            <StackPanel Grid.Row="0">
+                <AppBar x:Name="appBar"
+                        Background="#F5F5F5"
+                        ClosedDisplayMode="Compact">
+                    <RelativePanel>
+                        <AppBarButton Name="GoBackButton"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      Visibility="Collapsed">
+                            <TextBlock Text="&#xE112;"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center" />
+                        </AppBarButton>
+                        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                   Text="Recommend"
+                                   FontSize="36" />
+                        <AutoSuggestBox Name="SearchASB"
+                                        RelativePanel.AlignRightWithPanel="True"
+                                        Width="240"
+                                        Height="36"
+                                        ItemsSource="{x:Bind Suggestions}"
+                                        PlaceholderText="Please Enter."
+                                        TextChanged="SearchASB_TextChanged"
+                                        QuerySubmitted="SearchASB_QuerySubmitted"
+                                        QueryIcon="Find"
+                                        Margin="0,8,0,0" />
+                    </RelativePanel>
+                </AppBar>
+                <Border BorderBrush="#DEDEDE"
+                        BorderThickness="1.2" />
+            </StackPanel>
+            <SplitView Name="splitview"
                        x:FieldModifier="Public"
-                       Grid.Row="2"
+                       Grid.Row="1"
                        PanePlacement="Right"
                        DisplayMode="Overlay"
                        IsPaneOpen="False"

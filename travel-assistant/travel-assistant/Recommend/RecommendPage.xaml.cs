@@ -27,7 +27,6 @@ namespace travel_assistant.Recommend
     {
         public static RecommendPage Current;
         private List<RecommendItem> RecommendItems;
-        //private List<string> Suggestions;
         private ObservableCollection<RecommendItem> Suggestions = new ObservableCollection<RecommendItem>();
         private List<string> ComboBoxItems;
         public RecommendPage()
@@ -128,8 +127,6 @@ namespace travel_assistant.Recommend
 
         private void SearchASB_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            //Suggestions = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).Select(p => p.Name).ToList();
-            //sender.ItemsSource = Suggestions;
             var filteredItems = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).ToList();
             var filterednames = filteredItems.Select(p => p.Name).ToList();
             Suggestions.Clear();

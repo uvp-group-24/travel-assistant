@@ -38,17 +38,19 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <AppBar
-                x:Name="appBar"
-                Grid.Row="0"
-                ClosedDisplayMode="Compact">
-                <RelativePanel>
-                    <TextBlock
-                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                        Text="Moments"
-                        FontSize="36" />
-                </RelativePanel>
-            </AppBar>
+            <StackPanel Grid.Row="0">
+                <AppBar x:Name="appBar"
+                        Background="#F5F5F5"
+                        ClosedDisplayMode="Compact">
+                    <RelativePanel>
+                        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                   Text="Moments"
+                                   FontSize="36" />
+                    </RelativePanel>
+                </AppBar>
+                <Border BorderBrush="#DEDEDE"
+                        BorderThickness="1.2" />
+            </StackPanel>
             <Grid
                 Background="Azure"
                 Margin="100,0,100,0"

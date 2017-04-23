@@ -45,14 +45,14 @@
                 <Image Width="100"
                        Height="100"
                        Margin="10,0,10,0"
-                       Source=" /Assets/Me/male-01.png"
+                       Source="{x:Bind User.AvatarPath}"
                        RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
             <RelativePanel Style="{StaticResource PanelStyle}">
                 <TextBlock Text="Nickname"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignLeftWithPanel="True" />
-                <TextBlock Text="~WoW~"
+                <TextBlock Text="{x:Bind User.Nickname}"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
@@ -60,7 +60,7 @@
                 <TextBlock Text="PhoneNumber"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignLeftWithPanel="True" />
-                <TextBlock Text="15304008576"
+                <TextBlock Text="{x:Bind User.PhoneNumber}"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
@@ -68,7 +68,7 @@
                 <TextBlock Text="Email"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignLeftWithPanel="True" />
-                <TextBlock Text="Site1997@neu.edu.cn"
+                <TextBlock Text="{x:Bind User.Email}"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
@@ -76,7 +76,7 @@
                 <TextBlock Text="Sex"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignLeftWithPanel="True" />
-                <TextBlock Text="Male"
+                <TextBlock Text="{x:Bind User.Sex}"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
@@ -84,8 +84,11 @@
                 <TextBlock Text="Wallet"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock Text="￥"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.LeftOf="MyMoney" />
                 <TextBlock x:Name="MyMoney"
-                           Text="10000$"
+                           Text="{x:Bind User.Wealth}"
                            Style="{StaticResource MyTextStyle}"
                            RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
 using travel_assistant.Model;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -23,6 +24,7 @@ namespace travel_assistant.Friends
     /// </summary>
     public sealed partial class FriendsPage : Page
     {
+        private ObservableCollection<RecommendItem> Suggestions = new ObservableCollection<RecommendItem>();
         private HashSet<String> MyFriends;
         private string PickedNames { get; set; }
         //private Invitation MyInvitation;
@@ -85,6 +87,15 @@ namespace travel_assistant.Friends
             InvitedNames.Text = "";
             Msg.Text = "";
             MyFriends.Clear();
+        }
+
+        private void Location_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            var filteredItems = RecommendItemManager.GetItems().FindAll(p => p.Name.Contains(sender.Text)).ToList();
+            var filterednames = filteredItems.Select(p => p.Name).ToList();
+            Suggestions.Clear();
+            filteredItems.ForEach(p => Suggestions.Add(p));
+            sender.ItemsSource = filterednames;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace travel_assistant.Me
     /// </summary>
     public sealed partial class InfoPage : Page
     {
+        private UserModel User = UserModel.User;
         public InfoPage()
         {
             this.InitializeComponent();

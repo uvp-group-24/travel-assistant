@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using travel_assistant.Model;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -22,6 +23,7 @@ namespace travel_assistant.Me
     /// </summary>
     public sealed partial class InfoGuide : Page
     {
+        private UserModel User = UserModel.User;
         public InfoGuide()
         {
             this.InitializeComponent();

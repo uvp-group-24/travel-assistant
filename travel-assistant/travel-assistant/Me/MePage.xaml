@@ -38,29 +38,30 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <AppBar x:Name="appBar"
-                    Grid.Row="0"
-                    ClosedDisplayMode="Compact">
-                <RelativePanel>
-                    <TextBlock Name="Title"
-                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                               x:FieldModifier="Public"
-                               Text="Me"
-                               FontSize="36" />
-                    <AppBarButton Icon="Back"
-                                  Name="BackButton"
-                                  x:FieldModifier="Public"
-                                  Visibility="Collapsed"
-                                  Click="BackButton_Click"
-                                  RelativePanel.AlignLeftWithPanel="True"
-                                  RelativePanel.AlignHorizontalCenterWithPanel="True" />
-                </RelativePanel>
-            </AppBar>
-
-            <Frame
-                x:Name="OriginalFrame"
-                Grid.Row="1">
-                
+            <StackPanel Grid.Row="0">
+                <AppBar x:Name="appBar"
+                        Background="#F5F5F5"
+                        ClosedDisplayMode="Compact">
+                    <RelativePanel>
+                        <TextBlock Name="Title"
+                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                   x:FieldModifier="Public"
+                                   Text="Me"
+                                   FontSize="36" />
+                        <AppBarButton Icon="Back"
+                                      Name="BackButton"
+                                      x:FieldModifier="Public"
+                                      Visibility="Collapsed"
+                                      Click="BackButton_Click"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                    </RelativePanel>
+                </AppBar>
+                <Border BorderBrush="#DEDEDE"
+                        BorderThickness="1.2" />
+            </StackPanel>
+            <Frame x:Name="OriginalFrame"
+                   Grid.Row="1">
             </Frame>
         </Grid>
     </Grid>
