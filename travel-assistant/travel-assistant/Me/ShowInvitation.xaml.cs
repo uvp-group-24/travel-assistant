@@ -31,8 +31,8 @@ namespace travel_assistant.Me
 
         public void InitInformation()
         {
-            InvitationModel InvitationItem = InvitationModel.CurSelected;
-            NameText.Text = InvitationItem.MeetTime;
+            InvitationList.ItemsSource = InvitationModel.Invitations;
+            //InvitationModel InvitationItem = InvitationModel.CurSelected;
         }
     }
 }

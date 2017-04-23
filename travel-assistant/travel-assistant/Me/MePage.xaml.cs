@@ -25,7 +25,7 @@ namespace travel_assistant.Me
         public MePage()
         {
             this.InitializeComponent();
-            OriginalFrame.Navigate(typeof(InfoPage));
+            OriginalFrame.Navigate(typeof(InfoGuide));
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

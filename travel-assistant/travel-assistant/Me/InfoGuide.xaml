@@ -1,0 +1,103 @@
+﻿<Page
+    x:Class="travel_assistant.Me.InfoGuide"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:travel_assistant.Me"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="2*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer
+            Grid.Column="0">
+            <Grid
+                Background="Azure">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="2*" />
+                    <RowDefinition
+                        Height="3*" />
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Grid.Row="0"
+                    Orientation="Horizontal">
+                    <StackPanel>
+                        <Image
+                            Width="200"
+                            Height="200"
+                            Source="/Assets/Me/male-01.png" />
+                        <TextBlock
+                            Text="Site Li"
+                            FontSize="68"
+                            FontWeight="Bold" />
+                    </StackPanel>
+                    <RelativePanel>
+                        <TextBlock
+                            Margin="0,20,0,0"
+                            Width="200"
+                            TextWrapping="Wrap"
+                            Text="Account : 604335661"
+                            FontSize="36"
+                            RelativePanel.AlignTopWithPanel="True" />
+                        <TextBlock
+                            Margin="0,0,0,20"
+                            Width="200"
+                            TextWrapping="Wrap"
+                            Text="Member Points : 205"
+                            FontSize="36"
+                            RelativePanel.AlignBottomWithPanel="True" />
+                    </RelativePanel>
+                </StackPanel>
+                <ScrollViewer
+                    Grid.Row="1">
+                    <StackPanel
+                        Orientation="Vertical">
+                        <Border
+                            Margin="0,10,0,10"
+                            x:Name="BasicInfo"
+                            Tapped="BasicInfo_Tapped">
+                            <TextBlock
+                                FontSize="40"
+                                Text="Basic Information" />
+                        </Border>
+                        <Border
+                            Margin="0,10,0,10"
+                            x:Name="DailyDraw"
+                            Tapped="DailyDraw_Tapped">
+                            <TextBlock
+                                FontSize="40"
+                                Text="Daily Draw" />
+                        </Border>
+                        <Border
+                            Margin="0,10,0,10"
+                            x:Name="Orders"
+                            Tapped="Orders_Tapped">
+                            <TextBlock
+                                FontSize="40"
+                                Text="My Orders" />
+                        </Border>
+                        <Border
+                            Margin="0,10,0,10"
+                            x:Name="Invitations"
+                            Tapped="Invitations_Tapped">
+                            <TextBlock
+                                FontSize="40"
+                                Text="My Invitations" />
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </ScrollViewer>
+        <Frame
+            x:Name="GuideFrame"
+            Grid.Column="1" />
+    </Grid>
+    <!--Favorites: Natatorium, KFC;      Papa Jhons-->
+</Page>

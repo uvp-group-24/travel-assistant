@@ -16,9 +16,71 @@
 
     <Grid
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock
-            x:Name="NameText"
-            FontSize="36"
-            HorizontalAlignment="Center"/>
+        <StackPanel
+            Orientation="Vertical">
+            <TextBlock
+                Margin="0,10,0,0"
+                Text="Invitations:"
+                FontSize="40"
+                FontWeight="SemiBold"
+                HorizontalAlignment="Center"/>
+            <ListView
+                x:Name="InvitationList"
+                IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel
+                            Margin="10,0,0,10"
+                            Orientation="Vertical">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Scheduled Time :" />
+                                <TextBlock
+                                    x:Name="When"
+                                    Text="{Binding MeetTime}"
+                                    FontSize="20" />
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Location :" />
+                                <TextBlock
+                                    x:Name="Where"
+                                    Text="{Binding ToWhere}"
+                                    FontSize="20" />
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Friends Invited :" />
+                                <TextBlock
+                                    x:Name="Who"
+                                    Text="{Binding Names}"
+                                    FontSize="20" />
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Extra Message :" />
+                                <TextBlock
+                                    x:Name="What"
+                                    Text="{Binding Message}"
+                                    FontSize="20" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
     </Grid>
 </Page>

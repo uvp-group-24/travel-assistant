@@ -102,6 +102,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Me\InfoGuide.xaml.cs">
+      <DependentUpon>InfoGuide.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Me\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Me\InfoGuide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Me\InfoPage.xaml">
       <SubType>Designer</SubType>
