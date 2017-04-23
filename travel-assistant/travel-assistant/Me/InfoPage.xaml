@@ -1,97 +1,94 @@
-﻿<Page
-    x:Class="travel_assistant.Me.InfoPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:travel_assistant.Me"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="travel_assistant.Me.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:travel_assistant.Me"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <DrillInNavigationTransitionInfo />
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    <Page.Resources>
+        <Style x:Key="MyTextStyle"
+               TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="36" />
+            <Setter Property="Margin"
+                    Value="10,0,10,0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+        <Style x:Key="PanelStyle"
+               TargetType="RelativePanel">
+            <Setter Property="Margin"
+                    Value="0,10,0,10" />
+            <Setter Property="Background"
+                    Value="Azure" />
+        </Style>
+    </Page.Resources>
 
-    <Grid
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid
-            Margin="30,20,20,30">
-            <ScrollViewer>
-                
-     
-            <StackPanel
-                Orientation="Vertical">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <Image
-                        Width="200"
-                        Height="200"
-                        Source="/Assets/Me/male-01.png" />
-                    <StackPanel
-                        Margin="50,0,0,0"
-                        Orientation="Vertical">
-                        <TextBlock
-                            Text="Site Li"
-                            FontSize="72"
-                            FontWeight="Bold" />
-                        <TextBlock
-                            Margin="0,20,0,0"
-                            Text="Happy to make friends with everyone~"
-                            FontSize="36" />
-                    </StackPanel>
-                </StackPanel>
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Text="Wallet:1000$"
-                            FontSize="36"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" />
-                        <Button
-                            Click="Button_Click"
-                            Content="Daily Draw!"
-                            FontSize="36"
-                            Margin="100,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                <TextBlock
-                    Margin="0,10,0,0"
-                    Text="Orders:"
-                    FontSize="40"
-                    FontWeight="SemiBold" />
-                <Grid
-                    x:Name="OrderContent">
-                    <ListView
-                        x:Name="OrderList"
-                        IsItemClickEnabled="True"
-                        ItemClick="OrderList_ItemClick">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Text="{Binding OrderName}"
-                                    FontSize="36" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-                <TextBlock
-                    Margin="0,10,0,0"
-                    Text="Invitations:"
-                    FontSize="40"
-                    FontWeight="SemiBold" />
-                    <Grid
-                        x:Name="InvitationContent">
-                        <ListView
-                            x:Name="InvitationList"
-                            IsItemClickEnabled="True"
-                            ItemClick="InvitationList_ItemClick">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock
-                                        Text="{Binding MeetTime}"
-                                        FontSize="36" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="0,10,0,0"
+                       Text="Basic Information:"
+                       FontSize="40"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center" />
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="Avatar"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <Image Width="100"
+                       Height="100"
+                       Margin="10,0,10,0"
+                       Source=" /Assets/Me/male-01.png"
+                       RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="Nickname"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock Text="~WoW~"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="PhoneNumber"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock Text="15304008576"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="Email"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock Text="Site1997@neu.edu.cn"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="Sex"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock Text="Male"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <RelativePanel Style="{StaticResource PanelStyle}">
+                <TextBlock Text="Wallet"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignLeftWithPanel="True" />
+                <TextBlock x:Name="MyMoney"
+                           Text="10000$"
+                           Style="{StaticResource MyTextStyle}"
+                           RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+        </StackPanel>
     </Grid>
 </Page>

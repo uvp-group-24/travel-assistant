@@ -143,17 +143,18 @@
                                 Click="CommentButton_Click"
                                 RelativePanel.AlignVerticalCenterWith="Comment"
                                 RelativePanel.AlignRightWith="Comment" />
-                            <Button
+                            <Border
                                 Margin="0,0,20,0"
                                 x:Name="LikeButton"
-                                Click="LikeButton_Click"
+                                Tapped="LikeButton_Tapped"
                                 RelativePanel.AlignRightWithPanel="True">
-                                <TextBlock
-                                    FontFamily="Segoe MDL2 Assets"
-                                    Text="&#xE006;"
-                                    FontSize="20"
-                                    TextAlignment="Center" />
-                            </Button>
+                                <TextBlock Name="LikeTextBlock"
+                                           Foreground="Red"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Text="&#xE006;"
+                                           FontSize="20"
+                                           TextAlignment="Center" />
+                            </Border>
                         </RelativePanel>
                         <ListView
                             Grid.Row="4"

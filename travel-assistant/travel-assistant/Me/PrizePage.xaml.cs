@@ -31,8 +31,8 @@ namespace travel_assistant.Me
 
         private async void GoButton_Click(object sender, RoutedEventArgs e)
         {
-            MyMedia.Source = new Uri(this.BaseUri, String.Format("/Assets/Me/Siren.wav"));
-            if((bool)myCanvas.GetValue(StarBehavior.AttachStarFlakeProperty) == true)
+            MyMedia.Source = new Uri(this.BaseUri, String.Format("/Assets/Me/BGM.mp3"));
+            if ((bool)myCanvas.GetValue(StarBehavior.AttachStarFlakeProperty) == true)
                 myCanvas.SetValue(StarBehavior.AttachStarFlakeProperty, false);
             if ((bool)myCanvas.GetValue(StarBehavior.AttachStarFlakeProperty) == false)
             {

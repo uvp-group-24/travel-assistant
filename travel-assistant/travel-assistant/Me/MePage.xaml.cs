@@ -22,14 +22,18 @@ namespace travel_assistant.Me
     /// </summary>
     public sealed partial class MePage : Page
     {
+        public static MePage Current;
         public MePage()
         {
             this.InitializeComponent();
-            OriginalFrame.Navigate(typeof(InfoPage));
+            OriginalFrame.Navigate(typeof(InfoGuide));
+            Current = this;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            Title.Text = "Me";
+            BackButton.Visibility = Visibility.Collapsed;
             if (OriginalFrame.CanGoBack)
             {
                 OriginalFrame.GoBack();

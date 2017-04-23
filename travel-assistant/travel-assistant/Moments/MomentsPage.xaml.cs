@@ -27,6 +27,7 @@ namespace travel_assistant.Moments
     {
         private ObservableCollection<Photo> Photos;
         private Popup popup = new Popup();
+        private static int LikeClick = 0;
 
         public MomentsPage()
         {
@@ -96,9 +97,11 @@ namespace travel_assistant.Moments
             CommentModel.Comments.Add(new CommentModel { Comment = "Site Li : " + Comment.Text });
         }
 
-        private void LikeButton_Click(object sender, RoutedEventArgs e)
+        private void LikeButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            LikeClick++;
+            if (LikeClick % 2 == 0) LikeTextBlock.Text = "\uE006";
+            else LikeTextBlock.Text = "\uE00B";
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿<Page
-    x:Class="travel_assistant.Friends.FriendsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:travel_assistant.Model"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="travel_assistant.Friends.FriendsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:travel_assistant.Model"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
             <NavigationThemeTransition>
@@ -18,202 +17,153 @@
     </Page.DataContext>
     <Page.Resources>
         <!--数据集合控件Padding-->
-        <Thickness
-            x:Key="ControlPadding">8</Thickness>
+        <Thickness x:Key="ControlPadding">8</Thickness>
         <!--BorderMargin-->
-        <Thickness
-            x:Key="BorderMargin">0,2</Thickness>
+        <Thickness x:Key="BorderMargin">0,2</Thickness>
         <!--BorderThickness-->
-        <Thickness
-            x:Key="BorderThickness">0,0,0,1</Thickness>
+        <Thickness x:Key="BorderThickness">0,0,0,1</Thickness>
         <!--BorderBrush-->
-        <SolidColorBrush
-            x:Key="BorderBrush"
-            Color="LightGray" />
+        <SolidColorBrush x:Key="BorderBrush"
+                         Color="LightGray" />
 
-        <JumpListItemBackgroundConverter
-            x:Key="BackgroundConverter"
-            Enabled="BlueViolet"
-            Disabled="Transparent" />
-        <JumpListItemBackgroundConverter
-            x:Key="ForegroundConverter"
-            Enabled="White"
-            Disabled="Black" />
+        <JumpListItemBackgroundConverter x:Key="BackgroundConverter"
+                                         Enabled="BlueViolet"
+                                         Disabled="Transparent" />
+        <JumpListItemBackgroundConverter x:Key="ForegroundConverter"
+                                         Enabled="White"
+                                         Disabled="Black" />
     </Page.Resources>
 
-    <Grid
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup
-                x:Name="VisualStateGroup">
-                <VisualState
-                    x:Name="Phone">
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Phone">
                     <VisualState.Setters>
-                        <Setter
-                            Target="appBar.(AppBar.ClosedDisplayMode)"
-                            Value="Minimal" />
+                        <Setter Target="appBar.(AppBar.ClosedDisplayMode)"
+                                Value="Minimal" />
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger
-                            MinWindowHeight="0" />
+                        <AdaptiveTrigger MinWindowHeight="0" />
                     </VisualState.StateTriggers>
                 </VisualState>
-                <VisualState
-                    x:Name="Tablet">
+                <VisualState x:Name="Tablet">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger
-                            MinWindowHeight="480" />
+                        <AdaptiveTrigger MinWindowHeight="480" />
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid.Resources>
-            <CollectionViewSource
-                x:Key="CollectionViewSource"
-                IsSourceGrouped="True"
-                ItemsPath="InternalList"
-                Source="{Binding AllPictures}" />
+            <CollectionViewSource x:Key="CollectionViewSource"
+                                  IsSourceGrouped="True"
+                                  ItemsPath="InternalList"
+                                  Source="{Binding AllPictures}" />
         </Grid.Resources>
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="auto" />
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <!--ROW = 0-->
-            <AppBar
-                x:Name="appBar"
-                Grid.Row="0"
-                ClosedDisplayMode="Compact">
+            <AppBar x:Name="appBar"
+                    Grid.Row="0"
+                    ClosedDisplayMode="Compact">
                 <RelativePanel>
-                    <TextBlock
-                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                        Text="Friends"
-                        FontSize="36" />
+                    <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               Text="Friends"
+                               FontSize="36" />
                 </RelativePanel>
             </AppBar>
             <!--ROW = 1-->
-            <SplitView
-                x:Name="InvitationView"
-                Grid.Row="1"
-                Background="Azure"
-                PanePlacement="Right"
-                DisplayMode="Overlay"
-                IsPaneOpen="False"
-                OpenPaneLength="500">
+            <SplitView x:Name="InvitationView"
+                       Grid.Row="1"
+                       Background="Azure"
+                       PanePlacement="Right"
+                       DisplayMode="Overlay"
+                       IsPaneOpen="False"
+                       OpenPaneLength="500">
                 <SplitView.Content>
-                    <Grid
-                        Grid.Row="1"
-                        Background="AliceBlue">
+                    <Grid Grid.Row="1"
+                          Background="AliceBlue">
                         <SemanticZoom>
                             <SemanticZoom.Style>
-                                <Style
-                                    TargetType="SemanticZoom">
-                                    <Setter
-                                        Property="HorizontalContentAlignment"
-                                        Value="Stretch" />
+                                <Style TargetType="SemanticZoom">
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Stretch" />
                                 </Style>
                             </SemanticZoom.Style>
                             <!--数据列表-->
                             <SemanticZoom.ZoomedInView>
-                                <ListView
-                                    IsItemClickEnabled="True"
-                                    ItemClick="ListView_ItemClick"
-                                    ItemsSource="{Binding Source={StaticResource CollectionViewSource}}"
-                                    SelectionMode="None"
-                                    ShowsScrollingPlaceholders="True"
-                                    Background="AliceBlue">
+                                <ListView IsItemClickEnabled="True"
+                                          ItemClick="ListView_ItemClick"
+                                          ItemsSource="{Binding Source={StaticResource CollectionViewSource}}"
+                                          SelectionMode="None"
+                                          ShowsScrollingPlaceholders="True"
+                                          Background="AliceBlue">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid
-                                                Padding="0,8"
-                                                BorderThickness="{StaticResource BorderThickness}"
-                                                BorderBrush="{StaticResource BorderBrush}">
+                                            <Grid Padding="0,8"
+                                                  BorderThickness="{StaticResource BorderThickness}"
+                                                  BorderBrush="{StaticResource BorderBrush}">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition
-                                                        Width="*" />
-                                                    <ColumnDefinition
-                                                        Width="12*" />
-                                                    <ColumnDefinition
-                                                        Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="12*" />
+                                                    <ColumnDefinition Width="Auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image
-                                                    Grid.Column="0"
-                                                    Stretch="Fill"
-                                                    HorizontalAlignment="Left"
-                                                    Source="{Binding ImageUri}">
+                                                <Image Grid.Column="0"
+                                                       Stretch="Fill"
+                                                       HorizontalAlignment="Left"
+                                                       Source="{Binding ImageUri}">
                                                 </Image>
-                                                <Grid
-                                                    Grid.Column="1"
-                                                    Margin="5,2">
-                                                    <TextBlock
-                                                        Text="{Binding Title}"
-                                                        VerticalAlignment="Top"
-                                                        FontWeight="Medium"
-                                                        TextWrapping="Wrap" />
-                                                    <StackPanel
-                                                        Orientation="Horizontal">
-                                                        <Border>
-                                                            <TextBlock
-                                                                Text="{Binding label}"
-                                                                VerticalAlignment="Center"
-                                                                Margin="0,20,20,10"
-                                                                TextWrapping="Wrap" />
-                                                        </Border>
-                                                        <Border>
-                                                            <TextBlock
-                                                                Text="{Binding label2}"
-                                                                VerticalAlignment="Center"
-                                                                Margin="0,20,20,10"
-                                                                Foreground="YellowGreen"
-                                                                TextWrapping="Wrap" />
-                                                        </Border>
-                                                        <Border>
-                                                            <TextBlock
-                                                                Text="{Binding label3}"
-                                                                VerticalAlignment="Center"
-                                                                Margin="0,20,20,10"
-                                                                Foreground="OrangeRed"
-                                                                TextWrapping="Wrap" />
-                                                        </Border>
-                                                        <Border>
-                                                            <TextBlock
-                                                                Text="{Binding label4}"
-                                                                VerticalAlignment="Center"
-                                                                Margin="0,20,20,10"
-                                                                Foreground="CadetBlue"
-                                                                TextWrapping="Wrap" />
-                                                        </Border>
+                                                <Grid Grid.Column="1"
+                                                      Margin="5,2">
+                                                    <TextBlock Text="{Binding Title}"
+                                                               VerticalAlignment="Top"
+                                                               FontWeight="Medium"
+                                                               TextWrapping="Wrap" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding label}"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,20,20,10"
+                                                                   TextWrapping="Wrap" />
+                                                        <TextBlock Text="{Binding label2}"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,20,20,10"
+                                                                   Foreground="YellowGreen"
+                                                                   TextWrapping="Wrap" />
+                                                        <TextBlock Text="{Binding label3}"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,20,20,10"
+                                                                   Foreground="OrangeRed"
+                                                                   TextWrapping="Wrap" />
+                                                        <TextBlock Text="{Binding label4}"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,20,20,10"
+                                                                   Foreground="CadetBlue"
+                                                                   TextWrapping="Wrap" />
                                                     </StackPanel>
                                                 </Grid>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                     <ListView.ItemContainerStyle>
-                                        <Style
-                                            TargetType="ListViewItem">
-                                            <Setter
-                                                Property="HorizontalContentAlignment"
-                                                Value="Stretch" />
-                                            <Setter
-                                                Property="Margin"
-                                                Value="0" />
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment"
+                                                    Value="Stretch" />
+                                            <Setter Property="Margin"
+                                                    Value="0" />
                                         </Style>
                                     </ListView.ItemContainerStyle>
                                     <!--列表头-->
                                     <ListView.GroupStyle>
-                                        <GroupStyle
-                                            HidesIfEmpty="True">
+                                        <GroupStyle HidesIfEmpty="True">
                                             <GroupStyle.HeaderTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock
-                                                        Text="{Binding Key}"
-                                                        FontSize="20"
-                                                        Foreground="BlueViolet" />
+                                                    <TextBlock Text="{Binding Key}"
+                                                               FontSize="20"
+                                                               Foreground="BlueViolet" />
                                                 </DataTemplate>
                                             </GroupStyle.HeaderTemplate>
                                         </GroupStyle>
@@ -224,57 +174,46 @@
 
                             <!--排序列表-->
                             <SemanticZoom.ZoomedOutView>
-                                <GridView
-                                    ItemsSource="{Binding Source={StaticResource CollectionViewSource},Path=CollectionGroups}">
+                                <GridView ItemsSource="{Binding Source={StaticResource CollectionViewSource},Path=CollectionGroups}">
                                     <GridView.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <WrapGrid
-                                                MaximumRowsOrColumns="6"
-                                                VerticalAlignment="Top"
-                                                Background="AliceBlue"
-                                                Orientation="Horizontal" />
+                                            <WrapGrid MaximumRowsOrColumns="6"
+                                                      VerticalAlignment="Top"
+                                                      Background="AliceBlue"
+                                                      Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </GridView.ItemsPanel>
                                     <GridView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border
-                                                Background="{Binding Converter={StaticResource BackgroundConverter}}">
-                                                <TextBlock
-                                                    Text="{Binding Group.Key}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Foreground="{Binding Converter={StaticResource ForegroundConverter}}" />
+                                            <Border Background="{Binding Converter={StaticResource BackgroundConverter}}">
+                                                <TextBlock Text="{Binding Group.Key}"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Foreground="{Binding Converter={StaticResource ForegroundConverter}}" />
                                             </Border>
                                         </DataTemplate>
                                     </GridView.ItemTemplate>
 
                                     <GridView.ItemContainerStyle>
-                                        <Style
-                                            TargetType="GridViewItem">
-                                            <Setter
-                                                Property="HorizontalAlignment"
-                                                Value="Center" />
-                                            <Setter
-                                                Property="HorizontalContentAlignment"
-                                                Value="Stretch" />
-                                            <Setter
-                                                Property="VerticalAlignment"
-                                                Value="Center" />
-                                            <Setter
-                                                Property="VerticalContentAlignment"
-                                                Value="Stretch" />
+                                        <Style TargetType="GridViewItem">
+                                            <Setter Property="HorizontalAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="HorizontalContentAlignment"
+                                                    Value="Stretch" />
+                                            <Setter Property="VerticalAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="VerticalContentAlignment"
+                                                    Value="Stretch" />
                                         </Style>
                                     </GridView.ItemContainerStyle>
                                     <GridView.Template>
                                         <ControlTemplate>
-                                            <ScrollViewer
-                                                ScrollViewer.VerticalScrollMode="Enabled">
-                                                <Viewbox
-                                                    Stretch="Uniform"
-                                                    Margin="8"
-                                                    VerticalAlignment="Top"
-                                                    ScrollViewer.VerticalScrollMode="Enabled"
-                                                    StretchDirection="Both">
+                                            <ScrollViewer ScrollViewer.VerticalScrollMode="Enabled">
+                                                <Viewbox Stretch="Uniform"
+                                                         Margin="8"
+                                                         VerticalAlignment="Top"
+                                                         ScrollViewer.VerticalScrollMode="Enabled"
+                                                         StretchDirection="Both">
                                                     <ItemsPresenter />
                                                 </Viewbox>
                                             </ScrollViewer>
@@ -286,99 +225,77 @@
                     </Grid>
                 </SplitView.Content>
                 <SplitView.Pane>
-                    <Grid
-                        Margin="10,10,0,0"
-                        Background="Azure">
+                    <Grid Margin="10,10,0,0"
+                          Background="Azure">
                         <Grid.RowDefinitions>
-                            <RowDefinition
-                                Height="auto" />
-                            <RowDefinition
-                                Height="auto" />
-                            <RowDefinition
-                                Height="auto" />
-                            <RowDefinition
-                                Height="auto" />
-                            <RowDefinition
-                                Height="auto" />
-                            <RowDefinition
-                                Height="*" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <RelativePanel
-                            Grid.Row="0">
-                            <TextBlock
-                                Text="Invitation"
-                                FontSize="48"
-                                FontWeight="Bold"
-                                VerticalAlignment="Center"
-                                RelativePanel.AlignLeftWithPanel="True" />
-                            <Button
-                                Grid.Row="5"
-                                x:Name="SendButton"
-                                Content="Send"
-                                FontSize="32"
-                                VerticalAlignment="Center"
-                                RelativePanel.AlignRightWithPanel="True"
-                                Click="SendButton_Click" />
+                        <RelativePanel Grid.Row="0">
+                            <TextBlock Text="Invitation"
+                                       FontSize="48"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       RelativePanel.AlignLeftWithPanel="True" />
+                            <Button Grid.Row="5"
+                                    x:Name="SendButton"
+                                    Content="Send"
+                                    FontSize="32"
+                                    VerticalAlignment="Center"
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    Click="SendButton_Click" />
                         </RelativePanel>
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Orientation="Horizontal">
-                            <CalendarDatePicker
-                                Margin="0,10,0,0"
-                                x:Name="DayTime" />
-                            <TimePicker
-                                Margin="10,10,0,0"
-                                x:Name="HourTime" />
+                        <DatePicker Grid.Row="1"
+                                    Margin="0,10,0,0"
+                                    x:Name="DayTime" />
+                        <TimePicker Grid.Row="2"
+                                    Margin="0,10,0,0"
+                                    x:Name="HourTime" />
+                        <StackPanel Grid.Row="3"
+                                    Orientation="Horizontal">
+                            <TextBlock Margin="0,10,0,0"
+                                       FontSize="28"
+                                       Text="To : " />
+                            <TextBox Width="300"
+                                     Margin="10,10,0,0"
+                                     x:Name="Location"
+                                     FontSize="24" />
                         </StackPanel>
-                        <StackPanel
-                            Grid.Row="2"
-                            Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,10,0,0"
-                                FontSize="28"
-                                Text="To : " />
-                            <TextBox
-                                Width="300"
-                                Margin="10,10,0,0"
-                                x:Name="Location"
-                                FontSize="24" />
-                        </StackPanel>
-                        <TextBlock
-                            x:Name="InvitedNames"
-                            Grid.Row="3"
-                            FontSize="28" />
-                        <TextBlock
-                            Grid.Row="4"
-                            Text="Message : "
-                            FontSize="28" />
-                        <TextBox
-                            Grid.Row="5"
-                            Width="450"
-                            Margin="0,10,0,0"
-                            PlaceholderText="if have any"
-                            x:Name="Msg"
-                            TextWrapping="Wrap"
-                            FontSize="28" />
+                        <TextBlock x:Name="InvitedNames"
+                                   Grid.Row="4"
+                                   FontSize="28" />
+                        <TextBlock Grid.Row="5"
+                                   Text="Message : "
+                                   FontSize="28" />
+                        <TextBox Grid.Row="6"
+                                 Width="450"
+                                 Margin="0,10,0,0"
+                                 PlaceholderText="if have any"
+                                 x:Name="Msg"
+                                 TextWrapping="Wrap"
+                                 FontSize="28" />
                     </Grid>
                 </SplitView.Pane>
             </SplitView>
 
             <!--ROW = 2-->
-            <RelativePanel
-                Grid.Row="2"
-                Background="Azure">
-                <TextBlock
-                    Text=""
-                    x:Name="FriendsText"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    FontSize="36" />
-                <Button
-                    x:Name="Generate"
-                    Content="OK!"
-                    RelativePanel.AlignRightWithPanel="True"
-                    Click="Generate_Click"
-                    FontSize="40">
+            <RelativePanel Grid.Row="2"
+                           Background="Azure">
+                <TextBlock Text=""
+                           x:Name="FriendsText"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           FontSize="36" />
+                <Button x:Name="Generate"
+                        Content="OK!"
+                        RelativePanel.AlignRightWithPanel="True"
+                        Click="Generate_Click"
+                        FontSize="40">
                 </Button>
 
             </RelativePanel>

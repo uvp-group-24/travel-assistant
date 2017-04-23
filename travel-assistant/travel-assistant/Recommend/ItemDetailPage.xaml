@@ -8,94 +8,40 @@
       xmlns:data="using:travel_assistant.Model"
       Loaded="Page_Loaded">
     <Page.Resources>
-        <Style x:Key="StarStyle_1"
-               TargetType="Image">
-            <Setter Property="RelativePanel.RightOf"
-                    Value="RankingNumber" />
-            <Setter Property="RelativePanel.AlignVerticalCenterWithPanel"
-                    Value="True" />
-            <Setter Property="Height"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="20" />
-            <Setter Property="Stretch"
-                    Value="Fill" />
-            <Setter Property="Visibility"
-                    Value="Collapsed" />
-            <Setter Property="Margin"
-                    Value="8,0,0,0" />
-        </Style>
-        <Style x:Key="StarStyle_2"
-               TargetType="Image">
-            <Setter Property="RelativePanel.RightOf"
-                    Value="Emptystar_1" />
-            <Setter Property="RelativePanel.AlignVerticalCenterWithPanel"
-                    Value="True" />
-            <Setter Property="Height"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="20" />
-            <Setter Property="Stretch"
-                    Value="Fill" />
-            <Setter Property="Visibility"
-                    Value="Collapsed" />
-            <Setter Property="Margin"
-                    Value="4,0,0,0" />
-        </Style>
-        <Style x:Key="StarStyle_3"
-               TargetType="Image">
-            <Setter Property="RelativePanel.RightOf"
-                    Value="Emptystar_2" />
-            <Setter Property="RelativePanel.AlignVerticalCenterWithPanel"
-                    Value="True" />
-            <Setter Property="Height"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="20" />
-            <Setter Property="Stretch"
-                    Value="Fill" />
-            <Setter Property="Visibility"
-                    Value="Collapsed" />
-            <Setter Property="Margin"
-                    Value="4,0,0,0" />
-        </Style>
-        <Style x:Key="StarStyle_4"
-               TargetType="Image">
-            <Setter Property="RelativePanel.RightOf"
-                    Value="Emptystar_3" />
-            <Setter Property="RelativePanel.AlignVerticalCenterWithPanel"
-                    Value="True" />
-            <Setter Property="Height"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="20" />
-            <Setter Property="Stretch"
-                    Value="Fill" />
-            <Setter Property="Visibility"
-                    Value="Collapsed" />
-            <Setter Property="Margin"
-                    Value="4,0,0,0" />
-        </Style>
-        <Style x:Key="StarStyle_5"
-               TargetType="Image">
-            <Setter Property="RelativePanel.RightOf"
-                    Value="Emptystar_4" />
-            <Setter Property="RelativePanel.AlignVerticalCenterWithPanel"
-                    Value="True" />
-            <Setter Property="Height"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="20" />
-            <Setter Property="Stretch"
-                    Value="Fill" />
-            <Setter Property="Visibility"
-                    Value="Collapsed" />
-            <Setter Property="Margin"
-                    Value="4,0,0,0" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="RecommendResource.xaml"
+                                    x:Name="Resource" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Name="EmptyBorder">
+                <TextBlock Text="No coupon served."
+                           FontSize="24"
+                           Margin="12,0,0,0" />
+            </DataTemplate>
+        </ResourceDictionary>
     </Page.Resources>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ContentDialog Title="SIGN IN"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       PrimaryButtonText="sign in"
+                       SecondaryButtonText="cancel"
+                       PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+                       SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+            <StackPanel VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <TextBox Name="userNameTextBox"
+                         Header="User name" />
+                <PasswordBox Name="passwordTextBox"
+                             Header="Password"
+                             IsPasswordRevealButtonEnabled="True" />
+                <CheckBox Name="saveUserNameCheckBox"
+                          Content="Save user name" />
+                <TextBlock x:Name="errorTextBlock" />
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </ContentDialog>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -122,15 +68,13 @@
                     BorderThickness="1" />
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="7*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
                     <Image Source="{x:Bind SelectedItem.Images.image_1}"
                            Height="300"
                            Width="400" />
-                    <Button Content="{Binding haha}">
-                    </Button>
                     <TextBlock Text="{x:Bind SelectedItem.Name}"
                                FontSize="28"
                                FontWeight="Medium" />
@@ -210,10 +154,130 @@
                     <SemanticZoom.ZoomedInView>
                         <Hub Name="DetailsHub"
                              Orientation="Vertical">
-                            <HubSection Header="门票预订">
+                            <HubSection Name="CouponSection"
+                                        Header="门票预订">
                                 <DataTemplate>
-                                    <Button Content="{Binding Name}">
-                                    </Button>
+                                    <Border Name="CouponBorder"
+                                            BorderBrush="Black"
+                                            BorderThickness="1"
+                                            Background="WhiteSmoke">
+                                        <RelativePanel Width="500"
+                                                       Height="140">
+                                            <TextBlock Text="{Binding Name}"
+                                                       RelativePanel.AlignLeftWithPanel="True"
+                                                       RelativePanel.AlignTopWithPanel="True" />
+                                            <TextBlock Name="Symbol1"
+                                                       Text="￥"
+                                                       RelativePanel.AlignLeftWithPanel="True"
+                                                       RelativePanel.AlignBottomWithPanel="True" />
+                                            <TextBlock Name="DisPrice"
+                                                       Text="{Binding DiscountedPrice}"
+                                                       RelativePanel.RightOf="Symbol1"
+                                                       RelativePanel.AlignBottomWithPanel="True" />
+                                            <TextBlock Name="Symbol2"
+                                                       Text="￥"
+                                                       RelativePanel.RightOf="DisPrice"
+                                                       RelativePanel.AlignBottomWithPanel="True" />
+                                            <TextBlock Text="{Binding OriginalPrice}"
+                                                       RelativePanel.RightOf="Symbol2"
+                                                       RelativePanel.AlignBottomWithPanel="True" />
+                                            <Button RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                    RelativePanel.AlignRightWithPanel="True"
+                                                    Height="80"
+                                                    Width="80"
+                                                    Padding="-1">
+                                                <StackPanel>
+                                                    <Grid>
+                                                        <Rectangle Width="80"
+                                                                   Height="60"
+                                                                   Fill="HotPink">
+                                                        </Rectangle>
+                                                        <TextBlock Text="Buy" />
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Border Width="80"
+                                                                Height="20"
+                                                                BorderBrush="Pink"
+                                                                BorderThickness="1"
+                                                                Background="White" />
+                                                        <TextBlock Text="Online-Pay" />
+                                                    </Grid>
+                                                </StackPanel>
+                                                <Button.Flyout>
+                                                    <Flyout Placement="Bottom">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <StackPanel Orientation="Horizontal"
+                                                                        Grid.Row="0">
+                                                                <TextBlock Text="Quantity : " />
+                                                                <Button Name="DecreaseButton"
+                                                                        BorderBrush="Black"
+                                                                        BorderThickness="1"
+                                                                        Height="24"
+                                                                        Width="24"
+                                                                        Padding="-1"
+                                                                        VerticalAlignment="Center"
+                                                                        Click="DecreaseButton_Click">
+                                                                    <TextBlock Text="&#xE108;"
+                                                                               FontSize="20"
+                                                                               FontFamily="Segoe MDL2 Assets"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center"/>
+                                                                </Button>
+                                                                <TextBox Name="QuantityTextBox"
+                                                                         Text="{Binding Quantity}" />
+                                                                <Button Name="IncreaseButton"
+                                                                        BorderBrush="Black"
+                                                                        BorderThickness="1"
+                                                                        Height="24"
+                                                                        Width="24"
+                                                                        Padding="-1"
+                                                                        VerticalAlignment="Center"
+                                                                        Click="IncreaseButton_Click">
+                                                                    <TextBlock Text="&#xE109;"
+                                                                               FontSize="20"
+                                                                               FontFamily="Segoe MDL2 Assets"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center" />
+                                                                </Button>
+                                                            </StackPanel>
+                                                            <Border BorderThickness="1"
+                                                                    BorderBrush="Black"
+                                                                    Width="100"
+                                                                    Grid.Row="1" />
+                                                            <AppBarButton Grid.Row="2">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="Wallet"
+                                                                               HorizontalAlignment="Left" />
+                                                                    <TextBlock Text="&#xE00F;"
+                                                                               FontFamily="Segoe MDL2 Assets"
+                                                                               HorizontalAlignment="Right" />
+                                                                </StackPanel>
+                                                            </AppBarButton>
+                                                            <Border BorderThickness="1"
+                                                                    BorderBrush="Black"
+                                                                    Width="100"
+                                                                    Grid.Row="3" />
+                                                            <StackPanel Grid.Row="4"
+                                                                        Orientation="Horizontal">
+                                                                <TextBlock Text="Costs : " />
+                                                                <Button Name="BuyButton"
+                                                                        Content="Buy Now"
+                                                                        Background="Red"
+                                                                        Click="BuyButton_Click" />
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Flyout>
+                                                </Button.Flyout>
+                                            </Button>
+                                        </RelativePanel>
+                                    </Border>
                                 </DataTemplate>
                             </HubSection>
                             <HubSection Header="门票预订">

@@ -24,6 +24,7 @@ namespace travel_assistant.Friends
     public sealed partial class FriendsPage : Page
     {
         private HashSet<String> MyFriends;
+        private string PickedNames { get; set; }
         //private Invitation MyInvitation;
 
         public FriendsPage()
@@ -57,10 +58,10 @@ namespace travel_assistant.Friends
             else
             {
                 InvitationView.IsPaneOpen = true;
-                string PickedNames = "Invited : ";
+                PickedNames = "";
                 foreach (var names in MyFriends)
                     PickedNames = PickedNames + " " + names;
-                InvitedNames.Text = PickedNames;
+                InvitedNames.Text = "Invited :" + PickedNames;
                 FriendsText.Text = "";
             }
         }
@@ -74,12 +75,15 @@ namespace travel_assistant.Friends
 
             InvitationModel.Invitations.Add(new InvitationModel
             {
-                MeetTime = DayTime.DataContext.ToString() + HourTime.DataContext.ToString(),
-                ToWhere = Location.ToString(),
-                Names = InvitedNames.Text,
+                MeetDayTime = DayTime.Date.Year.ToString() + "/" + DayTime.Date.Month.ToString() + "/" + DayTime.Date.Day.ToString(),
+                MeetHourTime = HourTime.Time.ToString(),
+                ToWhere = Location.Text,
+                Names = PickedNames,
                 Message = Msg.Text
             });
-            Msg.Text = DayTime.Date.ToString() + HourTime.Time.ToString() + Location.ToString() + InvitedNames.Text + Msg.Text;
+            Location.Text = "";
+            InvitedNames.Text = "";
+            Msg.Text = "";
             MyFriends.Clear();
         }
     }

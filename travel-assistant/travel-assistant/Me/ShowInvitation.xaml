@@ -1,11 +1,10 @@
-﻿<Page
-    x:Class="travel_assistant.Me.ShowInvitation"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:travel_assistant.Me"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="travel_assistant.Me.ShowInvitation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:travel_assistant.Me"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
             <NavigationThemeTransition>
@@ -14,11 +13,59 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock
-            x:Name="NameText"
-            FontSize="36"
-            HorizontalAlignment="Center"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="0,10,0,0"
+                       Text="Invitations:"
+                       FontSize="40"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center" />
+            <ListView x:Name="InvitationList"
+                      IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="10,0,0,10"
+                                    Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20"
+                                           FontWeight="Bold"
+                                           Text="Scheduled Time :" />
+                                <TextBlock x:Name="WhenDay"
+                                           Text="{Binding MeetDayTime}"
+                                           FontSize="20" />
+                                <TextBlock x:Name="WhenHour"
+                                           Text="{Binding MeetHourTime}"
+                                           FontSize="20" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20"
+                                           FontWeight="Bold"
+                                           Text="Location :" />
+                                <TextBlock x:Name="Where"
+                                           Text="{Binding ToWhere}"
+                                           FontSize="20" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20"
+                                           FontWeight="Bold"
+                                           Text="Friends Invited :" />
+                                <TextBlock x:Name="Who"
+                                           Text="{Binding Names}"
+                                           FontSize="20" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20"
+                                           FontWeight="Bold"
+                                           Text="Extra Message :" />
+                                <TextBlock x:Name="What"
+                                           Text="{Binding Message}"
+                                           FontSize="20" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
     </Grid>
 </Page>

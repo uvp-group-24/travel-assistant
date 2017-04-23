@@ -32,7 +32,7 @@ namespace travel_assistant.Model
         }
 
         private double x, y, velocity;
-        
+
         private Image MyStar;
 
         public Guid Identifier
@@ -48,10 +48,24 @@ namespace travel_assistant.Model
         public static Image CreateStar()
         {
             Image ret = new Image();
-            ret.Source = new BitmapImage(new Uri("ms-appx://travel-assistant/Assets/Me/LittleStar.jpg"));
-            ret.Height = 50;
-            ret.Width = 50;
-
+            double test = _random.NextDouble();
+            if (test < 0.33)
+                ret.Source = new BitmapImage(new Uri("ms-appx://travel-assistant/Assets/Me/coin1.png"));
+            else if (test < 0.66)
+                ret.Source = new BitmapImage(new Uri("ms-appx://travel-assistant/Assets/Me/coin2.png"));
+            else
+                ret.Source = new BitmapImage(new Uri("ms-appx://travel-assistant/Assets/Me/star1.png"));
+            test = _random.NextDouble();
+            if (test < 0.5)
+            {
+                ret.Height = 60;
+                ret.Width = 60;
+            }
+            else
+            {
+                ret.Height = 45;
+                ret.Width = 45;
+            }
             RotateTransform rotate = new RotateTransform();
             rotate.CenterX = 0.5;
             rotate.CenterY = 0.5;
@@ -68,8 +82,6 @@ namespace travel_assistant.Model
             _affinity = _random.NextDouble();
 
             velocity = _random.NextDouble() * 2;
-            //x = _random.NextDouble() * LEFT;
-            //y = fromTop ? 0 : _random.NextDouble() * TOP;
 
             x = 0.5 * LEFT;
             y = 175;
@@ -131,7 +143,7 @@ namespace travel_assistant.Model
                     if (y > 175) y += move * offset_y / sum;
                     else y -= move * offset_y / sum;
                 }
-                
+
 
 
                 MyStar.SetValue(Canvas.LeftProperty, x);

@@ -17,7 +17,7 @@ namespace travel_assistant.Model
         //public string Location { get; set; } //定位
         public int Price { get; set; } //人均价格
         public bool IsRecommended { get; set; } //是否推荐
-        public double Ranking { get; set; } //评分
+        public float Ranking { get; set; } //评分
         public Comment Comments{ get; set; } //评价
         public ImagePath Images { get; set; } //照片
         public Coupon Cp { get; set; } //优惠券

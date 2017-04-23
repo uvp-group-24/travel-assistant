@@ -12,28 +12,24 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
 using travel_assistant.Model;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace travel_assistant.Recommend
+namespace travel_assistant.Me
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class Page1 : Page
+    public sealed partial class OrderPage : Page
     {
-        public RecommendItem SelectedItem { get; set; }
-        public Page1()
+        public ObservableCollection<OrderModel> OrderList;
+        public OrderPage()
         {
             this.InitializeComponent();
-            DataContext = SelectedItem;
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            SelectedItem = (RecommendItem)e.Parameter;
-            DataContext = SelectedItem;
+            OrderList = UserModel.User.OrderModels;
+            
         }
     }
 }

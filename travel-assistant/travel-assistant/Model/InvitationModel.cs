@@ -9,7 +9,8 @@ namespace travel_assistant.Model
 {
     public class InvitationModel
     {
-        public string MeetTime { get; set; }
+        public string MeetDayTime { get; set; }
+        public string MeetHourTime { get; set; }
         public string ToWhere { get; set; }
         public string Names { get; set; }
         public string Message { get; set; }

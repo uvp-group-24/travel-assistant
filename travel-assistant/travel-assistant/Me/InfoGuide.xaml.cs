@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using travel_assistant.Model;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -21,18 +20,32 @@ namespace travel_assistant.Me
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class ShowInvitation : Page
+    public sealed partial class InfoGuide : Page
     {
-        public ShowInvitation()
+        public InfoGuide()
         {
             this.InitializeComponent();
-            InitInformation();
+            GuideFrame.Navigate(typeof(InfoPage));
         }
 
-        public void InitInformation()
+        private void BasicInfo_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            InvitationList.ItemsSource = InvitationModel.Invitations;
+            GuideFrame.Navigate(typeof(InfoPage));
+        }
+
+        private void DailyDraw_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            GuideFrame.Navigate(typeof(PrizePage));
+        }
+
+        private void Orders_Tapped(object sender, TappedRoutedEventArgs e)
+        {
             
+        }
+
+        private void Invitations_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            GuideFrame.Navigate(typeof(ShowInvitation));
         }
     }
 }

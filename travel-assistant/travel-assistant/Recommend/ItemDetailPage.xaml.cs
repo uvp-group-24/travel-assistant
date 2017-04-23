@@ -12,7 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
 using travel_assistant.Model;
+using System.ComponentModel;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -23,6 +25,8 @@ namespace travel_assistant.Recommend
     /// </summary>
     public sealed partial class ItemDetailPage : Page
     {
+        public ItemDetailData data;
+        public int Quantity { get; set; }
         public RecommendItem SelectedItem { get; set; }
         public ItemDetailPage()
         {
@@ -30,6 +34,10 @@ namespace travel_assistant.Recommend
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (SelectedItem.Cp == null)
+            {
+                CouponSection.ContentTemplate = EmptyBorder;
+            }
             SetRankingStar();
             RankingNumber.Text = SelectedItem.Ranking.ToString("f");
             List<string> sections = new List<string>();
@@ -39,6 +47,8 @@ namespace travel_assistant.Recommend
                     sections.Add(section.Header.ToString());
             }
             ZoomedOutList.ItemsSource = sections;
+            data = new ItemDetailData(SelectedItem);
+            CouponSection.DataContext = data;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -64,6 +74,102 @@ namespace travel_assistant.Recommend
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
             if (MainPage.Current.MainFrame.CanGoBack) MainPage.Current.MainFrame.GoBack();
+        }
+
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserModel.User.OrderModels.Add(new OrderModel
+            {
+                OrderNumber = "2017424004",
+                Image = SelectedItem.Images.image_1,
+                ShopName = SelectedItem.Name,
+                CouponName = SelectedItem.Cp.Name,
+                Quantity = data.Quantity,
+                Costs = SelectedItem.Cp.DiscountedPrice * Quantity,
+                PurchaseDate = "2017-04-24",
+                ExpireDate = "2017-04-27",
+                Status = OrderModel.OrderStatus.Received,
+            });
+            data.SoldSum++;
+        }
+
+        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (data.Quantity > 1) data.Quantity--;
+        }
+
+        private void IncreaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            data.Quantity++;
+        }
+
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+    }
+
+    public class ItemDetailData: INotifyPropertyChanged
+    {
+        public string Name { get; set; }
+        public float OriginalPrice { get; set; }
+        public float DiscountedPrice { get; set; }
+        private int soldsum;
+        public int SoldSum {
+            get
+            {
+                return soldsum;
+            }
+            set
+            {
+                soldsum = value;
+                OnPropertyChanged("Soldsum");
+            }
+        }
+        private int quantity;
+        public int Quantity {
+            get
+            {
+                return quantity;
+            }
+            set
+            {
+                quantity = value;
+                OnPropertyChanged("Quantity");
+            }
+        }
+        private float totalcosts;
+        public float Totalcosts
+        {
+            get
+            {
+                return totalcosts;
+            }
+            set
+            {
+                totalcosts = value;
+                OnPropertyChanged("Totalcosts");
+            }
+        }
+        public ItemDetailData(RecommendItem item)
+        {
+            Name = item.Cp.Name;
+            OriginalPrice = item.Cp.OriginalPrice;
+            DiscountedPrice = item.Cp.DiscountedPrice;
+            SoldSum = item.Cp.SoldSum;
+            Quantity = 1;
+            Totalcosts = item.Cp.DiscountedPrice;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

@@ -42,15 +42,18 @@
                     Grid.Row="0"
                     ClosedDisplayMode="Compact">
                 <RelativePanel>
-                    <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    <TextBlock Name="Title"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               x:FieldModifier="Public"
                                Text="Me"
                                FontSize="36" />
-                    <AppBarButton
-                        Icon="Back"
-                        x:Name="BackButton"
-                        Click="BackButton_Click"
-                        RelativePanel.AlignLeftWithPanel="True"
-                        RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                    <AppBarButton Icon="Back"
+                                  Name="BackButton"
+                                  x:FieldModifier="Public"
+                                  Visibility="Collapsed"
+                                  Click="BackButton_Click"
+                                  RelativePanel.AlignLeftWithPanel="True"
+                                  RelativePanel.AlignHorizontalCenterWithPanel="True" />
                 </RelativePanel>
             </AppBar>
 
