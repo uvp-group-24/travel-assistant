@@ -278,7 +278,15 @@
                                                                         Margin="60,0,0,0"
                                                                         Background="ForestGreen"
                                                                         Foreground="White"
-                                                                        Click="BuyButton_Click" />
+                                                                        Click="BuyButton_Click">
+                                                                    <Button.Flyout>
+                                                                        <Flyout>
+                                                                            <TextBlock Text="Success!!Check your order in Order-Page."
+                                                                                       TextWrapping="Wrap"
+                                                                                       Width="200"/>
+                                                                        </Flyout>
+                                                                    </Button.Flyout>
+                                                                </Button>
                                                             </StackPanel>
                                                         </Grid>
                                                     </Flyout>
