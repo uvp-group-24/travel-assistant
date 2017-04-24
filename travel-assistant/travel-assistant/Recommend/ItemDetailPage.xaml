@@ -21,27 +21,6 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ContentDialog Title="SIGN IN"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       PrimaryButtonText="sign in"
-                       SecondaryButtonText="cancel"
-                       PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-                       SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
-            <StackPanel VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch">
-                <TextBox Name="userNameTextBox"
-                         Header="User name" />
-                <PasswordBox Name="passwordTextBox"
-                             Header="Password"
-                             IsPasswordRevealButtonEnabled="True" />
-                <CheckBox Name="saveUserNameCheckBox"
-                          Content="Save user name" />
-                <TextBlock x:Name="errorTextBlock" />
-                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-                           TextWrapping="Wrap" />
-            </StackPanel>
-        </ContentDialog>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -61,6 +40,8 @@
                 </AppBarButton>
                 <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                            Text="Details"
+                           Foreground="SaddleBrown"
+                           FontFamily="Lucida Handwriting"
                            FontSize="36" />
             </RelativePanel>
             <Border Grid.Row="1"
@@ -71,11 +52,13 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="7*" />
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
+                <StackPanel Grid.Column="0"
+                            Margin="4,4,4,0">
                     <Image Source="{x:Bind SelectedItem.Images.image_1}"
                            Height="300"
                            Width="400" />
                     <TextBlock Text="{x:Bind SelectedItem.Name}"
+                               TextWrapping="Wrap"
                                FontSize="28"
                                FontWeight="Medium" />
                     <RelativePanel>
@@ -139,13 +122,18 @@
                     </RelativePanel>
                     <Border BorderBrush="#DEDEDE"
                             BorderThickness="1" />
-                    <TextBlock Text="Adress : "
-                               FontSize="20"/>
-                    <TextBlock Text="{x:Bind SelectedItem.Address}"
-                               FontSize="20" />
-                    <TextBlock Text="Opening Time : "
-                               FontSize="20" />
-                    <TextBlock Text=""
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Adress : "
+                                   FontSize="20" />
+                        <TextBlock Text="{x:Bind SelectedItem.Address}"
+                                   TextWrapping="Wrap"
+                                   FontSize="20" />
+                    </StackPanel>
+                    <TextBlock Text="Opening Time : 8:00 a.m. ~ 10:00 p.m."
+                               FontSize="20"
+                               Margin="0,8,0,8"/>
+                    <TextBlock Text="如需预订，您最晚要在出行前天 08:00前下单，请尽早预订"
+                               TextWrapping="Wrap"
                                FontSize="20" />
                 </StackPanel>
                 <Border BorderBrush="#DEDEDE"
@@ -155,32 +143,43 @@
                         <Hub Name="DetailsHub"
                              Orientation="Vertical">
                             <HubSection Name="CouponSection"
-                                        Header="门票预订">
+                                        Header="Coupons Reserving">
                                 <DataTemplate>
                                     <Border Name="CouponBorder"
+                                            Width="800"
+                                            Height="140"
                                             BorderBrush="Black"
                                             BorderThickness="1"
                                             Background="WhiteSmoke">
-                                        <RelativePanel Width="500"
-                                                       Height="140">
+                                        <RelativePanel>
                                             <TextBlock Text="{Binding Name}"
+                                                       Style="{StaticResource FontStyle}"
                                                        RelativePanel.AlignLeftWithPanel="True"
                                                        RelativePanel.AlignTopWithPanel="True" />
-                                            <TextBlock Name="Symbol1"
-                                                       Text="￥"
-                                                       RelativePanel.AlignLeftWithPanel="True"
-                                                       RelativePanel.AlignBottomWithPanel="True" />
-                                            <TextBlock Name="DisPrice"
-                                                       Text="{Binding DiscountedPrice}"
-                                                       RelativePanel.RightOf="Symbol1"
-                                                       RelativePanel.AlignBottomWithPanel="True" />
-                                            <TextBlock Name="Symbol2"
-                                                       Text="￥"
-                                                       RelativePanel.RightOf="DisPrice"
-                                                       RelativePanel.AlignBottomWithPanel="True" />
-                                            <TextBlock Text="{Binding OriginalPrice}"
-                                                       RelativePanel.RightOf="Symbol2"
-                                                       RelativePanel.AlignBottomWithPanel="True" />
+                                            <StackPanel RelativePanel.AlignBottomWithPanel="True"
+                                                        RelativePanel.AlignLeftWithPanel="True">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Sold Amount :"
+                                                               Style="{StaticResource FontStyle}" />
+                                                    <TextBlock Text="{Binding SoldSum}"
+                                                               Style="{StaticResource FontStyle}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Name="Symbol1"
+                                                               Text="￥"
+                                                               Style="{StaticResource FontStyle}" />
+                                                    <TextBlock Name="DisPrice"
+                                                               Text="{Binding DiscountedPrice}"
+                                                               Style="{StaticResource FontStyle}"/>
+                                                    <TextBlock Name="Symbol2"
+                                                               Text="￥"
+                                                               Style="{StaticResource FontStyle}"
+                                                               RelativePanel.RightOf="DisPrice" />
+                                                    <TextBlock Text="{Binding OriginalPrice}"
+                                                               Style="{StaticResource FontStyle}"
+                                                               RelativePanel.RightOf="Symbol2" />
+                                                </StackPanel>
+                                            </StackPanel>
                                             <Button RelativePanel.AlignVerticalCenterWithPanel="True"
                                                     RelativePanel.AlignRightWithPanel="True"
                                                     Height="80"
@@ -192,7 +191,10 @@
                                                                    Height="60"
                                                                    Fill="HotPink">
                                                         </Rectangle>
-                                                        <TextBlock Text="Buy" />
+                                                        <TextBlock Text="Buy"
+                                                                   FontSize="24"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Center"/>
                                                     </Grid>
                                                     <Grid>
                                                         <Border Width="80"
@@ -249,11 +251,15 @@
                                                             </StackPanel>
                                                             <Border BorderThickness="1"
                                                                     BorderBrush="Black"
-                                                                    Width="100"
+                                                                    Width="200"
+                                                                    Margin="0,12,0,12"
                                                                     Grid.Row="1" />
-                                                            <AppBarButton Grid.Row="2">
+                                                            <AppBarButton Grid.Row="2"
+                                                                          Width="200"
+                                                                          Height="40">
                                                                 <StackPanel Orientation="Horizontal">
                                                                     <TextBlock Text="Wallet"
+                                                                               Margin="0,0,60,0"
                                                                                HorizontalAlignment="Left" />
                                                                     <TextBlock Text="&#xE00F;"
                                                                                FontFamily="Segoe MDL2 Assets"
@@ -262,14 +268,16 @@
                                                             </AppBarButton>
                                                             <Border BorderThickness="1"
                                                                     BorderBrush="Black"
-                                                                    Width="100"
+                                                                    Width="200"
+                                                                    Margin="0,12,0,12"
                                                                     Grid.Row="3" />
                                                             <StackPanel Grid.Row="4"
                                                                         Orientation="Horizontal">
-                                                                <TextBlock Text="Costs : " />
                                                                 <Button Name="BuyButton"
                                                                         Content="Buy Now"
-                                                                        Background="Red"
+                                                                        Margin="60,0,0,0"
+                                                                        Background="ForestGreen"
+                                                                        Foreground="White"
                                                                         Click="BuyButton_Click" />
                                                             </StackPanel>
                                                         </Grid>
@@ -280,14 +288,64 @@
                                     </Border>
                                 </DataTemplate>
                             </HubSection>
-                            <HubSection Header="门票预订">
-
+                            <HubSection Header="Summary">
+                                <DataTemplate>
+                                    <TextBlock Text="        棋盘山位于沈阳市东北部，东邻抚顺，西至农业高新区，南至浑河，北接铁岭，距沈阳市中心约20千米。一年四季春天的绿、夏天的景、秋天的枫、冬天的雪让这里的风景独树一帜，也因为举办了国际女子世界象棋冠军争夺赛而闻名国内外。据传说，古时曾有黑白二龙在此山常住，故此山旧称为龙山。因年代久远，现如今龙山一名，已经很少使用，知道此名称的人，也就更少。棋盘山国际风景旅游开发区是沈阳最大的自然风景区，全区规划占地面积203平方公里，其中景区面积142平方公里，副城城区面积61平方公里，是自然山水林木为主体，集森林生态旅游．冰雪旅游、风光旅游、度假旅游、名胜古迹旅游、融棋牌竞技、科普知识、商贸购物、文体娱乐为一体的旅游胜地。"
+                                               Style="{StaticResource FontStyle}"
+                                               Margin="8,0,0,0"/>
+                                </DataTemplate>
                             </HubSection>
-                            <HubSection Header="门票预订">
-
+                            <HubSection Header="Reserving Attention">
+                                <DataTemplate>
+                                    <StackPanel Margin="8,0,0,0">
+                                        <TextBlock Text="有效期 ： 2016-10-31至2017-05-17"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="除外日期 ： 2017年1月4日至2017年2月6日"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="使用时间团购券使用时间：9:00-21:00,详情咨询商家"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="有效期 ： 2016-10-31至2017-05-17"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="预约提醒 ： 无需预约，消费高峰时可能需要等位"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="规则提醒 ： 仅限使用1张　不兑现、不找零"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="包间 ：店内无包间"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="堂食外带　：　堂食外带均可，可以打包，打包费详情咨询商家"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="温馨提示　：　请到店之前购买好团购券，到店使用。　团购用户不可同时享受商家其他优惠　酒水饮料等问题，请致电商家咨询，以商家反馈为准"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="商家服务　：　提供免费WiFi　免费提供5个停车位"
+                                                   Style="{StaticResource FontStyle}" />
+                                        <TextBlock Text="优惠规则　：　本单为特惠单，不参与团购积分赠送和使用"
+                                                   Style="{StaticResource FontStyle}" />
+                                    </StackPanel>
+                                </DataTemplate>
                             </HubSection>
-                            <HubSection Header="门票预订">
-
+                            <HubSection Header="Comments"
+                                        Name="CommentSection">
+                                <DataTemplate>
+                                    <StackPanel Margin="12,0,0,0"
+                                                Orientation="Horizontal">
+                                        <Border BorderBrush="SeaGreen"
+                                                BorderThickness="2">
+                                            <TextBlock Text="{Binding comment_1}"
+                                                       FontSize="24" />
+                                        </Border>
+                                        <Border BorderBrush="Blue"
+                                                BorderThickness="2"
+                                                Margin="12,0,12,0">
+                                            <TextBlock Text="{Binding comment_2}"
+                                                       FontSize="24" />
+                                        </Border>
+                                        <Border BorderBrush="OrangeRed"
+                                                BorderThickness="2">
+                                            <TextBlock Text="{Binding comment_3}"
+                                                       FontSize="24" />
+                                        </Border>
+                                    </StackPanel>
+                                </DataTemplate>
                             </HubSection>
                         </Hub>
                     </SemanticZoom.ZoomedInView>

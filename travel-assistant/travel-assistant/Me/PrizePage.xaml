@@ -6,20 +6,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid 
+        x:Name="MainGrid">
         <StackPanel Orientation="Vertical">
             <TextBlock Margin="0,10,0,0"
                        Text="DailyDraw:"
                        FontSize="40"
                        FontWeight="SemiBold"
                        HorizontalAlignment="Center" />
-            <Button Grid.Row="1"
-                    x:Name="GoButton"
+            <Button x:Name="GoButton"
                     VerticalAlignment="Bottom"
                     Content="开始"
                     Margin="20,0,0,0"
                     Click="GoButton_Click" />
             <Canvas x:Name="myCanvas"
+                    Margin="50,50,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
                 <Canvas.Resources>
@@ -28,7 +29,7 @@
                         <DoubleAnimation Storyboard.TargetName="Rotating"
                                          Storyboard.TargetProperty="Angle"
                                          From="0"
-                                         To="1116"
+                                         To="1404"
                                          Duration="0:0:7"
                                          RepeatBehavior="1x"
                                          AutoReverse="False">
@@ -62,13 +63,19 @@
                        Height="100"
                        Source="/Assets/Me/Pointer.png">
                 </Image>
+                <Image
+                    Source="/Assets/Me/panda.png"
+                    Width="200"
+                    Height="200"
+                    Canvas.Left="463"
+                    Canvas.Top="92" />
                 <TextBlock x:Name="MyText"
                            Canvas.Top="325"
                            Canvas.Left="0"
-                           Width="400"
-                           TextWrapping="Wrap"
+                    Width="625"
+                    TextWrapping="Wrap"
                            Opacity="0"
-                           Text="6th Prize! 20$ award~"
+                           Text="Thanks for participating~"
                            FontSize="56" />
             </Canvas>
         </StackPanel>

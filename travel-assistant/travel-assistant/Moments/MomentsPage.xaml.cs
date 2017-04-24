@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -32,6 +33,10 @@ namespace travel_assistant.Moments
         public MomentsPage()
         {
             this.InitializeComponent();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/background.jpg", UriKind.Absolute));
+            MainGrid.Background = imageBrush;
+            MainGrid.Background.Opacity = 0.5;
             Photos = PhotoViewModel.GetPhotos();
             this.DataContext = this;
             CommentList.ItemsSource = CommentModel.Comments;
@@ -62,7 +67,7 @@ namespace travel_assistant.Moments
             //获取被点击图片相对MainPage的坐标
             var position = tappedImage.TransformToVisual(this).TransformPoint(new Point());
             //获取MainPage的中心坐标
-            var xCenter = ActualWidth / 2 - 200;
+            var xCenter = ActualWidth / 2 - 350;
             var yCenter = ActualHeight / 2 - 200;
 
             var storyBoard = new Storyboard();

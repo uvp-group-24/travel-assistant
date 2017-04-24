@@ -14,58 +14,87 @@
     </Page.Transitions>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="0,10,0,0"
-                       Text="Invitations:"
-                       FontSize="40"
-                       FontWeight="SemiBold"
-                       HorizontalAlignment="Center" />
-            <ListView x:Name="InvitationList"
-                      IsItemClickEnabled="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="10,0,0,10"
-                                    Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20"
-                                           FontWeight="Bold"
-                                           Text="Scheduled Time :" />
-                                <TextBlock x:Name="WhenDay"
-                                           Text="{Binding MeetDayTime}"
-                                           FontSize="20" />
-                                <TextBlock x:Name="WhenHour"
-                                           Text="{Binding MeetHourTime}"
-                                           FontSize="20" />
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,10,0,0"
+            Text="Invitations:"
+            FontSize="40"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Center" />
+        <ListView
+            Grid.Row="1"
+            x:Name="InvitationList"
+            IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="0,10,0,10"
+                        BorderThickness="3"
+                        BorderBrush="Blue"
+                        Background="Azure"
+                        CornerRadius="5">
+                        <StackPanel
+                            Orientation="Vertical">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Scheduled Time :" />
+                                <TextBlock
+                                    x:Name="WhenDay"
+                                    Text="{Binding MeetDayTime}"
+                                    FontSize="20" />
+                                <TextBlock
+                                    x:Name="WhenHour"
+                                    Margin="10,0,0,0"
+                                    Text="{Binding MeetHourTime}"
+                                    FontSize="20" />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20"
-                                           FontWeight="Bold"
-                                           Text="Location :" />
-                                <TextBlock x:Name="Where"
-                                           Text="{Binding ToWhere}"
-                                           FontSize="20" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Location :" />
+                                <TextBlock
+                                    x:Name="Where"
+                                    Text="{Binding ToWhere}"
+                                    FontSize="20" />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20"
-                                           FontWeight="Bold"
-                                           Text="Friends Invited :" />
-                                <TextBlock x:Name="Who"
-                                           Text="{Binding Names}"
-                                           FontSize="20" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Friends Invited :" />
+                                <TextBlock
+                                    x:Name="Who"
+                                    Text="{Binding Names}"
+                                    FontSize="20" />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20"
-                                           FontWeight="Bold"
-                                           Text="Extra Message :" />
-                                <TextBlock x:Name="What"
-                                           Text="{Binding Message}"
-                                           FontSize="20" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Extra Message :" />
+                                <TextBlock
+                                    x:Name="What"
+                                    Text="{Binding Message}"
+                                    FontSize="20" />
                             </StackPanel>
                         </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>

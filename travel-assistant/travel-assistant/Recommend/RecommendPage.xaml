@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:data="using:travel_assistant.Model"
-      xmlns:Map="using:Windows.UI.Xaml.Controls.Maps"
       mc:Ignorable="d"
       Loaded="Page_Loaded"
       SizeChanged="Page_SizeChanged">
@@ -33,7 +32,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="MainGrid">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
@@ -78,13 +77,15 @@
                         </AppBarButton>
                         <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                    Text="Recommend"
+                                   Foreground="SaddleBrown"
+                                   FontFamily="Lucida Handwriting"
                                    FontSize="36" />
                         <AutoSuggestBox Name="SearchASB"
                                         RelativePanel.AlignRightWithPanel="True"
                                         Width="240"
                                         Height="36"
                                         ItemsSource="{x:Bind Suggestions}"
-                                        PlaceholderText="Please Enter."
+                                        PlaceholderText="Search"
                                         TextChanged="SearchASB_TextChanged"
                                         QuerySubmitted="SearchASB_QuerySubmitted"
                                         QueryIcon="Find"
@@ -114,94 +115,138 @@
                                          SectionHeaderClick="HotHub_SectionHeaderClick"
                                          Margin="0,-36,0,0">
                                         <HubSection Name="Weekly"
+                                                    Background="GhostWhite"
                                                     Header="Weekly">
-                                            <!--<HubSection.HeaderTemplate>
+                                            <HubSection.HeaderTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal"
-                                                                Grid.Column="0"
-                                                                Grid.Row="0"
-                                                                Grid.ColumnSpan="4"
-                                                                Margin="0,0,0,8">
+                                                                Margin="4,0,0,-8">
                                                         <TextBlock Text="&#x2668;"
                                                                    FontFamily="Segoe UI Emoji"
-                                                                   FontSize="36" />
+                                                                   FontSize="28" />
                                                         <TextBlock Text="Weekly"
-                                                                   FontSize="36" />
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
                                                     </StackPanel>
                                                 </DataTemplate>
-                                            </HubSection.HeaderTemplate>-->
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button Grid.Column="0"
-                                                            Grid.Row="1"
-                                                            Grid.ColumnSpan="3"
-                                                            Grid.RowSpan="2"
-                                                            Style="{StaticResource ButtonStyle}">
-                                                        <Image Source="/Assets/Recommend/Delicacy/douniujia/1.jpg"
-                                                               Stretch="Fill" />
-                                                    </Button>
-                                                    <Button Grid.Column="3"
-                                                            Grid.Row="3"
-                                                            Style="{StaticResource ButtonStyle}">
-                                                        <Image Source="/Assets/Recommend/Delicacy/douniujia/2.jpg"
-                                                               Stretch="Fill" />
-                                                    </Button>
-                                                    <Button Grid.Column="3"
-                                                            Grid.Row="1"
-                                                            Style="{StaticResource ButtonStyle}">
-                                                        <Image Source="/Assets/Recommend/Delicacy/2.jpg"
-                                                               Stretch="Fill" />
-                                                    </Button>
-                                                    <Button Grid.Column="3"
-                                                            Grid.Row="2"
-                                                            Style="{StaticResource ButtonStyle}">
-                                                        <Image Source="/Assets/Recommend/Delicacy/2.jpg"
-                                                               Stretch="Fill" />
-                                                    </Button>
-                                                </Grid>
+                                                <Viewbox>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0"
+                                                                Grid.Row="0"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="2"
+                                                                Margin="0,0,4,0"
+                                                                Style="{StaticResource ButtonStyle}">
+                                                            <Image Source="/Assets/Recommend/Delicacy/muwukaotui/2.jpg"
+                                                                   Height="800"
+                                                                   Width="800"
+                                                                   Stretch="UniformToFill" />
+                                                        </Button>
+                                                        <Button Grid.Column="2"
+                                                                Grid.Row="0"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="1"
+                                                                Height="400"
+                                                                Width="800"
+                                                                Margin="0,0,0,4"
+                                                                Style="{StaticResource ButtonStyle}">
+                                                            <Image Source="/Assets/Recommend/Attraction/jiuyiba/1.jpg"
+                                                                   Stretch="Fill" />
+                                                        </Button>
+                                                        <Button Grid.Column="2"
+                                                                Grid.Row="1"
+                                                                Grid.ColumnSpan="1"
+                                                                Grid.RowSpan="1"
+                                                                Height="400"
+                                                                Width="400"
+                                                                Margin="0,0,4,0"
+                                                                Style="{StaticResource ButtonStyle}">
+                                                            <Image Source="/Assets/Recommend/Entertainment/yue/2.jpg"
+                                                                   Stretch="Fill" />
+                                                        </Button>
+                                                        <Button Grid.Column="3"
+                                                                Grid.Row="1"
+                                                                Grid.ColumnSpan="1"
+                                                                Grid.RowSpan="1"
+                                                                Height="400"
+                                                                Width="400"
+                                                                Style="{StaticResource ButtonStyle}">
+                                                            <Image Source="/Assets/Recommend/Delicacy/xinmingtangdong/2.jpg"
+                                                                   Stretch="Fill" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Viewbox>
                                             </DataTemplate>
                                         </HubSection>
                                         <HubSection Name="Delicacy"
                                                     Header="Delicacy"
+                                                    Background="GhostWhite"
+                                                    Margin="0,16,0,0"
                                                     IsHeaderInteractive="True">
-                                            <!--<HubSection.HeaderTemplate>
+                                            <HubSection.HeaderTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal"
-                                                                Grid.Column="0"
-                                                                Grid.Row="0"
-                                                                Margin="0,0,0,8">
+                                                                Margin="4,0,0,-8">
                                                         <TextBlock Text="&#x2615;"
                                                                    FontFamily="Segoe UI Emoji"
-                                                                   FontSize="36" />
+                                                                   FontSize="28" />
                                                         <TextBlock Text="Delicacy"
-                                                                   FontSize="36" />
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
                                                     </StackPanel>
                                                 </DataTemplate>
-                                            </HubSection.HeaderTemplate>-->
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
                                                 <GridView ItemsSource="{Binding}"
                                                           SelectionMode="Single"
                                                           IsItemClickEnabled="True"
                                                           ItemClick="Delicacy_GridView_ItemClick">
-                                                    <GridView.ItemTemplate>
-                                                        <DataTemplate x:DataType="data:RecommendItem">
-                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{x:Bind Images.image_1}"
-                                                                       Stretch="Fill" />
+                                                  <GridView.ItemTemplate>
+                                                    <DataTemplate x:DataType="data:RecommendItem">
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                        Background="WhiteSmoke">
+                                                                    <Image Source="{x:Bind Images.image_1}"
+                                                                           Margin="4,4,4,0"
+                                                                           Height="300"
+                                                                       Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                       HorizontalAlignment="Center"
+                                                                           VerticalAlignment="Top"
+                                                                           Stretch="UniformToFill" />
                                                                 <TextBlock Text="{x:Bind Name}"
-                                                                           FontSize="16" />
+                                                                           FontSize="16"
+                                                                           Margin="4,0,0,0"/>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,0">
+                                                                    <TextBlock Text="Ranking :"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0"/>
+                                                                    <TextBlock Text="{x:Bind Ranking}"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,16,0"/>
+                                                                    <TextBlock Text="3-Comments"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,4">
+                                                                    <TextBlock Text="Average Costs : ￥"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0"/>
+                                                                    <TextBlock Text="{x:Bind Price}"
+                                                                               FontSize="16" />
+                                                                </StackPanel>
                                                             </StackPanel>
                                                         </DataTemplate>
                                                     </GridView.ItemTemplate>
@@ -210,7 +255,22 @@
                                         </HubSection>
                                         <HubSection Name="Hostel"
                                                     Header="Hostel"
+                                                    Background="GhostWhite"
+                                                    Margin="0,16,0,0"
                                                     IsHeaderInteractive="True">
+                                            <HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="4,0,0,-8">
+                                                        <TextBlock Text="&#x26EA;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="28" />
+                                                        <TextBlock Text="Hostel"
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
                                                 <GridView ItemsSource="{Binding}"
                                                           SelectionMode="Single"
@@ -218,11 +278,38 @@
                                                           ItemClick="Delicacy_GridView_ItemClick">
                                                     <GridView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:RecommendItem">
-                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{Binding Images.image_1}"
-                                                                       Stretch="Fill" />
-                                                                <TextBlock Text="{Binding Name}"
-                                                                           FontSize="16" />
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                        Background="WhiteSmoke">
+                                                                <Image Source="{x:Bind Images.image_1}"
+                                                                       Margin="4,4,4,0"
+                                                                       Height="300"
+                                                                       Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                       HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Top"
+                                                                       Stretch="UniformToFill" />
+                                                                <TextBlock Text="{x:Bind Name}"
+                                                                           FontSize="16"
+                                                                           Margin="4,0,0,0" />
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,0">
+                                                                    <TextBlock Text="Ranking :"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Ranking}"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,16,0" />
+                                                                    <TextBlock Text="3-Comments"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,4">
+                                                                    <TextBlock Text="Average Costs : ￥"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Price}"
+                                                                               FontSize="16" />
+                                                                </StackPanel>
                                                             </StackPanel>
                                                         </DataTemplate>
                                                     </GridView.ItemTemplate>
@@ -231,7 +318,22 @@
                                         </HubSection>
                                         <HubSection Name="Entertainment"
                                                     Header="Entertainment"
+                                                    Background="GhostWhite"
+                                                    Margin="0,16,0,0"
                                                     IsHeaderInteractive="True">
+                                            <HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="4,0,0,-8">
+                                                        <TextBlock Text="&#x26F3;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="28" />
+                                                        <TextBlock Text="Entertainment"
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
                                                 <GridView ItemsSource="{Binding}"
                                                           SelectionMode="Single"
@@ -239,11 +341,38 @@
                                                           ItemClick="Delicacy_GridView_ItemClick">
                                                     <GridView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:RecommendItem">
-                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{Binding Images.image_1}"
-                                                                       Stretch="Fill" />
-                                                                <TextBlock Text="{Binding Name}"
-                                                                           FontSize="16" />
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                        Background="WhiteSmoke">
+                                                                <Image Source="{x:Bind Images.image_1}"
+                                                                       Margin="4,4,4,0"
+                                                                       Height="300"
+                                                                       Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                       HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Top"
+                                                                       Stretch="UniformToFill" />
+                                                                <TextBlock Text="{x:Bind Name}"
+                                                                           FontSize="16"
+                                                                           Margin="4,0,0,0" />
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,0">
+                                                                    <TextBlock Text="Ranking :"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Ranking}"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,16,0" />
+                                                                    <TextBlock Text="3-Comments"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,4">
+                                                                    <TextBlock Text="Average Costs : ￥"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Price}"
+                                                                               FontSize="16" />
+                                                                </StackPanel>
                                                             </StackPanel>
                                                         </DataTemplate>
                                                     </GridView.ItemTemplate>
@@ -252,7 +381,22 @@
                                         </HubSection>
                                         <HubSection Name="Attraction"
                                                     Header="Attraction"
+                                                    Background="GhostWhite"
+                                                    Margin="0,16,0,0"
                                                     IsHeaderInteractive="True">
+                                            <HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="4,0,0,-8">
+                                                        <TextBlock Text="&#x26E9;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="28" />
+                                                        <TextBlock Text="Attraction"
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
                                                 <GridView ItemsSource="{Binding}"
                                                           SelectionMode="Single"
@@ -260,11 +404,38 @@
                                                           ItemClick="Delicacy_GridView_ItemClick">
                                                     <GridView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:RecommendItem">
-                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{Binding Images.image_1}"
-                                                                       Stretch="Fill" />
-                                                                <TextBlock Text="{Binding Name}"
-                                                                           FontSize="16" />
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                        Background="WhiteSmoke">
+                                                                <Image Source="{x:Bind Images.image_1}"
+                                                                       Margin="4,4,4,0"
+                                                                       Height="300"
+                                                                       Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                       HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Top"
+                                                                       Stretch="UniformToFill" />
+                                                                <TextBlock Text="{x:Bind Name}"
+                                                                           FontSize="16"
+                                                                           Margin="4,0,0,0" />
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,0">
+                                                                    <TextBlock Text="Ranking :"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Ranking}"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,16,0" />
+                                                                    <TextBlock Text="3-Comments"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,4">
+                                                                    <TextBlock Text="Average Costs : ￥"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Price}"
+                                                                               FontSize="16" />
+                                                                </StackPanel>
                                                             </StackPanel>
                                                         </DataTemplate>
                                                     </GridView.ItemTemplate>
@@ -273,7 +444,22 @@
                                         </HubSection>
                                         <HubSection Name="Shopping"
                                                     Header="Shopping"
+                                                    Background="GhostWhite"
+                                                    Margin="0,16,0,0"
                                                     IsHeaderInteractive="True">
+                                            <HubSection.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="4,0,0,-8">
+                                                        <TextBlock Text="&#x26F2;"
+                                                                   FontFamily="Segoe UI Emoji"
+                                                                   FontSize="28" />
+                                                        <TextBlock Text="Shopping"
+                                                                   FontFamily="Lucida Handwriting"
+                                                                   FontSize="32" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </HubSection.HeaderTemplate>
                                             <DataTemplate>
                                                 <GridView ItemsSource="{Binding}"
                                                           SelectionMode="Single"
@@ -281,11 +467,38 @@
                                                           ItemClick="Delicacy_GridView_ItemClick">
                                                     <GridView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:RecommendItem">
-                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}">
-                                                                <Image Source="{Binding Images.image_1}"
-                                                                       Stretch="Fill" />
-                                                                <TextBlock Text="{Binding Name}"
-                                                                           FontSize="16" />
+                                                            <StackPanel Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                        Background="WhiteSmoke">
+                                                                <Image Source="{x:Bind Images.image_1}"
+                                                                       Margin="4,4,4,0"
+                                                                       Height="300"
+                                                                       Width="{Binding ElementName=ItemWidth,Path=Width}"
+                                                                       HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Top"
+                                                                       Stretch="UniformToFill" />
+                                                                <TextBlock Text="{x:Bind Name}"
+                                                                           FontSize="16"
+                                                                           Margin="4,0,0,0" />
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,0">
+                                                                    <TextBlock Text="Ranking :"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Ranking}"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,16,0" />
+                                                                    <TextBlock Text="3-Comments"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                </StackPanel>
+                                                                <StackPanel Orientation="Horizontal"
+                                                                            Margin="4,0,0,4">
+                                                                    <TextBlock Text="Average Costs : ￥"
+                                                                               FontSize="16"
+                                                                               Margin="0,0,4,0" />
+                                                                    <TextBlock Text="{x:Bind Price}"
+                                                                               FontSize="16" />
+                                                                </StackPanel>
                                                             </StackPanel>
                                                         </DataTemplate>
                                                     </GridView.ItemTemplate>
@@ -297,7 +510,7 @@
                                 <SemanticZoom.ZoomedOutView>
                                     <ListView Name="ZoomedOutList"
                                               HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                                 </SemanticZoom.ZoomedOutView>
                             </SemanticZoom>
                         </PivotItem>
@@ -370,19 +583,21 @@
                     </Pivot>
                 </SplitView.Content>
                 <SplitView.Pane>
-                    <Grid>
+                    <Grid Name="SuggestionGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Seach Results:"
+                        <TextBlock Text="Seach Results :"
                                    FontSize="36"
+                                   Margin="8,4,0,8"
                                    Grid.Row="0"/>
                             <GridView ItemsSource="{x:Bind Suggestions}"
                                       SelectionMode="Single"
                                       IsItemClickEnabled="True"
                                       ItemClick="Delicacy_GridView_ItemClick"
                                       Grid.Row="1"
+                                      Margin="8,0,0,0"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="data:RecommendItem">

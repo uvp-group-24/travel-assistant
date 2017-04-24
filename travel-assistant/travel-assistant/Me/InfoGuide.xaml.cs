@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using travel_assistant.Model;
+using Windows.UI.Xaml.Media.Imaging;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -27,6 +28,9 @@ namespace travel_assistant.Me
         public InfoGuide()
         {
             this.InitializeComponent();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Me/background1.jpg", UriKind.Absolute));
+            NameRP.Background = imageBrush;
             GuideFrame.Navigate(typeof(InfoPage));
         }
 

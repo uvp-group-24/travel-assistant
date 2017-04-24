@@ -31,6 +31,38 @@ namespace travel_assistant.Me
 
         public void InitInformation()
         {
+            InvitationModel.Invitations.Add(new InvitationModel
+            {
+                MeetDayTime = "2017/3/5",
+                MeetHourTime = "8:00",
+                ToWhere = "必胜客（浑南店）",
+                Names = "李思特 杨尹豪",
+                Message = "记得带钱啊~~"
+            });
+            InvitationModel.Invitations.Add(new InvitationModel
+            {
+                MeetDayTime = "2017/4/1",
+                MeetHourTime = "10:00",
+                ToWhere = "韩盛自助餐（浑南店）",
+                Names = "任卓 陈婧",
+                Message = "这次咱们一定得吃回来!!"
+            });
+            InvitationModel.Invitations.Add(new InvitationModel
+            {
+                MeetDayTime = "2017/4/12",
+                MeetHourTime = "14:00",
+                ToWhere = "NEU natatorium",
+                Names = "Alex Bill Bob Kate",
+                Message = "Rmemeber that's wensday~! Don't be late"
+            });
+            InvitationModel.Invitations.Add(new InvitationModel
+            {
+                MeetDayTime = "2017/4/15",
+                MeetHourTime = "15:00",
+                ToWhere = "Chessboard Hill",
+                Names = "Site Fiona",
+                Message = "Hanging out~~"
+            });
             InvitationList.ItemsSource = InvitationModel.Invitations;
             
         }

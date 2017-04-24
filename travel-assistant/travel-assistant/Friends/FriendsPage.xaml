@@ -34,7 +34,7 @@
                                          Disabled="Black" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="MainGrid">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
@@ -74,6 +74,8 @@
                     <RelativePanel>
                         <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                    Text="Friends"
+                                   Foreground="DarkOliveGreen"
+                                   FontFamily="Lucida Handwriting"
                                    FontSize="36" />
                     </RelativePanel>
                 </AppBar>
@@ -128,9 +130,10 @@
                                                                FontWeight="Medium"
                                                                TextWrapping="Wrap" />
                                                     <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding label}"
+                                                        <TextBlock Text="{Binding label1}"
                                                                    VerticalAlignment="Center"
                                                                    Margin="0,20,20,10"
+                                                                   Foreground="DarkBlue"
                                                                    TextWrapping="Wrap" />
                                                         <TextBlock Text="{Binding label2}"
                                                                    VerticalAlignment="Center"
@@ -271,7 +274,7 @@
                                             Width="300"
                                             Height="36"
                                             ItemsSource="{x:Bind Suggestions}"
-                                            PlaceholderText="Please Enter."
+                                            PlaceholderText="Search for location."
                                             TextChanged="Location_TextChanged"
                                             Margin="10,10,0,0" />
                         </StackPanel>

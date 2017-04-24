@@ -10,7 +10,16 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
-            <ListView ItemsSource="{x:Bind OrderList}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Orders"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       FontSize="40" />
+            <ListView ItemsSource="{x:Bind OrderList}"
+                      Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:OrderModel">
                         <Grid>

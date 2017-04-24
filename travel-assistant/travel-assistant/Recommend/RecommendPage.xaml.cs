@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using travel_assistant.Model;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media.Imaging;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -32,6 +33,12 @@ namespace travel_assistant.Recommend
         public RecommendPage()
         {
             this.InitializeComponent();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/background.jpg", UriKind.Absolute));
+            MainGrid.Background = imageBrush;
+            MainGrid.Background.Opacity = 0.5;
+            SuggestionGrid.Background = imageBrush;
+            SuggestionGrid.Background = imageBrush;
             RecommendItems = RecommendItemManager.GetItems().FindAll(r => r.IsRecommended == true);
             this.DataContext = RecommendItems;
             ComboBoxItems = GetComboBoxItems();

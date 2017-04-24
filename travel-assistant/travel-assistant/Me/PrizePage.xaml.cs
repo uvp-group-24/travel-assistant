@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
@@ -27,6 +28,10 @@ namespace travel_assistant.Me
         public PrizePage()
         {
             this.InitializeComponent();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Me/scene2.jpg", UriKind.Absolute));
+            MainGrid.Background = imageBrush;
+            MainGrid.Background.Opacity = 0.75;
         }
 
         private async void GoButton_Click(object sender, RoutedEventArgs e)
@@ -36,7 +41,7 @@ namespace travel_assistant.Me
                 myCanvas.SetValue(StarBehavior.AttachStarFlakeProperty, false);
             if ((bool)myCanvas.GetValue(StarBehavior.AttachStarFlakeProperty) == false)
             {
-                if (myCanvas.Children.Count > 3)
+                if (myCanvas.Children.Count > 4)
                 {
                     await new MessageDialog("动画未完全结束").ShowAsync();
                     return;
@@ -44,6 +49,7 @@ namespace travel_assistant.Me
                 myCanvas.SetValue(StarBehavior.AttachStarFlakeProperty, true);
             }
             MyStory.Begin();
+            GoButton.IsEnabled = false;
         }
     }
 }

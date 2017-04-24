@@ -14,7 +14,7 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="MainGrid">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
@@ -45,7 +45,41 @@
                     <RelativePanel>
                         <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True"
                                    Text="Moments"
+                                   FontFamily="Lucida Handwriting"
+                                   Foreground="BlueViolet"
                                    FontSize="36" />
+                        <Button RelativePanel.AlignRightWithPanel="True"
+                                Height="48"
+                                Width="48"
+                                Background="WhiteSmoke"
+                                Padding="-1">
+                            <TextBlock Text="&#xE109;"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       FontFamily="Segoe MDL2 Assets" />
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Height="48"
+                                                Width="48"
+                                                Background="WhiteSmoke"
+                                                Padding="-1">
+                                            <TextBlock Text="&#xE722;"
+                                                       FontSize="24"
+                                                       FontFamily="Segoe MDL2 Assets" />
+                                        </Button>
+                                        <Button Height="48"
+                                                Width="48"
+                                                Background="WhiteSmoke"
+                                                Padding="-1">
+                                            <TextBlock Text="&#xE929;"
+                                                       FontSize="24"
+                                                       FontFamily="Segoe MDL2 Assets" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
                     </RelativePanel>
                 </AppBar>
                 <Border BorderBrush="#DEDEDE"
@@ -72,91 +106,83 @@
                                     Height="*" />
                             </Grid.RowDefinitions>
                         </Grid>
-                        <RelativePanel
-                            Grid.Row="0">
-                            <Image
-                                Name="Icon"
-                                Source="/Assets/Friends/35.jpg"
-                                Margin="20,0,0,0"
-                                Width="100"
-                                Height="100"
-                                RelativePanel.AlignLeftWithPanel="True" />
-                            <TextBlock
-                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                RelativePanel.AlignVerticalCenterWith="Icon"
-                                Text="Yinhao Yang  2017/3/25"
-                                FontSize="40" />
-                            <Button
-                                FontFamily="Segoe MDL2 Assets"
-                                Content="&#xE011; "
-                                RelativePanel.AlignRightWithPanel="True"
-                                Margin="0,5,80,5">
+                        <RelativePanel Grid.Row="0"
+                                       Margin="0,12,0,0">
+                            <Image Name="Icon"
+                                   Source="/Assets/Friends/39.jpg"
+                                   Margin="20,0,0,0"
+                                   Width="100"
+                                   Height="100"
+                                   RelativePanel.AlignLeftWithPanel="True" />
+                            <StackPanel RelativePanel.RightOf="Icon"
+                                        Margin="8,0,0,0">
+                                <TextBlock Text="任卓"
+                                           FontSize="32" />
+                                <TextBlock Text="2017/3/25"
+                                           FontSize="28" />
+                            </StackPanel>
+                            <Button FontFamily="Segoe MDL2 Assets"
+                                    Content="&#xE011; "
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    Margin="0,0,20,0">
                                 <Button.Flyout>
-                                    <MenuFlyout
-                                        Placement="Bottom">
-                                        <MenuFlyoutItem
-                                            Text="Hide his Moment" />
-                                        <MenuFlyoutItem
-                                            Text="Block" />
-                                        <MenuFlyoutItem
-                                            Text="Add to favorites" />
-                                        <MenuFlyoutItem
-                                            Text="Report" />
+                                    <MenuFlyout Placement="Bottom">
+                                        <MenuFlyoutItem Text="Hide his Moment" />
+                                        <MenuFlyoutItem Text="Block" />
+                                        <MenuFlyoutItem Text="Add to favorites" />
+                                        <MenuFlyoutItem Text="Report" />
                                     </MenuFlyout>
                                 </Button.Flyout>
                             </Button>
                         </RelativePanel>
-                        <GridView
-                            Grid.Row="1"
-                            ItemsSource="{x:Bind Photos}"
-                            ItemContainerStyle="{StaticResource photoItemContainerStyle}">
+                        <TextBlock Grid.Row="1"
+                                   TextWrapping="Wrap"
+                                   Margin="8,8,8,0"
+                                   FontSize="30"
+                                   Text="        终于来了大连啦！星海广场很美，最大的感受就是超级大，海风吹的很舒服，小商店屋顶上的鸽子很可爱，老虎滩的海豹表演很棒，海鲜很好吃，两个人浪的超级开森~~~~PS：大连的路真的就只有上坡和下坡，真佩服司机师傅的开车技术！！！" />
+                        <GridView Grid.Row="2"
+                                  ItemsSource="{x:Bind Photos}"
+                                  ItemContainerStyle="{StaticResource photoItemContainerStyle}">
                             <GridView.ItemTemplate>
-                                <DataTemplate
-                                    x:DataType="data:Photo">
-                                    <StackPanel
-                                        HorizontalAlignment="Center"
-                                        Orientation="Vertical">
-                                        <Image
-                                            Stretch="UniformToFill"
-                                            Source="{x:Bind ImageUri2}"
-                                            IsTapEnabled="True"
-                                            Tapped="Image_Tapped" />
-                                    </StackPanel>
+                                <DataTemplate x:DataType="data:Photo">
+                                    <Image Height="125"
+                                           Width="200"
+                                           Stretch="UniformToFill"
+                                           Source="{x:Bind ImageUri2}"
+                                           IsTapEnabled="True"
+                                           Tapped="Image_Tapped" />
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
-                        <TextBlock
-                            Grid.Row="2"
-                            TextWrapping="Wrap"
-                            FontSize="30"
-                            Text="Check this scene right here in Shenyang!! It's awsome~~" />
-                        <RelativePanel
-                            Grid.Row="3">
-                            <TextBox
-                                x:Name="Comment"
-                                Width="500"
-                                TextWrapping="Wrap"
-                                FontSize="20"
-                                PlaceholderText="Add a comment"
-                                RelativePanel.AlignLeftWithPanel="True" />
-                            <Button
-                                x:Name="CommentButton"
-                                Content="Comment"
-                                Click="CommentButton_Click"
-                                RelativePanel.AlignVerticalCenterWith="Comment"
-                                RelativePanel.AlignRightWith="Comment" />
-                            <Border
-                                Margin="0,0,20,0"
-                                x:Name="LikeButton"
-                                Tapped="LikeButton_Tapped"
-                                RelativePanel.AlignRightWithPanel="True">
+                        <RelativePanel Grid.Row="3"
+                                       Margin="0,0,0,12">
+                            <Border Margin="12,0,12,0"
+                                    Background="WhiteSmoke"
+                                    Height="36"
+                                    Width="36"
+                                    x:Name="LikeButton"
+                                    Tapped="LikeButton_Tapped"
+                                    RelativePanel.AlignLeftWithPanel="True">
                                 <TextBlock Name="LikeTextBlock"
                                            Foreground="Red"
                                            FontFamily="Segoe MDL2 Assets"
                                            Text="&#xE006;"
-                                           FontSize="20"
-                                           TextAlignment="Center" />
+                                           FontSize="28"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                             </Border>
+                            <TextBox x:Name="Comment"
+                                     TextWrapping="Wrap"
+                                     FontSize="20"
+                                     PlaceholderText="Add a comment"
+                                     RelativePanel.RightOf="LikeButton"
+                                     RelativePanel.LeftOf="CommentButton" />
+                            <Button x:Name="CommentButton"
+                                    Margin="12,0,12,0"
+                                    Content="Comment"
+                                    Click="CommentButton_Click"
+                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                    RelativePanel.AlignRightWithPanel="True" />
                         </RelativePanel>
                         <ListView
                             Grid.Row="4"

@@ -29,15 +29,5 @@ namespace travel_assistant.Me
             OriginalFrame.Navigate(typeof(InfoGuide));
             Current = this;
         }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Title.Text = "Me";
-            BackButton.Visibility = Visibility.Collapsed;
-            if (OriginalFrame.CanGoBack)
-            {
-                OriginalFrame.GoBack();
-            }
-        }
     }
 }

@@ -47,8 +47,9 @@ namespace travel_assistant.Recommend
                     sections.Add(section.Header.ToString());
             }
             ZoomedOutList.ItemsSource = sections;
-            data = new ItemDetailData(SelectedItem);
+            data = new ItemDetailData(SelectedItem.Cp);
             CouponSection.DataContext = data;
+            CommentSection.DataContext = SelectedItem.Comments;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -128,7 +129,7 @@ namespace travel_assistant.Recommend
             set
             {
                 soldsum = value;
-                OnPropertyChanged("Soldsum");
+                OnPropertyChanged("SoldSum");
             }
         }
         private int quantity;
@@ -156,14 +157,17 @@ namespace travel_assistant.Recommend
                 OnPropertyChanged("Totalcosts");
             }
         }
-        public ItemDetailData(RecommendItem item)
+        public ItemDetailData(Coupon item)
         {
-            Name = item.Cp.Name;
-            OriginalPrice = item.Cp.OriginalPrice;
-            DiscountedPrice = item.Cp.DiscountedPrice;
-            SoldSum = item.Cp.SoldSum;
-            Quantity = 1;
-            Totalcosts = item.Cp.DiscountedPrice;
+            if (item != null)
+            {
+                Name = item.Name;
+                OriginalPrice = item.OriginalPrice;
+                DiscountedPrice = item.DiscountedPrice;
+                SoldSum = item.SoldSum;
+                Quantity = 1;
+                Totalcosts = item.DiscountedPrice;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

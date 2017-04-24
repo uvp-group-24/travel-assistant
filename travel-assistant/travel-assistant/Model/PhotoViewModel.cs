@@ -20,15 +20,15 @@ namespace travel_assistant.Model
         {
             var Photos = new ObservableCollection<Photo>();
 
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/9.jpeg", Description = "222" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/9.jpeg", Description = "333" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/9.jpeg", Description = "444" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/9.jpeg", Description = "555" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/9.jpeg", Description = "666" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
-            Photos.Add(new Photo { ImageUri2 = "/Assets/Friends/8.jpeg", Description = "111" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M1.jpg", Description = "111" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M2.jpg", Description = "222" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M3.jpg", Description = "333" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M4.jpg", Description = "444" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M5.jpg", Description = "555" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M6.jpg", Description = "666" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M7.jpg", Description = "111" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M8.jpg", Description = "111" });
+            Photos.Add(new Photo { ImageUri2 = "/Assets/Moments/M9.jpg", Description = "111" });
 
             return Photos;
         }

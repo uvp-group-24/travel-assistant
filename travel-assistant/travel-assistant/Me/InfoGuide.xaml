@@ -8,77 +8,231 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0">
-            <Grid Background="Azure">
+            <Grid Background="WhiteSmoke">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0"
-                            Orientation="Horizontal">
-                    <StackPanel>
-                        <Image Width="200"
-                               Height="200"
-                               Source="{x:Bind User.AvatarPath}" />
-                        <TextBlock Text="{x:Bind User.Name}"
-                                   FontSize="68"
-                                   FontWeight="Bold" />
-                    </StackPanel>
-                    <RelativePanel>
-                        <StackPanel RelativePanel.AlignTopWithPanel="True">
-                            <TextBlock Margin="0,20,0,0"
-                                       Width="200"
-                                       TextWrapping="Wrap"
-                                       Text="Account : "
-                                       FontSize="36" />
-                            <TextBlock Width="200"
-                                       TextWrapping="Wrap"
-                                       Text="{x:Bind User.UserAccount}"
-                                       FontSize="36" />
-                        </StackPanel>
-                        <StackPanel RelativePanel.AlignBottomWithPanel="True">
-                            <TextBlock Width="200"
-                                       TextWrapping="Wrap"
-                                       Text="Member Points : "
-                                       FontSize="36" />
-                            <TextBlock Width="200"
-                                       TextWrapping="Wrap"
-                                       Text="{x:Bind User.Credits}"
-                                       FontSize="36" />
-                        </StackPanel>
-                    </RelativePanel>
-                </StackPanel>
-                <ScrollViewer Grid.Row="1">
-                    <StackPanel Orientation="Vertical">
-                        <Border Margin="0,10,0,10"
-                                x:Name="BasicInfo"
+                <RelativePanel Grid.Row="0"
+                               Name="NameRP"
+                               Height="260">
+                    <StackPanel Orientation="Horizontal"
+                                RelativePanel.AlignVerticalCenterWithPanel="True"
+                                RelativePanel.AlignLeftWithPanel="True"
                                 Tapped="BasicInfo_Tapped">
-                            <TextBlock FontSize="40"
-                                       Text="Basic Information" />
-                        </Border>
-                        <Border Margin="0,10,0,10"
-                                x:Name="DailyDraw"
-                                Tapped="DailyDraw_Tapped">
-                            <TextBlock FontSize="40"
-                                       Text="Daily Draw" />
-                        </Border>
-                        <Border Margin="0,10,0,10"
-                                x:Name="Orders"
-                                Tapped="Orders_Tapped">
-                            <TextBlock FontSize="40"
-                                       Text="My Orders" />
-                        </Border>
-                        <Border Margin="0,10,0,10"
-                                x:Name="Invitations"
-                                Tapped="Invitations_Tapped">
-                            <TextBlock FontSize="40"
-                                       Text="My Invitations" />
-                        </Border>
+                        <Image Width="80"
+                               Height="80"
+                               Margin="24,0,0,0"
+                               Source="{x:Bind User.AvatarPath}" />
+                        <StackPanel Margin="16,0,0,0">
+                            <TextBlock Text="{x:Bind User.Name}"
+                                       FontSize="28"
+                                       Margin="0,8,0,0"
+                                       FontWeight="Bold" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="Wallet : ￥"
+                                           FontSize="20" />
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="{x:Bind User.Wealth}"
+                                           FontSize="20" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock TextWrapping="Wrap"
+                                           Text="Credits : "
+                                           FontSize="20" />
+                                <TextBlock TextWrapping="Wrap"
+                                           Margin="8,0,0,0"
+                                           Text="{x:Bind User.Credits}"
+                                           FontSize="20" />
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </ScrollViewer>
+                    <Border CornerRadius="10"
+                            Background="OrangeRed"
+                            Margin="0,0,0,8"
+                            RelativePanel.AlignBottomWithPanel="True"
+                            RelativePanel.AlignHorizontalCenterWithPanel="True">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="12,0,12,0"
+                                    Tapped="DailyDraw_Tapped">
+                            <TextBlock Text="&#xE8C3;"
+                                       Margin="0,0,12,0"
+                                       Foreground="White"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="Daily Draw"
+                                       Foreground="White"
+                                       FontSize="28" />
+                        </StackPanel>
+                    </Border>
+                </RelativePanel>
+                <StackPanel Grid.Row="1">
+                    <StackPanel Margin="0,0,0,12">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Background="White"
+                                    Margin="0,0,0,1">
+                            <TextBlock Text="&#xE8C3;"
+                                       Margin="20,0,12,0"
+                                       Foreground="Red"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="Wallet Details"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Margin="20,0,12,0"
+                                       Foreground="Red"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="Credits Details"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Red-Packets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,12">
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White"
+                                    Tapped="Orders_Tapped">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Orders"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White"
+                                    Tapped="Invitations_Tapped">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Invitations"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Favorites"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Moments"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="My Address"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="Frequent Contacts"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Margin="0,0,0,1"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="Helps"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="60"
+                                    Background="White">
+                            <TextBlock Text="&#xE8C3;"
+                                       Foreground="Red"
+                                       Margin="20,0,12,0"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                            <TextBlock Text="About"
+                                       VerticalAlignment="Center"
+                                       FontSize="20" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </ScrollViewer>
         <Frame x:Name="GuideFrame"
